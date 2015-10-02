@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>使用AutoLayout来动态计算UITableViewCell的高度 | Andy矢倉</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Learn how to create dynamic height table view cells using auto layout引文原版：http://www.raywenderlich.com/73602/dynamic-table-view-cell-height-auto-layout转载请注明出处：http://www.rockerhx.com/2015/01/04/2015-0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用AutoLayout来动态计算UITableViewCell的高度">
+<meta property="og:url" content="http://shicang1990.github.io/2015/01/04/2015-01-4-Dynamic-TableViewCell-Height-By-Auto Layout/index.html">
+<meta property="og:site_name" content="Andy矢倉">
+<meta property="og:description" content="Learn how to create dynamic height table view cells using auto layout引文原版：http://www.raywenderlich.com/73602/dynamic-table-view-cell-height-auto-layout转载请注明出处：http://www.rockerhx.com/2015/01/04/2015-0">
+<meta property="og:image" content="http://cdn2.raywenderlich.com/wp-content/uploads/2014/05/RWImageCell-Final-Pins.jpg">
+<meta property="og:image" content="http://cdn1.raywenderlich.com/wp-content/uploads/2014/05/Main-700x390.jpg">
+<meta property="og:image" content="http://cdn1.raywenderlich.com/wp-content/uploads/2014/05/convenient.jpg">
+<meta property="og:image" content="http://cdn1.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Class.jpg">
+<meta property="og:image" content="http://cdn3.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Identifier.jpg">
+<meta property="og:image" content="http://cdn2.raywenderlich.com/wp-content/uploads/2014/07/RWBasicCell-Row-Height-480x163.png">
+<meta property="og:image" content="http://cdn2.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Add-Title-Label.jpg">
+<meta property="og:image" content="http://cdn3.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Title-Number-Lines.jpg">
+<meta property="og:image" content="http://cdn3.raywenderlich.com/wp-content/uploads/2014/07/RWBasicCell-Title-Frame.png">
+<meta property="og:image" content="http://cdn3.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Title-Outlet.jpg">
+<meta property="og:image" content="http://cdn2.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Add-Subtitle-Label.jpg">
+<meta property="og:image" content="http://cdn5.raywenderlich.com/wp-content/uploads/2014/07/RWBasicCell-Subtitle-Frame-394x320.png">
+<meta property="og:image" content="http://cdn4.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Subtitle-Properties.jpg">
+<meta property="og:image" content="http://cdn4.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Subtitle-Outlet.jpg">
+<meta property="og:image" content="http://cdn5.raywenderlich.com/wp-content/uploads/2014/07/RWBasicCell-Title-Pin-Constraints-214x320.png">
+<meta property="og:image" content="http://cdn3.raywenderlich.com/wp-content/uploads/2014/07/RWBasicCell-Subtitle-Pin-Constraints-216x320.png">
+<meta property="og:image" content="http://cdn4.raywenderlich.com/wp-content/uploads/2014/11/Title-Hugging-Resistance-Constraints-480x309.png">
+<meta property="og:image" content="http://cdn4.raywenderlich.com/wp-content/uploads/2014/11/Subtitle-Hugging-Resistance-Constraints-480x309.png">
+<meta property="og:image" content="http://cdn5.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Final-Constraints.jpg">
+<meta property="og:image" content="http://cdn5.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Segue.jpg">
+<meta property="og:image" content="http://cdn2.raywenderlich.com/wp-content/uploads/2014/05/Say_What.jpg">
+<meta property="og:image" content="http://cdn2.raywenderlich.com/wp-content/uploads/2014/05/Populated-Table-View-RWBasicCell.jpg">
+<meta property="og:image" content="http://cdn4.raywenderlich.com/wp-content/uploads/2014/05/Populated-Table-View-RWBasicCell-Landscape-Problem-480x270.jpg">
+<meta property="og:image" content="http://cdn2.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Set-RWLabel-Class.jpg">
+<meta property="og:image" content="http://cdn5.raywenderlich.com/wp-content/uploads/2014/05/Oh-Yeah.png">
+<meta property="og:updated_time" content="2015-10-01T15:02:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用AutoLayout来动态计算UITableViewCell的高度">
+<meta name="twitter:description" content="Learn how to create dynamic height table view cells using auto layout引文原版：http://www.raywenderlich.com/73602/dynamic-table-view-cell-height-auto-layout转载请注明出处：http://www.rockerhx.com/2015/01/04/2015-0">
+  
+    <link rel="alternative" href="/atom.xml" title="Andy矢倉" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://tp1.sinaimg.cn/1549567960/180/40056410546/1" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Andy矢倉</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">我就是我，是颜色不一样的烟火</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/shicang1990" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/ganmaojijie" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://plus.google.com/u/0/111959925992300968239" title="google">google</a>
+					        
+								<a class="facebook" target="_blank" href="https://www.facebook.com/wiwby" title="facebook">facebook</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/Andy_shicang" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AVAudioPlayer/" style="font-size: 10px;">AVAudioPlayer</a> <a href="/tags/AVPlayer/" style="font-size: 10px;">AVPlayer</a> <a href="/tags/Alignment/" style="font-size: 10px;">Alignment</a> <a href="/tags/AutoLayout/" style="font-size: 15px;">AutoLayout</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Homebrew/" style="font-size: 10px;">Homebrew</a> <a href="/tags/MPMoviePlayerController/" style="font-size: 10px;">MPMoviePlayerController</a> <a href="/tags/MPMusicPlayerController/" style="font-size: 10px;">MPMusicPlayerController</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/StoryBoard/" style="font-size: 10px;">StoryBoard</a> <a href="/tags/Term/" style="font-size: 10px;">Term</a> <a href="/tags/Theme/" style="font-size: 10px;">Theme</a> <a href="/tags/UIColor/" style="font-size: 10px;">UIColor</a> <a href="/tags/UIImage/" style="font-size: 10px;">UIImage</a> <a href="/tags/UITextView/" style="font-size: 10px;">UITextView</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/iOS7/" style="font-size: 20px;">iOS7</a> <a href="/tags/iOS8/" style="font-size: 15px;">iOS8</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Andy矢倉</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://tp1.sinaimg.cn/1549567960/180/40056410546/1" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Andy矢倉</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">我就是我，是颜色不一样的烟火</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/shicang1990" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/ganmaojijie" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://plus.google.com/u/0/111959925992300968239" title="google">google</a>
+			        
+						<a class="facebook" target="_blank" href="https://www.facebook.com/wiwby" title="facebook">facebook</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/Andy_shicang" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2015-01-4-Dynamic-TableViewCell-Height-By-Auto Layout" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/01/04/2015-01-4-Dynamic-TableViewCell-Height-By-Auto Layout/" class="article-date">
+  	<time datetime="2015-01-04T12:42:30.000Z" itemprop="datePublished">1月 4 2015</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用AutoLayout来动态计算UITableViewCell的高度
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AutoLayout/">AutoLayout</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS7/">iOS7</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS8/">iOS8</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/iOS/">iOS</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><br><br><br><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2014/05/RWImageCell-Final-Pins.jpg" alt=""></p>
+<h2 id="Learn_how_to_create_dynamic_height_table_view_cells_using_auto_layout">Learn how to create dynamic height table view cells using auto layout</h2><p>引文原版：<a href="http://www.raywenderlich.com/73602/dynamic-table-view-cell-height-auto-layout" target="_blank" rel="external">http://www.raywenderlich.com/73602/dynamic-table-view-cell-height-auto-layout</a><br>转载请注明出处：<a href="http://www.rockerhx.com/2015/01/04/2015-01-4-Dynamic-TableViewCell-Height-By-Auto%20Layout/" target="_blank" rel="external">http://www.rockerhx.com/2015/01/04/2015-01-4-Dynamic-TableViewCell-Height-By-Auto%20Layout/</a></p>
+<p><strong><em>11/23/2014: 已经更新兼容iOS7，iOS8和Xcode6.1</em></strong></p>
+<blockquote>
+<p>如果你在过去想创建一个自定义的表视图来完成动态适配表视图单元格的高度，你必须写很多的计算代码。你必须计算每一个label，image view，text field，以及其他一切单元格内手动创建的控件高度。<br>坦率地说，这是非常艰巨的，也是流水账，而且还容易出错。<br>在这个表视图单元格动态高度教程中，您将学习如何创建自定义单元格，并动态调整它们的大小，以适应它们的内容。如果你之前已经做过自定义单元格的工作，你可能在想，“这将需要大量的适配计算代码。”<br>但是，如果我们告诉你，你一点也不用写任何适配计算代码呢？<br>你可能会说“谬论！”。但是，你的确可以做到！<br>通过你在本教程结束的时候，你就会知道如何利用自动布局来搞定你的几百行代码。</p>
+</blockquote>
+<p><strong><em>注：本教程适用于iOS7及以上。没有使用只有iOS8才支持的自动计算tableview cell的api。</em></strong></p>
+<a id="more"></a>
+<p>本教程假设你有基本的了解，你可以同时使用自动布局和<strong>UITableView</strong>中（包括它的<code>dataSource</code>和<code>delegate</code>方法）。如果你需要在这之前刷新一下你的脑容量，那我就给你一百块！</p>
+<ul>
+<li><a href="http://www.raywenderlich.com/64392/video-tutorial-beginning-auto-layout" target="_blank" rel="external">Video Tutorial: Beginning Auto Layout</a></li>
+<li><a href="http://www.raywenderlich.com/50317/beginning-auto-layout-tutorial-in-iOS-7-part-1" target="_blank" rel="external">Beginning Auto Layout Tutorial in iOS 7: Part 1</a>（<a href="http://http://www.rockerhx.com//2014/03/04/2014-03-04-Storyboard-Party2/" target="_blank" rel="external">iOS 7教程 - StoryBoards Part2</a>）</li>
+<li><a href="http://www.raywenderlich.com/video-tutorials#tableview" target="_blank" rel="external">Table View series of video tutorials</a><br><br><br></li>
+</ul>
+<p>##那就开始吧</p>
+<blockquote>
+<p>iOS6推出了精彩的新技术：自动布局。开发者们欢欣鼓舞，吃着火锅，唱着歌，出门就被干翻在地了。。。<br>好了，这些都说早了，自动布局，我们有一个大问题需要面对。<br>当它希望忽悠无数开发者，最初，Autolayout使用起来非常的笨重。手动编写自动布局代码，到现在仍然是对累赘的Objective-C中很好的解决办法，<strong>Interface Builder</strong>希望通过约束条件<strong>(constraints)</strong>来助人为乐往往适得其反。</p>
+</blockquote>
+<p>随着Xcode5.1和iOS7的到来，<strong>Interface Builder</strong>对自动布局的支持有了质的飞跃。除此之外，iOS7中引入了一个非常重要的委托方法<code>UITableViewDelegate:</code></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView estimatedHeightForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath;</span><br></pre></td></tr></table></figure>
+<p>该方法允许表视图<strong>(TableView)</strong>通过懒加载的方式来计算cell实际的高度，甚至可以把计算推迟到cell将要显现的时候。自动布局终于可以搞定动态计算单元格高度这种繁重的活了。<br>但是，你不想现在就掉进理论那大坑，我说的对不？你是否开始准备老老实实的编码了！所以让我们言归正传吧。<br><br><br></p>
+<p>##教程总览</p>
+<p>试想一下，你的首要客户跑来对你逼逼：“我们的用户都吵着要用一种方式来查看自己喜欢的Deviant Artists的意见书”。<br>你有听过这种艺术吗？槽。。。<br>“嗯，这是一个流行的社交网络平台，让艺术家们可以分享他们的艺术创作，被称为叛逆博客。”你的客户又逼逼：“你真的应该看看<a href="http://deviantart.com/" target="_blank" rel="external">Deviant Art</a>网站。”<br>幸运的是，Deviant Art提供了一个<a href="https://www.deviantart.com/developers/rss" target="_blank" rel="external">RSS订阅</a>入口，您可以通过艺术家来访问这些帖子。<br>“我们开始制作的应用程序，但我们被如何显示在表视图中显示正确内容难倒了，”你的客户怀疑。 “你能搞的定吗？”<br>现在，你什么都特么不用多考虑，只需要工具来搞定它，这样你的客户就会觉得你屌爆了或者屌翻了。<br><em>(老外都喜欢叨逼叨半天才开始，妹的，最烦翻译这些扯鸡巴蛋的东东)</em></p>
+<p>首先下载“客户端的代码”（本教程开始的工程）在<a href="http://cdn4.raywenderlich.com/wp-content/uploads/2014/07/DeviantArtBrowser_Starter.zip" target="_blank" rel="external">这里</a>。<br><em>(老外除了会扯鸡巴蛋以外，让我最想亲近他们菊花的原因就在这里，太特么上手了，该替我们省的统统省掉，擦拉黑)</em></p>
+<p>本项目采用CocoaPods，所以双击打开<strong>DeviantArtBrowser.xcworkspace</strong>（而不是.xcodeproj文件）。压缩包里已经包含了依赖库，根本不需要你去开终端来pod install神马的，就是这么跩。</p>
+<blockquote>
+<p>什么？你个逼搞了这么就iOS，都会搜索<strong>TableViewCell</strong> <strong>height</strong>加<strong>Autolayout</strong>这种关键词了还不知道<strong>CocoaPods</strong>？可以滚犊子了好伐。算了，还是一起给你吧，<a href="http://www.raywenderlich.com/?p=64546" target="_blank" rel="external">牛宝宝</a>。</p>
+</blockquote>
+<p>下载完了就速度把工程打开，别磨磨唧唧的，WTF，run了一下什么内容都没，逗我玩呢？（都特么告诉你是起始工程，想什么玩意儿啊）</p>
+<p>首先打开<strong>Main.storyboard</strong>（<strong>Views</strong>分组下），看见所有视图米：</p>
+<center><img src="http://cdn1.raywenderlich.com/wp-content/uploads/2014/05/Main-700x390.jpg"></center>
+
+<p>从左到右：</p>
+<ul>
+<li>顶级导航控制器</li>
+<li>标题（title）为Deviant Browser的<strong>RWFeedViewController</strong></li>
+<li><strong>RWDetailViewController</strong>的两个场景（上面那个显示文字内容，下面那个显示文字和图片），标题分别为Deviant Article和Deviant Media</li>
+</ul>
+<p>带你装逼带你飞，然我们跑起来，点击运行。你会看到控制台日志输出，除了输出就没干别了，除非你个煞笔改了代码。</p>
+<pre><code><span class="number">2014</span>-<span class="number">05</span>-<span class="number">28</span> <span class="number">00</span>:<span class="number">52</span>:<span class="number">01.588</span> <span class="name">DeviantArtBrowser</span>[<span class="number">1191</span>:<span class="number">60</span><span class="atom">b</span>] <span class="name">GET</span> <span class="string">'http://backend.deviantart.com/rss.xml?q=boost%3Apopular'</span>
+<span class="number">2014</span>-<span class="number">05</span>-<span class="number">28</span> <span class="number">00</span>:<span class="number">52</span>:<span class="number">03.144</span> <span class="name">DeviantArtBrowser</span>[<span class="number">1191</span>:<span class="number">60</span><span class="atom">b</span>] <span class="number">200</span> <span class="string">'http://backend.deviantart.com/rss.xml?q=boost%3Apopular'</span> [<span class="number">1.5568</span> <span class="atom">s</span>]
+</code></pre><p>该APP进行网络请求并得到响应，但没有任何响应数据。<br>现在，打开<code>RWFeedViewController.m</code>。这里有很多新代码。看看这个代码片段<code>parseForQuery:</code>:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self</span><span class="variable">.parser</span> parseRSSFeed:RWDeviantArtBaseURLString</span><br><span class="line">               parameters:[<span class="keyword">self</span> parametersForQuery:query]</span><br><span class="line">                  success:^(RSSChannel *channel) &#123;</span><br><span class="line">                    [weakSelf convertItemsPropertiesToPlainText:channel<span class="variable">.items</span>];</span><br><span class="line">                    [weakSelf setFeedItems:channel<span class="variable">.items</span>];</span><br><span class="line"> </span><br><span class="line">                    [weakSelf reloadTableViewContent];</span><br><span class="line">                    [weakSelf hideProgressHUD];</span><br><span class="line">                &#125; failure:^(<span class="built_in">NSError</span> *error) &#123;</span><br><span class="line">                    [weakSelf hideProgressHUD];</span><br><span class="line">                    <span class="built_in">NSLog</span>(<span class="string">@"Error: %@"</span>, error);</span><br><span class="line">                &#125;];</span><br></pre></td></tr></table></figure>
+<p><code>self.parser</code>是<code>RSSParser</code>的实例, 它是<a href="https://github.com/JRG-Developer/MediaRSSParser" target="_blank" rel="external">MediaRSSParser</a>的一部分。</p>
+<p>这个方法初始化一个网络请求来得到RSS反馈，然后它返回一个<strong>RSSChannel</strong>成功的<code>block</code>。格式化后，简单的把HTML转换为纯文本，并存储<code>channel.items</code>设置给当前<code>feedItems</code>属性。<br><code>channel.items</code>数组对象里全部包含<code>RSSItem</code>对象，其中每个都是RSS反馈的元素。不用我说，你也应该知道用什么在表视图里刷新了：<code>feedItems</code>数组！<br>最后，注意到项目有三个警告。WTF，too?<br>是哪个煞笔写了<code>#warning</code>出来报警告，老外就是这么调皮，做事细微，可以来我家兼职保姆了，其实这是为了提示你需要实现些代码。it’s so easy，妈妈再也不用担心我被老板加到办公室加班了。。。</p>
+<center><img src="http://cdn1.raywenderlich.com/wp-content/uploads/2014/05/convenient.jpg"></center>
+
+<p>##创建一个自定义Cell</p>
+<p>经过快速跳转，相信你已经找到了APP获取的数据，但没有显示任何东西。为了做到这一点，首先需要创建一个自定义的TableViewCell来显示数据。<br>添加一个新类到<strong>DeviantArtBrowser</strong>项目并将其命名为<code>RWBasicCell</code>。它是<code>UITableViewCell</code>的子类；确保<strong>Also create xib file</strong>没有被选中；并确保将编程语言设置为Objective-C。<br>打开<code>RWBasicCell.h</code>，并且添加一下属性:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">RWBasicCell</span> : <span class="title">UITableViewCell</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="keyword">IBOutlet</span> <span class="built_in">UILabel</span> *titleLabel;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="keyword">IBOutlet</span> <span class="built_in">UILabel</span> *subtitleLabel;</span><br></pre></td></tr></table></figure>
+<p>接下来打开<strong>Main.storyboard</strong>，拖拽一个新的<code>UITableViewCell</code>到<code>RWFeedViewController</code>的表视图内。<br>给cell设置自定义类为<code>RWBasicCell</code>。</p>
+<center><img src="http://cdn1.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Class.jpg"></center>
+
+<p>设置它的<strong>Identifier(Reuse Identifier)</strong>为<code>RWBasicCell</code>。</p>
+<center><img src="http://cdn3.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Identifier.jpg"></center>
+
+<p>设置<strong>Row Height</strong>为<strong>82</strong>。</p>
+<center><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2014/07/RWBasicCell-Row-Height-480x163.png"></center>
+
+<p>拖拽一个新的<code>UILabel</code>到cell里，并设置起内容为<strong>Title</strong>。</p>
+<center><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Add-Title-Label.jpg"></center>
+
+<p>给刚才添加的UILabel的<strong>Lines（显示多行的设置）</strong>设置为<strong>0</strong>，这样就可以无限制显示内容，不会出现超过范围就…了。</p>
+<center><img src="http://cdn3.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Title-Number-Lines.jpg"></center>
+
+<p>设置label的<strong>Preferred Width</strong>和<strong>frame</strong>值以下面的截图为准。确保<strong>Preferred Width</strong>的<strong>Explicit</strong>勾选（直到的iOS8，隐式标签宽度是不可用的，因此你需要勾选它来支持的iOS7及其更高版本）。</p>
+<center><img src="http://cdn3.raywenderlich.com/wp-content/uploads/2014/07/RWBasicCell-Title-Frame.png"></center>
+
+<p>把<code>RWBasicCell</code>的<code>titleLabel</code>接口连接起来。</p>
+<center><img src="http://cdn3.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Title-Outlet.jpg"></center>
+
+<p>接着，拖拽第二的<strong>UILabel</strong>到单元格内，贴在title label的下方，并将其文本设置为<code>Subtitle</code>。</p>
+<center><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Add-Subtitle-Label.jpg"></center>
+
+<p>像之前的label一样，参照以下截图中的值更改<strong>Preferred Width</strong>和<strong>frame</strong>值。</p>
+<center><img src="http://cdn5.raywenderlich.com/wp-content/uploads/2014/07/RWBasicCell-Subtitle-Frame-394x320.png"></center>
+
+<p>设置subtitle label的<strong>Color</strong>值为<strong>Light Gray Color</strong>，<strong>Font</strong>值为<strong>System 15.0</strong>，<strong>Lines</strong>值为<strong>0</strong>。</p>
+<center><img src="http://cdn4.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Subtitle-Properties.jpg"></center>
+
+<p>把<code>RWBasicCell</code>的<code>subtitleLabel</code>接口连接起来。</p>
+<center><img src="http://cdn4.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Subtitle-Outlet.jpg"></center>
+
+<p>告诉我素不素so easy啊！接着我们来配置<strong>RWBasicCell</strong>的布局。现在你只需要添加自动布局约束(constraints)。选择label并且点到<strong>pin</strong>栏选择<strong>top</strong>，<strong>trailing</strong>，<strong>leading</strong>，值分别为20，并确保<strong>Constrain to margins</strong>没有勾选。</p>
+<center><img src="http://cdn5.raywenderlich.com/wp-content/uploads/2014/07/RWBasicCell-Title-Pin-Constraints-214x320.png"></center>
+
+<p>无论cell大小如何，确保永远是下面这样的情况：</p>
+<ul>
+<li>到底部20个像素</li>
+<li>左右两边也分别是20个像素</li>
+</ul>
+<p>现在选择subtitle并点到<strong>pin</strong>栏选择<strong>leading</strong>，<strong>bottom</strong>，<strong>trailing</strong>，值分别为20，再次确保<strong>Constrain to margins</strong>没有勾选。</p>
+<center><img src="http://cdn3.raywenderlich.com/wp-content/uploads/2014/07/RWBasicCell-Subtitle-Pin-Constraints-216x320.png"></center>
+
+<p>类似title label，这些约束一起工作，以确保subtitle label总是在从底部20分，并跨越该cell的整个宽度减去一个小的填充。</p>
+<blockquote>
+<p>##提示：</p>
+<blockquote>
+<p>这种让自动布局在一<strong>UITableViewCell</strong>内确保有足够的约束来让子视图顶到边缘 - 也就是说，每个子视图应该有上，下，左，右的约束。<br>此外，应该有一个明确的约束，从<strong>contentView</strong>的顶部到底部。通过这种方式，自动布局可以基于子视图正确的搞定<strong>contentView</strong>的高度。<br>最棘手的部分是，<strong>Interface Builder</strong>中往往不会警告你，如果你搞错某些约束条件。<br>当您尝试运行该项目，自动布局将根本无法返回正确的高度。例如，它可以总是返回0的高度，这是一条很好的线索，它在提示你约束可能是错的。<br>如果您遇到的问题在自己的项目，尝试调整的制约，直到上述条件得到满足。</p>
+</blockquote>
+</blockquote>
+<p>选择<strong>subtitle</strong>栏，按住<strong>control</strong>并拖动<strong>title</strong>栏。选择<strong>Vertical Spacing</strong>，以<strong>subtitle</strong>栏的顶部链到<strong>title</strong>的底部。<br>这个过程中你可能会看到自动布局的一些警告，但你已经通过上面的步骤修复这些问题了。<br>选中<strong>title</strong>栏，设置其<strong>Horizontal</strong>和<strong>Vertical</strong>约束的优先级，<strong>Content Hugging Priority</strong>和<strong>Content Compression Resistance Priority</strong>为<strong>751</strong>。</p>
+<center><img src="http://cdn4.raywenderlich.com/wp-content/uploads/2014/11/Title-Hugging-Resistance-Constraints-480x309.png"></center>
+
+<p>选中<strong>subtitle</strong>栏，设置其<strong>Horizontal</strong>和<strong>Vertical</strong>约束的优先级，<strong>Content Hugging Priority</strong>和<strong>Content Compression Resistance Priority</strong>为<strong>750</strong>。</p>
+<center><img src="http://cdn4.raywenderlich.com/wp-content/uploads/2014/11/Subtitle-Hugging-Resistance-Constraints-480x309.png"></center>
+
+<p>我们通过这样来告诉布局自动你想要的大小，以满足他们的文字多少，并且<strong>title</strong>栏约束的优先级要高于<strong>subtitle</strong>的约束（在几乎所有情况下，所有的这些限制应该由自动布局完成）。<br>最终，自动布局限制应该像这样的<code>RWBasicCell:</code></p>
+<center><img src="http://cdn5.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Final-Constraints.jpg"></center>
+
+<blockquote>
+<p><strong>点评：</strong>这能满足前面的自动布局标准吗？</p>
+<ul>
+<li>1.是否每个子视图有约束引脚？是的。</li>
+<li>2.是否有限制从顶部到底部？是。<br><strong>titleLabel</strong>连接顶端20像素，它连接到<strong>subtitleLabel</strong>0像素，而<strong>subtitleLabel</strong>是20像素连接至底部。<br>所以自动布局现在可以确定的单元格的高度！</li>
+</ul>
+</blockquote>
+<p>接下来，你需要创建一个桥接方式从<strong>RWBasicCell</strong>到<code>Deviant Article:</code><br>选中<strong>RWBasicCell</strong>按住<strong>control</strong>并拖动到<strong>Deviant Article</strong>视图，<strong>Selection Segue</strong>方式选择<strong>Push</strong>。<br>在<strong>Interface Builder</strong>中改变<strong>cell</strong>的<strong>Accessory</strong>属性，虽然说这样看起来并不太好。我们还是把<strong>Accessory</strong>改为<strong>None</strong>吧。</p>
+<center><img src="http://cdn5.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Segue.jpg"></center>
+
+<p>现在，无论用户怎么点击<strong>RWBasicCell</strong>，都会跳转到<strong>RWDetailViewController</strong>页面。<br>果然棒棒哒，<strong>RWBasicCell</strong>已经设置完毕！如果你现在还是RUN，你会看到什么都没有发生改变。这是What the fuck?</p>
+<center><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2014/05/Say_What.jpg"></center>
+
+<p>还记得以前的那些<code>#warning</code>声明吗？是的，就是那些搞你蛋的。您需要实现的表视图的数据源(data source)和委托(delegate)方法。</p>
+<p>##实现UITableView的数据源(Data source)和委托(Delegate)</p>
+<p>在<code>RWFeedViewController.m</code>的顶部添加这些东东:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">"RWBasicCell.h"</span></span></span><br><span class="line"><span class="keyword">static</span> <span class="built_in">NSString</span> * <span class="keyword">const</span> RWBasicCellIdentifier = <span class="string">@"RWBasicCell"</span>;</span><br></pre></td></tr></table></figure></p>
+<p>你将在数据源和委托方法中使用<strong>RWBasicCell</strong>，这将需要你在故事板中设置<strong>RWBasicCellIdentifier</strong>重用标识符，总之，保持一致就行了。<br>接下来，实现数据源方法。<br>用下面的代码复写<code>tableView:numberOfRowsInSection:</code>方法：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">NSInteger</span>)tableView:(<span class="built_in">UITableView</span> *)tableView numberOfRowsInSection:(<span class="built_in">NSInteger</span>)section &#123;</span><br><span class="line">  <span class="keyword">return</span> [<span class="keyword">self</span><span class="variable">.feedItems</span> count];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>继续复写<code>tableView:cellForRowAtIndexPath:</code>方法：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">UITableViewCell</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView cellForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath &#123;</span><br><span class="line">    <span class="keyword">return</span> [<span class="keyword">self</span> basicCellAtIndexPath:indexPath];</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">- (RWBasicCell *)basicCellAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath &#123;</span><br><span class="line">  RWBasicCell *cell = [<span class="keyword">self</span><span class="variable">.tableView</span> dequeueReusableCellWithIdentifier:RWBasicCellIdentifier forIndexPath:indexPath];</span><br><span class="line">  [<span class="keyword">self</span> configureBasicCell:cell atIndexPath:indexPath];</span><br><span class="line">  <span class="keyword">return</span> cell;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">- (<span class="keyword">void</span>)configureBasicCell:(RWBasicCell *)cell atIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath &#123;</span><br><span class="line">  RSSItem *item = <span class="keyword">self</span><span class="variable">.feedItems</span>[indexPath<span class="variable">.row</span>];</span><br><span class="line">  [<span class="keyword">self</span> setTitleForCell:cell item:item];</span><br><span class="line">  [<span class="keyword">self</span> setSubtitleForCell:cell item:item];</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">- (<span class="keyword">void</span>)setTitleForCell:(RWBasicCell *)cell item:(RSSItem *)item &#123;</span><br><span class="line">  <span class="built_in">NSString</span> *title = item<span class="variable">.title</span> ?: <span class="built_in">NSLocalizedString</span>(<span class="string">@"[No Title]"</span>, <span class="literal">nil</span>);</span><br><span class="line">  [cell<span class="variable">.titleLabel</span> setText:title];</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">- (<span class="keyword">void</span>)setSubtitleForCell:(RWBasicCell *)cell item:(RSSItem *)item &#123;</span><br><span class="line">  <span class="built_in">NSString</span> *subtitle = item<span class="variable">.mediaText</span> ?: item<span class="variable">.mediaDescription</span>;</span><br><span class="line"> </span><br><span class="line">  <span class="comment">// Some subtitles can be really long, so only display the</span></span><br><span class="line">  <span class="comment">// first 200 characters</span></span><br><span class="line">  <span class="keyword">if</span> (subtitle<span class="variable">.length</span> &gt; <span class="number">200</span>) &#123;</span><br><span class="line">    subtitle = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@..."</span>, [subtitle substringToIndex:<span class="number">200</span>]];</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  [cell<span class="variable">.subtitleLabel</span> setText:subtitle];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>阐述下以上代码：</p>
+<ul>
+<li>在<code>tableView:cellForRowAtIndexPath:</code>代码中，调用<code>basicCellAtIndexPath:</code>得到一个<code>RWBasicCell</code>。正如你将在后面看到，这样更容易增加额外类型的自定义单元格，如果你是想创建一个辅助方法来代替数据源的方法返回单元格。</li>
+<li>在<code>basicCellAtIndexPath:</code>中，你通过<code>configureBasicCell:atIndexPath:</code>方法配制复用一个<code>RWBasicCell</code>，最后，返回配置好的单元格。</li>
+<li>在<code>configureBasicCell:atIndexPath:</code>，你得到一个<strong>item</strong>的<strong>索引(indexPath)</strong>，然后就可以获取和设置单元格上的<strong>titleLabel</strong>和<strong>subtitleLabel</strong>文本了。</li>
+</ul>
+</blockquote>
+<p>现在继续复写<code>tableView:heightForRowAtIndexPath:</code>及其以下方法：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView heightForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath &#123;</span><br><span class="line">  <span class="keyword">return</span> [<span class="keyword">self</span> heightForBasicCellAtIndexPath:indexPath];</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">- (<span class="built_in">CGFloat</span>)heightForBasicCellAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath &#123;</span><br><span class="line">  <span class="keyword">static</span> RWBasicCell *sizingCell = <span class="literal">nil</span>;</span><br><span class="line">  <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</span><br><span class="line">  <span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</span><br><span class="line">    sizingCell = [<span class="keyword">self</span><span class="variable">.tableView</span> dequeueReusableCellWithIdentifier:RWBasicCellIdentifier];</span><br><span class="line">  &#125;);</span><br><span class="line"> </span><br><span class="line">  [<span class="keyword">self</span> configureBasicCell:sizingCell atIndexPath:indexPath];</span><br><span class="line">  <span class="keyword">return</span> [<span class="keyword">self</span> calculateHeightForConfiguredSizingCell:sizingCell];</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">- (<span class="built_in">CGFloat</span>)calculateHeightForConfiguredSizingCell:(<span class="built_in">UITableViewCell</span> *)sizingCell &#123;</span><br><span class="line">  [sizingCell setNeedsLayout];</span><br><span class="line">  [sizingCell layoutIfNeeded];</span><br><span class="line"> </span><br><span class="line">  <span class="built_in">CGSize</span> size = [sizingCell<span class="variable">.contentView</span> systemLayoutSizeFittingSize:<span class="built_in">UILayoutFittingCompressedSize</span>];</span><br><span class="line">  <span class="keyword">return</span> size<span class="variable">.height</span> + <span class="number">1.0</span>f; <span class="comment">// Add 1.0f for the cell separator height</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>终于可以使用自动布局来计算单元格高度啦！那么这里是发生了什么事情呢：<br>1.在<code>tableView:heightForRowAtIndexPath:</code>方法中，类似数据源的方法，通过<code>heightForBasicCellAtIndexPath:</code>方法你只是简单地做高度计算并返回，这样你方便你以后自定义单元格。<br>2.您可能已经注意到，<code>heightForBasicCellAtIndexPath:</code>很有趣。</p>
+<ul>
+<li>这里我们使用GCD，以确保sizingCell创建只有一次</li>
+<li><code>configureBasicCell:atIndexPath:</code>配制单元格</li>
+<li>实际高度是通过<code>calculateHeightForConfiguredSizingCell:</code>返回。你也猜到了，这样做也是为了更容易添加单元格。<br>3.最后，在<code>calculateHeightForConfiguredSizingCell:</code>中，你可以：</li>
+<li>单元格调用<code>setNeedsLayout</code>和<code>layoutIfNeeded</code>布局其内容。</li>
+<li>通过自动布局提供的方法<code>systemLayoutSizeFittingSize:</code>来计算，传入参数<code>UILayoutFittingCompressedSize</code>，这意味着“用尽可能小的尺寸”，适合自动布局约束。</li>
+<li>返回所计算的高度加上1，这个是分割线高度。</li>
+</ul>
+</blockquote>
+<p>奔跑吧兄弟，你应该能看到完整的表格了。</p>
+<center><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2014/05/Populated-Table-View-RWBasicCell.jpg"></center>
+
+<p>是不是很爽！但是你要试试横屏的话，你会发现以下奇怪的东东：</p>
+<center><img src="http://cdn4.raywenderlich.com/wp-content/uploads/2014/05/Populated-Table-View-RWBasicCell-Landscape-Problem-480x270.jpg"></center>
+
+<p>是人都会很奇怪，为啥<strong>title</strong>和<strong>subTitle</strong>的菊花为啥会这样绽放（<strong>title</strong>和<strong>subTitle</strong>行距太高）？</p>
+<p>回想以下，当你同时给<strong>title</strong>和<strong>subTitle</strong>栏<strong>显式(Explicit)</strong>设置过<strong>首选宽度(Preferred Width)</strong>。是的，这就是问题的所在。<br>每当屏幕方向改变，标题栏的首选宽度不更新。因此，真实高度计算就开始出错……！<br>这就是为什么iOS8引入了“隐性(implicit)”首选宽度，但iOS7中是不可用的，如果你要支持的iOS7以上的版本，你就不能用它。如果你想要在iOS7设备上这样搞，就等着手机玩爆破吧，煞笔。<br>不过幸运的是，你可以通过创建<code>UILabel</code>的子类来解决这个问题。添加一个新类到项目，将其命名为<code>RWLabel</code>并使它继承自UILabel。</p>
+<p>在<strong>RWLabel.m</strong>中，复写<code>@implementation RWLabel</code>下的代码：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)setBounds:(<span class="built_in">CGRect</span>)bounds &#123;</span><br><span class="line">  [<span class="keyword">super</span> setBounds:bounds];</span><br><span class="line"> </span><br><span class="line">  <span class="comment">// If this is a multiline label, need to make sure</span></span><br><span class="line">  <span class="comment">// preferredMaxLayoutWidth always matches the frame width</span></span><br><span class="line">  <span class="comment">// (i.e. orientation change can mess this up)</span></span><br><span class="line"> </span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">self</span><span class="variable">.numberOfLines</span> == <span class="number">0</span> &amp;&amp; bounds<span class="variable">.size</span><span class="variable">.width</span> != <span class="keyword">self</span><span class="variable">.preferredMaxLayoutWidth</span>) &#123;</span><br><span class="line">    <span class="keyword">self</span><span class="variable">.preferredMaxLayoutWidth</span> = <span class="keyword">self</span><span class="variable">.bounds</span><span class="variable">.size</span><span class="variable">.width</span>;</span><br><span class="line">    [<span class="keyword">self</span> setNeedsUpdateConstraints];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>正如代码所写，<strong>RWLabel</strong>可以确保<code>preferredMaxLayoutWidth</code>总是等于bound的宽度。</p>
+<p>接下来，你需要更新<strong>RWBasicCell</strong>代码，打开<strong>RWBasicCell.h</strong>，接着导入头文件：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">"RWLabel.h"</span></span></span><br></pre></td></tr></table></figure></p>
+<p>接着把属性什么替换成下面这样：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="keyword">IBOutlet</span> RWLabel *titleLabel;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="keyword">IBOutlet</span> RWLabel *subtitleLabel;</span><br></pre></td></tr></table></figure></p>
+<p>继续打开<strong>Main.storyboard</strong>，选到<strong>Feed View Controller</strong>, 把两个标题栏的class都改为<strong>RWLabel</strong>。</p>
+<center><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Set-RWLabel-Class.jpg"></center>
+
+<p>打开<strong>RWFeedViewController.m</strong>，在<code>calculateHeightForConfiguredSizingCell:</code>方法的最前面添加以下代码：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sizingCell<span class="variable">.bounds</span> = <span class="built_in">CGRectMake</span>(<span class="number">0.0</span>f, <span class="number">0.0</span>f, <span class="built_in">CGRectGetWidth</span>(<span class="keyword">self</span><span class="variable">.tableView</span><span class="variable">.frame</span>), <span class="built_in">CGRectGetHeight</span>(sizingCell<span class="variable">.bounds</span>));</span><br></pre></td></tr></table></figure></p>
+<p>这样做是为了让<strong>RWLabel</strong>更新<strong>preferredMaxLayoutWidth</strong>属性。<br>再次跑起来吧，这下无论横屏还是竖屏，显示都妥妥的了。</p>
+<center><img src="http://cdn5.raywenderlich.com/wp-content/uploads/2014/05/Oh-Yeah.png"></center>
+
+
+<p>##说好的图片呢？</p>
+<p>一个好的APP，我们是不是应该加点图片进去呢？</p>
+<p>未完待续…</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/03/17/2015-03-17-AutoLayout-UITableViewCell-FooterView-Offset-Issue/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          使用AutoLayout来动态计算UITableViewCell的高度，FooterView移位的问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/03/04/2014-03-04-Storyboard-Party2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS 7教程 - StoryBoards Part2</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2015-01-4-Dynamic-TableViewCell-Height-By-Auto Layout" data-title="使用AutoLayout来动态计算UITableViewCell的高度" data-url="http://shicang1990.github.io/2015/01/04/2015-01-4-Dynamic-TableViewCell-Height-By-Auto Layout/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Andy矢倉
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

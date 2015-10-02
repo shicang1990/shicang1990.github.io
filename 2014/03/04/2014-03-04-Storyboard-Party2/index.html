@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>iOS 7教程 - StoryBoards Part2 | Andy矢倉</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原文地址：http://www.raywenderlich.com/50310/storyboards-tutorial-in-iOS-7-part-2iOS 7教程 - Storyboards Part1 译文地址：iOS 7教程 - Storyboards Part1
+
+iOS开发也好些日子了，一直都是纯code，偶尔用用xib，最近闲来无事想体验下storyboard，于是网上找到了各种关于">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 7教程 - StoryBoards Part2">
+<meta property="og:url" content="http://shicang1990.github.io/2014/03/04/2014-03-04-Storyboard-Party2/index.html">
+<meta property="og:site_name" content="Andy矢倉">
+<meta property="og:description" content="原文地址：http://www.raywenderlich.com/50310/storyboards-tutorial-in-iOS-7-part-2iOS 7教程 - Storyboards Part1 译文地址：iOS 7教程 - Storyboards Part1
+
+iOS开发也好些日子了，一直都是纯code，偶尔用用xib，最近闲来无事想体验下storyboard，于是网上找到了各种关于">
+<meta property="og:image" content="http://i3.tietuku.com/23898e59fbc1789e.png">
+<meta property="og:image" content="http://i3.tietuku.com/a5a0397722fdbe87.png">
+<meta property="og:image" content="http://i3.tietuku.com/8bddbab0120e9a8d.png">
+<meta property="og:image" content="http://i3.tietuku.com/0eabae66b455ebb9.png">
+<meta property="og:image" content="http://i3.tietuku.com/211f247ca963f5a5.png">
+<meta property="og:image" content="http://i3.tietuku.com/54fbf56e19ddba98.png">
+<meta property="og:image" content="http://i3.tietuku.com/c7939432b8630267.png">
+<meta property="og:image" content="http://i3.tietuku.com/3c299f58255873ea.png">
+<meta property="og:image" content="http://i3.tietuku.com/f99aef067c9b0d36.png">
+<meta property="og:image" content="http://i3.tietuku.com/58393311095bb3de.png">
+<meta property="og:image" content="http://i3.tietuku.com/7ce08f3f116dc6e5.png">
+<meta property="og:image" content="http://i3.tietuku.com/573a7955e21691a5.png">
+<meta property="og:image" content="http://i3.tietuku.com/c0555763899d4a8a.png">
+<meta property="og:image" content="http://i3.tietuku.com/fb86236d2fb7f025.png">
+<meta property="og:image" content="http://i3.tietuku.com/be6a5970062c5a9e.png">
+<meta property="og:image" content="http://i3.tietuku.com/4f8f3593e1ca1a06.png">
+<meta property="og:image" content="http://i3.tietuku.com/865fa1820fc068fb.png">
+<meta property="og:image" content="http://i3.tietuku.com/4697f22058e91ec6.png">
+<meta property="og:image" content="http://i3.tietuku.com/2939d1d29eaa4d6b.png">
+<meta property="og:image" content="http://i3.tietuku.com/541454d0057978d4.png">
+<meta property="og:updated_time" content="2015-10-01T15:02:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS 7教程 - StoryBoards Part2">
+<meta name="twitter:description" content="原文地址：http://www.raywenderlich.com/50310/storyboards-tutorial-in-iOS-7-part-2iOS 7教程 - Storyboards Part1 译文地址：iOS 7教程 - Storyboards Part1
+
+iOS开发也好些日子了，一直都是纯code，偶尔用用xib，最近闲来无事想体验下storyboard，于是网上找到了各种关于">
+  
+    <link rel="alternative" href="/atom.xml" title="Andy矢倉" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://tp1.sinaimg.cn/1549567960/180/40056410546/1" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Andy矢倉</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">我就是我，是颜色不一样的烟火</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/shicang1990" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/ganmaojijie" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://plus.google.com/u/0/111959925992300968239" title="google">google</a>
+					        
+								<a class="facebook" target="_blank" href="https://www.facebook.com/wiwby" title="facebook">facebook</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/Andy_shicang" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AVAudioPlayer/" style="font-size: 10px;">AVAudioPlayer</a> <a href="/tags/AVPlayer/" style="font-size: 10px;">AVPlayer</a> <a href="/tags/Alignment/" style="font-size: 10px;">Alignment</a> <a href="/tags/AutoLayout/" style="font-size: 15px;">AutoLayout</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Homebrew/" style="font-size: 10px;">Homebrew</a> <a href="/tags/MPMoviePlayerController/" style="font-size: 10px;">MPMoviePlayerController</a> <a href="/tags/MPMusicPlayerController/" style="font-size: 10px;">MPMusicPlayerController</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/StoryBoard/" style="font-size: 10px;">StoryBoard</a> <a href="/tags/Term/" style="font-size: 10px;">Term</a> <a href="/tags/Theme/" style="font-size: 10px;">Theme</a> <a href="/tags/UIColor/" style="font-size: 10px;">UIColor</a> <a href="/tags/UIImage/" style="font-size: 10px;">UIImage</a> <a href="/tags/UITextView/" style="font-size: 10px;">UITextView</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/iOS7/" style="font-size: 20px;">iOS7</a> <a href="/tags/iOS8/" style="font-size: 15px;">iOS8</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Andy矢倉</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://tp1.sinaimg.cn/1549567960/180/40056410546/1" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Andy矢倉</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">我就是我，是颜色不一样的烟火</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/shicang1990" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/ganmaojijie" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://plus.google.com/u/0/111959925992300968239" title="google">google</a>
+			        
+						<a class="facebook" target="_blank" href="https://www.facebook.com/wiwby" title="facebook">facebook</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/Andy_shicang" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2014-03-04-Storyboard-Party2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/03/04/2014-03-04-Storyboard-Party2/" class="article-date">
+  	<time datetime="2014-03-04T08:30:08.000Z" itemprop="datePublished">3月 4 2014</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS 7教程 - StoryBoards Part2
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/StoryBoard/">StoryBoard</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS7/">iOS7</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/iOS/">iOS</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原文地址：<a href="http://www.raywenderlich.com/50310/storyboards-tutorial-in-iOS-7-part-2" target="_blank" rel="external">http://www.raywenderlich.com/50310/storyboards-tutorial-in-iOS-7-part-2</a><br>iOS 7教程 - Storyboards Part1 译文地址：<a href="http://www.tairan.com/archives/5365" target="_blank" rel="external">iOS 7教程 - Storyboards Part1</a></p>
+<blockquote>
+<p>iOS开发也好些日子了，一直都是纯code，偶尔用用xib，最近闲来无事想体验下storyboard，于是网上找到了各种关于storyboard的入门教程，可惜很多都比较老了都是iOS5，和iOS6系列的教程，我想这xcode都更新小半年了，iOS7.1都快出了，再整老版本不太合适吧，于是找到了泰然网翻译的一篇iOS7 storyboard教程，可惜只翻译了第一篇，第二篇估计还没来得及吧！捉摸着都看了开头了，怎么着也得看完是吧，就寻着原文找到了第二篇，坑爹的英文，虽然不是很感冒鸟文，加上Google也多少能看明白，一下算是自己理解的然后加上些口水话，有兴趣的童鞋凑合着看吧，第一次翻译，哈哈哈，开始吧，Ready,go…</p>
+</blockquote>
+<p><em>温馨提示：教程成员Matthijs Hollemans(iOS Apprentice系列的作者)已经发表了这个教程的iOS5版本至iOS7版本。这是本书第三版的预览,这个版本将会更新到iOS 7。好好享受吧!</em></p>
+<a id="more"></a>
+<blockquote>
+<p>如果你想了解storyboard on iOS7，那你来对地方了！<br>在storyboard on iOS7系列教程的第一部分，已经介绍了使用Interface Builder来创建和连接各种视图控制器的基本知识，以及如何直接从storyboard编辑器进行自定义表视图单元格。<br>在本教程系列的第二个和最后部分，我们将讨论segues，静态表视图单元格，添加播放器场景，和游戏场景！<br>如果你跟着上一次的教程走完了整个步骤，那就把上一次的工程打开！<br>好吧，让我们深入到storyboard其他酷毙的功能！</p>
+</blockquote>
+<p>##介绍segues<br>现在是时候添加更多的视图控制器到<strong>storyboard</strong>了，我们来创建一个新的场景。<br>打开<strong>Main.storyboard</strong>并拖动一个<strong>Bar Button Item</strong>到<strong>Players</strong>场景里的<strong>navigation bar</strong>中。在属性检查器<strong>(Attributes inspector)</strong>改变它的标示符<strong>(Identifier)</strong>变为加号<strong>(Add)</strong>。</p>
+<p><img src="http://i3.tietuku.com/23898e59fbc1789e.png" alt=""></p>
+<p>当用户点击这个 <strong>+</strong> 按钮的时候应用程序会弹出一个新的表演者详细信息的模态视图。 </p>
+<p>将一个新的导航控制器<strong>(Navigation Controller)</strong>拖拽到表演者视图的右边。记住，你可以双击<strong>storyboard</strong>缩小让你有更大的工作空间。新的导航控制器都附带一个表视图控制器，应该已经得心应手了吧！<br>窍门：点击刚刚在表演者视图上添加的那个 <strong>+</strong> 按钮，按住<strong>ctrl</strong>并且拽向导航控制器</p>
+<p><img src="http://i3.tietuku.com/a5a0397722fdbe87.png" alt=""></p>
+<p>松开鼠标将会弹出如下选项：</p>
+<p><img src="http://i3.tietuku.com/8bddbab0120e9a8d.png" alt=""></p>
+<p>选择<strong>modal</strong>，这是视图跳转的一种新的路径(这句不知道怎么翻译好，就理解为两种视图之间的跳转好了):</p>
+<p><img src="http://i3.tietuku.com/0eabae66b455ebb9.png" alt=""></p>
+<p>这样的链接关系就称之为：<strong>segue</strong>。这种故事板的链接关系是从一个视图控制器跳转到另外一个视图控制器。</p>
+<p>使用<strong>segue</strong>很酷的事情就是，你再也不用编写任何代码来实现控制器跳转，也不必为你的按钮挂接到<strong>IBActions</strong>。只需要想刚才那样一个拖动就可以搞定了。(注：如果您的控件已经有了一个<strong>IBAction</strong>连接，那么<strong>segue</strong>将覆盖它。)</p>
+<p>让我们来运行一下，点击刚才添加的那个 <strong>+</strong> 按钮，一个新的表视图将呈现在你的眼前</p>
+<p><img src="http://i3.tietuku.com/211f247ca963f5a5.png" alt=""></p>
+<p>这个所谓的模态关系。新的场景将完全掩盖了前一个场景。用户不能与前一个场景交互，直到他们关闭了模态视图。以后你还会看到，在导航控制器的堆栈上还可以以推动的方式跳转。</p>
+<p>新的场景挺好用吧，但有个问题是你不能关闭他返回到刚才的场景。这是因为<strong>segue</strong>是单向的，一个场景到另一个场景。回去的时候，你必须使用<strong>delegate</strong>模式。鉴于这种情况，你需要先新建视图控制器。</p>
+<p>添加一个新的文件添加到项目，并命名为<strong>PlayerDetailsViewController</strong>，它是<strong>UITableViewController</strong>的子类。切换回<strong>Main.storyboard</strong>并选择新的表视图控制器的场景<strong>(Root View Controller)</strong>。在<strong>Identity inspector</strong>中设置其<strong>class</strong>为<strong>PlayerDetailsViewController</strong>。我就是经常忘了这么做，所以这里需要提醒一下。</p>
+<p>改变新建表视图的标题为：<strong>Add Player</strong>(通过双击导航栏)。同时添加两个<strong>Bar Button Item</strong>到导航栏左右两边。在属性检查器<strong>(Attributes inspector)</strong>中，左边的按钮改名为：<strong>Cancel</strong>，右边的按钮改名为：<strong>Done</strong>(你也可以通过改变按钮的stye来得到相同的效果)。</p>
+<p><img src="http://i3.tietuku.com/54fbf56e19ddba98.png" alt=""></p>
+<p>把<code>PlayerDetailsViewController.h</code>改成下面这样:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@class PlayerDetailsViewController;&#10; &#10;@protocol PlayerDetailsViewControllerDelegate &#10;- (void)playerDetailsViewControllerDidCancel:(PlayerDetailsViewController *)controller;&#10;- (void)playerDetailsViewControllerDidSave:(PlayerDetailsViewController *)controller;&#10;@end&#10; &#10;@interface PlayerDetailsViewController : UITableViewController&#10; &#10;@property (nonatomic, weak) id  delegate;&#10; &#10;- (IBAction)cancel:(id)sender;&#10;- (IBAction)done:(id)sender;&#10; &#10;@end</span><br></pre></td></tr></table></figure>
+<p>这里我们定义了一个委托协议，好让新的场景可以返回上一个场景，并且添加了<strong>cancel</strong>和<strong>done</strong>按钮的两个点击事件。</p>
+<p>切换到故事版，点击新建的表视图导航栏上那个<strong>done</strong>按钮，按住<strong>ctrl</strong>进行拖拽，拖拽箭头如下图所示：</p>
+<p><img src="http://i3.tietuku.com/c7939432b8630267.png" alt=""></p>
+<p>选择<strong>Sent Actions</strong>栏里的<code>done</code>事件，同样，<strong>cancel</strong>按钮也如此步骤，选择<code>cancel</code>事件。</p>
+<p>到<code>PlayerDetailsViewController.m</code>源文件里添加下面两个方法</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (IBAction)cancel:(id)sender&#10;&#123;&#10;    [self.delegate playerDetailsViewControllerDidCancel:self];&#10;&#125;&#10;- (IBAction)done:(id)sender&#10;&#123;&#10;    [self.delegate playerDetailsViewControllerDidSave:self];&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>这是对应两个按钮的点击事件方法。我们可以用它来调用代理，通过代理方法来关闭当前的场景或者视图。它是由委托关闭屏幕。（这里默认的是必须实现方法，你要不喜欢可以改成选用，在协议方法前面加上@optional字段。或者你也可以通过当前控制器自行关闭，并且在关闭前后通知代理）。</p>
+<blockquote>
+<p>注释：在这里代理方法只有一个对象作为参数，在这种情况下，<strong>PlayerDetailsViewController</strong>。好处代理总是知道是哪个对象发送的消息。</p>
+</blockquote>
+<p>之前，我们已经给了<strong>PlayerDetailsViewController</strong>委托协议，但是你需要实现这个协议和协议方法。<strong>PlayersViewController</strong>将呈现的添加播放器屏幕的视图控制器。以下内容添加到<code>PlayersViewController.h</code>：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#import &#34;PlayerDetailsViewController.h&#34;&#10; &#10;@interface PlayersViewController : UITableViewController</span><br></pre></td></tr></table></figure>
+<p>实现代理方法<code>PlayersViewController.m</code>:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#pragma mark - PlayerDetailsViewControllerDelegate&#10; &#10;- (void)playerDetailsViewControllerDidCancel:(PlayerDetailsViewController *)controller&#10;&#123;&#10;    [self dismissViewControllerAnimated:YES completion:nil];&#10;&#125;&#10; &#10;- (void)playerDetailsViewControllerDidSave:(PlayerDetailsViewController *)controller&#10;&#123;&#10;    [self dismissViewControllerAnimated:YES completion:nil];&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>目前，这些委托方法只是关闭当前视图控制器。以后会让他们做更多有趣的事情。 </strong><br>现在还差一件事情没做了，设置<strong>PlayersViewController</strong>为<strong>PlayerDetailsViewController</strong>的代理。你可能以为在<strong>Interface Builder</strong>我们可以连线来解决。但很不幸的是，这是不可能的。传输数据到新的视图控制器，你仍然需要编写一些代码。（最后不怎么会翻译，就理解为<strong>storyboard</strong>的方式设置代理没办法连线解决，只能通过代码设置代理）<br>将以下方法添加到<code>PlayersViewController.m</code>：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender&#10;&#123;&#10;    if ([segue.identifier isEqualToString:@&#34;AddPlayer&#34;]) &#123;&#10; &#10;        UINavigationController *navigationController = segue.destinationViewController;&#10;        PlayerDetailsViewController *playerDetailsViewController = [navigationController viewControllers][0];&#10;        playerDetailsViewController.delegate = self;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>prepareForSegue</strong>这个方法在新视图从<strong>storyboard</strong>上加载的时候就会被处罚，但是它是不可见，需要手动实现，所以我们可以用它来设置代理。</p>
+<blockquote>
+<p>注意：一般情况下不会调用<code>prepareForSegue:</code>方法。这是一个从UIKit的一条消息，让你知道，<strong>segue</strong>被触发了。</p>
+</blockquote>
+<p>这个<strong>segue</strong>的目的地是导航控制器，因为那是你连接到栏按钮项目。要获得<strong>PlayerDetailsViewController</strong>实例，你必须通过<strong>viewControllers</strong>的导航控制器的堆栈来得到它。<br>运行应用程序，按下 <strong>+</strong> 按钮，并尝试关闭添加播放器画面。它仍然无法正常工作！</p>
+<p><img src="http://i3.tietuku.com/3c299f58255873ea.png" alt=""></p>
+<p>那是因为你没有给<strong>segue</strong>标识符。从<strong>prepareForSegue</strong>代码检查该标识符<strong>(“AddPlayer”)</strong>。因此建议经常做这样的检查，因为你可能有多个<strong>segue</strong>到一个视图控制器，你就需要他们各自的区别开来。<br>要解决此问题，请打开<strong>Main.storyboard</strong>并点击玩家屏幕和导航控制器之间的<strong>segue</strong>。请注意，栏按钮项目现在亮起，这样你就可以很容易地看到哪些控制触发此<strong>SEGUE</strong>。<br>在<strong>属性检查器(Attributes inspector)</strong>中，标识符<strong>(Identifier)</strong>设置为<strong>AddPlayer</strong>：</p>
+<p><img src="http://i3.tietuku.com/f99aef067c9b0d36.png" alt=""></p>
+<p>再次运行程序，这下是不是就可以正常关闭弹出的模态视图啦！</p>
+<blockquote>
+<p>注意：这本来完全可以调用dismissViewControllerAnimated：来完成弹出模态画面的。也没有规定说，委托必须做到这一点。我个人更喜欢让委托处理这一点，但如果你想模态视图关闭本身，那么请随意。</p>
+</blockquote>
+<p>顺便，在属性检查器里可以设置segue的跳转过程（视图控制器的跳转过程），你可以设计几种过场动画：</p>
+<p><img src="http://i3.tietuku.com/58393311095bb3de.png" alt=""></p>
+<p>选择一个你喜欢的过场动画，但是记住千万别改变风格<strong>(style)</strong>设置，因为这里的链接是模态关系 - 改变会导致应用程序的崩溃，切记！<br>我们将会在本教程中使用几次委托协议，下面是个核对列表供你检查两个场景之间的链接关系：</p>
+<ul>
+<li>通过一个按钮或者其他控件创建一个sugue来链接源场景到目标场景(如果你是新建模态视图，这时目标场景将是一个导航控制器)。</li>
+<li>给segue的唯一标识符(源场景必须有唯一的标示符，不同的场景可以使用相同的标识符)。</li>
+<li>为目标场景创建一个委托协议。 </li>
+<li>调用取消和完成按钮的委托方法，你的目的地的场景需要与源场景进行通信(两个视图控制器之间的通讯)。</li>
+<li>源场景实现委托协议。当取消或完成按钮被按下，它应该关闭该目标视图控制器。</li>
+<li>在源视图控制器实现<code>prepareForSegue:</code>方法，并且把目标视图控制器的代理设置为源视图控制(eg:playerDetailsViewController.delegate = self)。</li>
+</ul>
+<p>委托是必须的，因为至少在<strong>iOS5</strong>没有东西可以作为一个<strong>“反向segue”</strong>。当<strong>segue</strong>被触发，当<strong>segue</strong>被触发的时候总是会为目标视图控制器创建一个实例。你当然可以做一个反向的<strong>segue</strong>从目的到源，但可能不会做你所期望的(这段搞不懂，谷歌翻译的)。<br>如果你是为表演者场景创建一个<strong>segue</strong>回来的取消按钮，例如，那么这将不会关闭添加表演者场景，并返回到表演者，但它创造的表演者场景的新实例。你这样一遍一遍的创建新的视图控制器会导致内存溢出(也是没看懂，没办法翻译，针对上面没看懂的这两段，我没管，看下面这个提示就够了！)。<br>请记住：<strong>segue</strong>只有一条路可走，它们只是用来进入一个新的场景。要返回您之前的场景(或从导航控制器堆栈中弹出它)，通常是用<strong>delegate</strong>。<strong>segue</strong>仅由源控制器使用。目标视图控制器甚至不知道它是被<strong>segue</strong>调用。</p>
+<p>##静态单元格</p>
+<p>在本章结束的时候你的添加表演者场景会像下面这样：</p>
+<p><img src="http://i3.tietuku.com/7ce08f3f116dc6e5.png" alt=""></p>
+<p>这是一个分组表视图，当然，你不必为此表格创建一个数据源。您可以在<strong>Interface Builder</strong>中直接设计它 - 没必要单独为它写一个<code>cellForRowAtIndexPath</code>方法，这种称为静态单元格。<br>在添加表演者控制器里选择表视图，在<strong>属性检查器(Attributes inspector)</strong>里改变<strong>content</strong>为<strong>static cells</strong>。把<strong>style</strong>改变为<strong>Grouped</strong>，并且设置两个组<strong>(两个section)</strong>。</p>
+<p><img src="http://i3.tietuku.com/573a7955e21691a5.png" alt=""></p>
+<p>当您更改<strong>section</strong>的属性值时，编辑器将复制现有的部分(你也可以自己手动复制)。<br>完成后的场景里每个<strong>section</strong>里只有一个<strong>cell</strong>，多余的就把它们删了吧(别说你不会删)。<br>选择<strong>Table View Section</strong>，这个可能不是很好点中，那你就在编辑器或者导航条上选吧，这样就妥妥的了，像这样：</p>
+<p><img src="http://i3.tietuku.com/c0555763899d4a8a.png" alt=""></p>
+<p>或者这样</p>
+<p><img src="http://i3.tietuku.com/fb86236d2fb7f025.png" alt=""></p>
+<p>OK，我们选中之后就在属性检查器中把<strong>Header</strong>改为<strong>Player Name</strong>。<br>然后我们拖拽一个<strong>TextField</strong>控件到<strong>cell</strong>里面去，调整边距到<strong>cell</strong>的<strong>contentview</strong>一样大，然后设置<strong>font</strong>为<strong>system 17</strong>，<strong>border style</strong>改为第一个样式(目前是圆角样式)，把<strong>adjust to fit</strong>的勾勾取消掉。</p>
+<p>我们将使用<strong>Xcode</strong>的助理编辑功能，在<strong>PlayerDetailsViewController</strong>里创建之前拖拽到<strong>cell</strong>里的那个<strong>text field</strong>的接口。打开<strong>助理编辑用工具栏(Assistant Editor)</strong>上的按钮(一个看起来像燕尾服/外星人的脸)。它应该会把<code>PlayerDetailsViewController.h</code>自动打开(如果没有，请使用jump bar在右手分割窗口来选择头.h文件)。 </p>
+<p>选择<strong>text field</strong>并按住<strong>Ctrl</strong>键拽入.h文件：</p>
+<p><img src="http://i3.tietuku.com/be6a5970062c5a9e.png" alt=""></p>
+<p>松开鼠标按钮就弹出了这种小窗口</p>
+<p><img src="http://i3.tietuku.com/4f8f3593e1ca1a06.png" alt=""></p>
+<p>把新的接口命名为nameTextField，链接之后xcode会自动在PlayerDetailsViewController.h加上属性:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@property (weak, nonatomic) IBOutlet UITextField *nameTextField;</span><br></pre></td></tr></table></figure>
+<p>现在，点击第二个<strong>section</strong>里的静态单元格，把<strong>Style</strong>改为<strong>Right Detail</strong>，这是一个标准的单元格样式，点击<strong>cell</strong>里左边的<strong>label</strong>，把<strong>label</strong>内容改为<strong>Game</strong>并且把<strong>accessory</strong>风格改为<strong>Disclosure Indicator</strong>。（不知道是版本问题还是什么，我在xcode5.0.2上发现改了label的内容什么都没有，后来发现字体大小为0，次奥，以前xib没这情况啊，继续。。。）<br>把<strong>cell</strong>右边的<strong>label</strong>也改了，内容改为<strong>Detail</strong>，然后重复刚才拖拽<strong>text field</strong>的步骤一样，为这个<strong>label</strong>新建一个接口并命名为<strong>detailLabel</strong>，就像这样</p>
+<p><img src="http://i3.tietuku.com/865fa1820fc068fb.png" alt=""></p>
+<p>添加播放器页面的最终看起来像这样</p>
+<p><img src="http://i3.tietuku.com/4697f22058e91ec6.png" alt=""></p>
+<blockquote>
+<p>提示：现在这个设计的屏幕都为iPhone5的，屏幕高568个像素点，相对于以前的iPhone机型的4英寸屏幕的高度为480个像素点。您可以使用最左边的按钮，从小事浮动面板，坐落在画布的底部这两种形式的因素之间进行切换。</p>
+</blockquote>
+<p><img src="http://i3.tietuku.com/2939d1d29eaa4d6b.png" alt=""></p>
+<p>很明显，你的应用程序应该正常工作与两个屏幕大小。您可以使用自动调整大小口罩或从的iOS 6新的自动布局技术实现这一点。对于评级的应用程序，你不必做任何幻想。它仅使用表格视图控制器，它们会自动调整大小以适合在iPhone5的额外的屏幕空间。<br>返回到添加表演者页面。当您使用静态的单元格，你的表视图控制器不需要一个数据源。由于您使用的<strong>Xcode</strong>的模板来创建<strong>PlayerDetailsViewController</strong>类，它仍然有数据源的一些占位符代码，这将防止静态单元格无法正常工作。<br>打开<code>PlayerDetailsViewController.m</code>，把下面这段一下的代码都删掉(除了你自己添加任何代码):</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#pragma mark - Table view data source</span><br></pre></td></tr></table></figure>
+<p>这样删除之后你运行来试试看是不是可以工作了，对于静态单元格你基本可以不用写任何代码，除了控制代码之外。<br>这里还有个问题就是<strong>text field</strong>没有整个覆盖在<strong>cell</strong>上面，你点击<strong>cell</strong>边缘的时候键盘是不会弹出的。<br>为了避免这种情况，你应该让第一行单元格里调出键盘。这是很容易做到，只需添加一个这个方法<code>didSelectRowAtIndexPath:</code>实现如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath&#10;&#10;&#123;&#10;    if (indexPath.section == 0) &#123;&#10;        [self.nameTextField becomeFirstResponder];&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>这只是说，如果用户点击第一个单元格，应用程序应该激活<strong>text filed</strong>。我们用代码调整当点击第一个<strong>section</strong>里的<strong>cell</strong>时候，应该激活<strong>text field</strong>，这是为了更好的用户体验。<br>还有，我们应该选择<strong>cell</strong>，把<strong>selection</strong>的风格从<strong>blue</strong>改变为<strong>none</strong>，这样就没有了之前那样点击<strong>text field</strong>没有覆盖到的<strong>cell</strong>部分的时候出现高亮暗影而影响用户体验了。<br>好吧，这是添加表演者场景的设计。现在，让我们真正使其发挥作用。</p>
+<p>##让添加表演者视图工作吧</p>
+<p>现在你会忽略了游戏的行，只是让用户输入玩家的名字。<br>当用户按下<strong>Cancel</strong>按钮，屏幕应该关闭，任何数据都将丢失。这部分已经没问题了。委托(在玩家屏幕)接收”并取消”的消息，并简单地反馈给视图控制器。<br>当用户按下<strong>Done</strong>(完成)，但是，你应该创建一个新的表演者对象，并填写其属性。那么你应该告诉代理已经添加了一个新的，使它好更新自己的视图。<br>现在<code>PlayerDetailsViewController.m</code>导入</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#import &#34;Player.h&#34;</span><br></pre></td></tr></table></figure>
+<p>接着改变<code>done:</code>方法：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (IBAction)done:(id)sender&#10;&#123;&#10;    Player *player = [[Player alloc] init];&#10;    player.name = self.nameTextField.text;&#10;    player.game = @&#34;Chess&#34;;&#10;    player.rating = 1;&#10;    [self.delegate playerDetailsViewController:self didAddPlayer:player];&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p><code>done:</code>方法现在创建一个新的<strong>player</strong>实例，并把它发送给该委托。委托协议目前并无此方法，所以<code>PlayerDetailsViewController.h</code>文件内容要稍稍改变一下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@class Player;&#10; &#10;@protocol PlayerDetailsViewControllerDelegate &#10;- (void)playerDetailsViewControllerDidCancel:(PlayerDetailsViewController *)controller;&#10;- (void)playerDetailsViewController:(PlayerDetailsViewController *)controller didAddPlayer:(Player *)player;&#10;@end</span><br></pre></td></tr></table></figure>
+<p>所以在新的代理方法里面要作一些新的改变：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)playerDetailsViewController:(PlayerDetailsViewController *)controller didAddPlayer:(Player *)player&#10;&#123;&#10;    [self.players addObject:player];&#10;    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.players count] - 1) inSection:0];&#10;    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];&#10;    [self dismissViewControllerAnimated:YES completion:nil];&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的意思就是把新建的<strong>player</strong>对象加到<strong>players</strong>数组里去，然后<strong>通知表视图(table view)</strong>新增加了一行，因为<strong>表视图(table view)</strong>和<strong>数据源(data source)</strong>数据必须同步。<br>你可以只执行<code>[self.tableView reloadData]</code>这个方法，但是为了给表视图插入新的行有动画效果，<code>UITableViewRowAnimationAutomatic</code>这个枚举类型的参数是自动选择动画效果，非常方便。<br>现在试试吧，你应该能在列表里看到新加入的行了！</p>
+<p><img src="http://i3.tietuku.com/541454d0057978d4.png" alt=""></p>
+<p>如果你想知道这些故事板的性能表现，那么你应该知道，一次加载整个故事板是不是一个大问题。故事板并不是马上实例化所有的视图控制器，只有初始视图控制器的时候才会。因为你的初始视图控制器是一个标签栏控制器，它包含两个视图控制器也被加载。<br>然而别的控制器也并不实例化，直到你连线桥接给他们。当您关闭这些视图控制器，他们会立即释放，所以只有积极使用视图控制器是在内存中，就像如果你使用独立的nib一样。<br>让我们实践来看看。在<code>PlayerDetailsViewController.m</code>中添加下面的方法：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (id)initWithCoder:(NSCoder *)aDecoder&#10;&#123;&#10;    if ((self = [super initWithCoder:aDecoder])) &#123;&#10;        NSLog(@&#34;init PlayerDetailsViewController&#34;);&#10;    &#125;&#10;    return self;&#10;&#125;&#10; &#10;- (void)dealloc&#10;&#123;&#10;    NSLog(@&#34;dealloc PlayerDetailsViewController&#34;);&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>你重写的<code>initWithCoder:</code>和<code>dealloc</code>的方法，使他们能在<strong>Xcode</strong>的调试窗口打印信息。现在再次运行该应用程序，并打开添加选手画(Add Player页面)。你应该能看到，这个时候视图控制器没有分配到内存。<br>当你关闭添加播放器屏幕(Add Player页面)，按点击取消或完成，你应该看到<code>dealloc</code>内的消息被打印。如果你再次打开这个页面，你也应该看到的<code>initWithCoder:</code>方法的响应。这应该向你保证，视图控制器是按需加载而已，就像他们如果你是手工加载nib一样。<br>关于静态单元格：他们只工作在<strong>UITableViewController</strong>。虽然界面生成器可以让你把它们作为一个<strong>Table View</strong>对象添加到一个普通的<strong>UIViewController</strong>中，但这将不会在运行时正常工作。这样做的原因是，<strong>UITableViewController</strong>中提供了一些额外的特殊照顾的数据源的静态单元格。 <strong>Xcode</strong>中甚至会阻止您编译这样一个项目，并显示错误消息：”非法配置：在嵌入的UITableViewController情况下的静态表视图才有效”。<br>原型单元格，另一方面，只是正常工作中，你放置一个表视图到普通视图控制器内。虽然是在nib下工作。目前，如果你想使用原型单元格或静态单元格，你必须使用一个故事板。</p>
+<p>它不是不可想象的，你可能想，结合静态单元格和常规动态单元格的单表视图，但这不是很好被SKD支持。如果你需要在你的app中加入这些，你可以看看这个论坛:<a href="https://devforums.apple.com/message/505098" target="_blank" rel="external">his post on the Apple Developer Forums</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/01/04/2015-01-4-Dynamic-TableViewCell-Height-By-Auto Layout/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          使用AutoLayout来动态计算UITableViewCell的高度
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/02/25/2014-02-25-IOS-MVC/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">浅谈iOS中的MVC设计模式</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2014-03-04-Storyboard-Party2" data-title="iOS 7教程 - StoryBoards Part2" data-url="http://shicang1990.github.io/2014/03/04/2014-03-04-Storyboard-Party2/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Andy矢倉
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
