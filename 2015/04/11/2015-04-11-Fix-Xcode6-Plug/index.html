@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>修复因更新Xcode6插件不能使用问题 | Andy矢倉</title>
+  <title>修复因更新Xcode插件不能使用问题 | Andy矢倉</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="在终端里输入以下代码获取到UUID：1defaults read /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID
 得到UUID以后运行：1find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxd">
 <meta property="og:type" content="article">
-<meta property="og:title" content="修复因更新Xcode6插件不能使用问题">
+<meta property="og:title" content="修复因更新Xcode插件不能使用问题">
 <meta property="og:url" content="http://shicang1990.github.io/2015/04/11/2015-04-11-Fix-Xcode6-Plug/index.html">
 <meta property="og:site_name" content="Andy矢倉">
 <meta property="og:description" content="在终端里输入以下代码获取到UUID：1defaults read /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID
 得到UUID以后运行：1find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxd">
-<meta property="og:updated_time" content="2015-09-23T16:58:08.000Z">
+<meta property="og:updated_time" content="2015-10-22T17:29:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="修复因更新Xcode6插件不能使用问题">
+<meta name="twitter:title" content="修复因更新Xcode插件不能使用问题">
 <meta name="twitter:description" content="在终端里输入以下代码获取到UUID：1defaults read /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID
 得到UUID以后运行：1find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxd">
   
@@ -194,7 +194,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      修复因更新Xcode6插件不能使用问题
+      修复因更新Xcode插件不能使用问题
     </h1>
   
 
@@ -229,6 +229,8 @@
 <p>Xcode 6.4:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth 3 | xargs -I&#123;&#125; defaults write &#123;&#125; DVTPlugInCompatibilityUUIDs -array-add 7FDF5C7A-131F-4ABB-9EDC-8C5F8F0B8A90</span><br></pre></td></tr></table></figure>
 <p>终极懒癌患者可以用一下脚本：<a href="https://github.com/cikelengfeng/RPAXU" target="_blank" rel="external">https://github.com/cikelengfeng/RPAXU</a></p>
+<p>如果有手残患者不小心在Xcode启动的适合Skip了插件，可以用如下命令先查看：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults read com.apple.dt.Xcode DVTPlugInManagerNonApplePlugIns-Xcode-&#123;Current Xcode Version&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后用暴力的办法，删掉它，重新Load一下就稳妥了，命令如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults delete com.apple.dt.Xcode DVTPlugInManagerNonApplePlugIns-Xcode-&#123;Current Xcode Version&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -278,7 +280,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2015-04-11-Fix-Xcode6-Plug" data-title="修复因更新Xcode6插件不能使用问题" data-url="http://shicang1990.github.io/2015/04/11/2015-04-11-Fix-Xcode6-Plug/"></div>
+	<div class="ds-thread" data-thread-key="2015-04-11-Fix-Xcode6-Plug" data-title="修复因更新Xcode插件不能使用问题" data-url="http://shicang1990.github.io/2015/04/11/2015-04-11-Fix-Xcode6-Plug/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

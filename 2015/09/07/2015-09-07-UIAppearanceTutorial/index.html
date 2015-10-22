@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://cdn4.raywenderlich.com/wp-content/uploads/2015/06/species.png">
 <meta property="og:image" content="http://cdn2.raywenderlich.com/wp-content/uploads/2015/07/theme_applied5-580x500.png">
 <meta property="og:image" content="http://cdn1.raywenderlich.com/wp-content/uploads/2015/07/theme_applied6-580x500.png">
-<meta property="og:updated_time" content="2015-10-04T05:57:16.000Z">
+<meta property="og:updated_time" content="2015-10-04T15:56:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UIAppearance教程：入门">
 <meta name="twitter:description" content="开发了App这么久，是不是觉得主题功能很繁琐，那么接下来良辰我将动用北京的势力来指导你如何为你的App增加主题功能。
@@ -265,7 +265,7 @@
 <p>现在，你需要做的唯一一件事就是调用此方法。没有哪里比在<code>AppDelegate.swift</code>里这么做更好了。<br>覆盖掉<code>println()</code>并录入下面的代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> theme = <span class="type">ThemeManager</span>.currentTheme()</span><br><span class="line"><span class="type">ThemeManager</span>.applyTheme(theme)</span><br></pre></td></tr></table></figure></p>
 <p>让我们跑起来，就会看到如下鸟样：<br><img src="http://cdn3.raywenderlich.com/wp-content/uploads/2015/06/theme_applied1-281x500.png" alt=""></p>
 <p>放眼望去，满脸绿！但是，你没有改变任何的控制器或视图。一秒变绿，真是神奇的一逼！</p>
-<p>##应用Tint Color<br>自从<code>iOS7</code>开始，<code>UIView</code>就开始暴露<code>tintColor</code>属性，它通常被用来定义在整个应用中用于指示应用程序界面元素的选择和交互的状态的原始色。<br>当您为视图指定的色彩时，色调会自动传播到该视图层次中的所有子视图。因为<code>UIWindow</code>继承自<code>UIView</code>的原因，你可以调用<code>applyTheme()</code>方法来设置窗口的<code>tintColor</code>，从而调整整个应用程序的色调。<br>点击你的应用程序的左上角的齿轮图标；用分段控制幻灯片表格视图，但是当你选择一个不同的主题，点击应用，也并没卵用。那么接下来我们就来解决这个问题。<br>打开<code>SettingsTableViewController.swift</code>并把下列代码添加到<code>applyTheme()</code>函数内，<code>dismiss()</code>上面：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> selectedTheme = <span class="type">Theme</span>(rawValue: themeSelector.selectedSegmentIndex) &#123;</span><br><span class="line">  <span class="type">ThemeManager</span>.applyTheme(selectedTheme)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="应用Tint_Color">应用Tint Color</h2><p>自从<code>iOS7</code>开始，<code>UIView</code>就开始暴露<code>tintColor</code>属性，它通常被用来定义在整个应用中用于指示应用程序界面元素的选择和交互的状态的原始色。<br>当您为视图指定的色彩时，色调会自动传播到该视图层次中的所有子视图。因为<code>UIWindow</code>继承自<code>UIView</code>的原因，你可以调用<code>applyTheme()</code>方法来设置窗口的<code>tintColor</code>，从而调整整个应用程序的色调。<br>点击你的应用程序的左上角的齿轮图标；用分段控制幻灯片表格视图，但是当你选择一个不同的主题，点击应用，也并没卵用。那么接下来我们就来解决这个问题。<br>打开<code>SettingsTableViewController.swift</code>并把下列代码添加到<code>applyTheme()</code>函数内，<code>dismiss()</code>上面：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> selectedTheme = <span class="type">Theme</span>(rawValue: themeSelector.selectedSegmentIndex) &#123;</span><br><span class="line">  <span class="type">ThemeManager</span>.applyTheme(selectedTheme)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这里选择的主题颜色设置到<code>根视图</code>的<code>tintColor</code>属性上调用的函数已经添加到了<code>ThemeManager</code>里，<br>接着，在<code>viewDidLoad()</code>的底部添加下面这句，用于第一次加载视图控制器时把主题数据写入<code>NSUserDefaults</code>内：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">themeSelector.selectedSegmentIndex = <span class="type">ThemeManager</span>.currentTheme().rawValue</span><br></pre></td></tr></table></figure></p>
 <p>运行起来看看，选择<code>setting</code>按钮，再选择<code>Dark</code>，最后点击<code>Apply</code>，主题颜色就会从绿变蓝：<br><img src="http://cdn3.raywenderlich.com/wp-content/uploads/2015/06/theme_applied2-281x500.png" alt=""></p>
 <p>眼尖的读者可能已经注意到这些颜色早就定义在ThemeType的<code>mainColor()</code>里了。<br>别急，你选择了<code>Dark</code>，但这并没有变暗。为了得到这种效果，你必须自定义更多的工作。</p>
@@ -329,7 +329,7 @@
   
   
     <a href="/2015/04/11/2015-04-11-Fix-Xcode6-Plug/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">修复因更新Xcode6插件不能使用问题</div>
+      <div class="article-nav-title">修复因更新Xcode插件不能使用问题</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
