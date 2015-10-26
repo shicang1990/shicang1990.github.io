@@ -109,7 +109,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/AVAudioPlayer/" style="font-size: 10px;">AVAudioPlayer</a> <a href="/tags/AVPlayer/" style="font-size: 10px;">AVPlayer</a> <a href="/tags/Alignment/" style="font-size: 10px;">Alignment</a> <a href="/tags/AutoLayout/" style="font-size: 15px;">AutoLayout</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Homebrew/" style="font-size: 10px;">Homebrew</a> <a href="/tags/MPMoviePlayerController/" style="font-size: 10px;">MPMoviePlayerController</a> <a href="/tags/MPMusicPlayerController/" style="font-size: 10px;">MPMusicPlayerController</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/StoryBoard/" style="font-size: 10px;">StoryBoard</a> <a href="/tags/Term/" style="font-size: 10px;">Term</a> <a href="/tags/Theme/" style="font-size: 10px;">Theme</a> <a href="/tags/UIColor/" style="font-size: 10px;">UIColor</a> <a href="/tags/UIImage/" style="font-size: 10px;">UIImage</a> <a href="/tags/UITextView/" style="font-size: 10px;">UITextView</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/iOS7/" style="font-size: 20px;">iOS7</a> <a href="/tags/iOS8/" style="font-size: 15px;">iOS8</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a>
+						<a href="/tags/AVAudioPlayer/" style="font-size: 10px;">AVAudioPlayer</a> <a href="/tags/AVPlayer/" style="font-size: 10px;">AVPlayer</a> <a href="/tags/Alignment/" style="font-size: 10px;">Alignment</a> <a href="/tags/AutoLayout/" style="font-size: 15px;">AutoLayout</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Homebrew/" style="font-size: 10px;">Homebrew</a> <a href="/tags/MPMoviePlayerController/" style="font-size: 10px;">MPMoviePlayerController</a> <a href="/tags/MPMusicPlayerController/" style="font-size: 10px;">MPMusicPlayerController</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/REFrostedViewController/" style="font-size: 10px;">REFrostedViewController</a> <a href="/tags/StoryBoard/" style="font-size: 10px;">StoryBoard</a> <a href="/tags/Term/" style="font-size: 10px;">Term</a> <a href="/tags/Theme/" style="font-size: 10px;">Theme</a> <a href="/tags/UIColor/" style="font-size: 10px;">UIColor</a> <a href="/tags/UIImage/" style="font-size: 10px;">UIImage</a> <a href="/tags/UITableView/" style="font-size: 10px;">UITableView</a> <a href="/tags/UITextView/" style="font-size: 10px;">UITextView</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/iOS7/" style="font-size: 20px;">iOS7</a> <a href="/tags/iOS8/" style="font-size: 15px;">iOS8</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a>
 					</div>
 				</section>
 				
@@ -174,6 +174,77 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-2015-10-27-REFrostedViewController-UITableViewCell-Swipe-Delete" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/10/27/2015-10-27-REFrostedViewController-UITableViewCell-Swipe-Delete/" class="article-date">
+  	<time datetime="2015-10-26T18:15:52.000Z" itemprop="datePublished">10月 27 2015</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/27/2015-10-27-REFrostedViewController-UITableViewCell-Swipe-Delete/">REFrostedViewController与UITableViewCell侧滑删除的坑</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>近来项目中需要用到侧滑菜单，测试了一下<a href="https://github.com/romaonthego/REFrostedViewController" target="_blank" rel="external">REFrostedViewController</a>还能满足需求，本着不重复造轮子的原则，决定使用。</p>
+<p>根据作者：<a href="https://github.com/romaonthego" target="_blank" rel="external">romaonthego</a>提供的Demo玩起来比较嗨，一看就明白，于是乎我也搞了个<code>UINavigationController</code>加入<code>UIPanGestureRecognizer</code>手势来实时移动菜单，所有的视图控制器都在这个<code>UINavigationController</code>的管理下健康成长。</p>
+<p>直到我接到一个需求是表格侧滑删除（也就是Cell的侧滑删除），心想这特么多简单回事，看着这需求，还偷着乐，Android那逼蛋疼了（听说是不好整，具体我也不知道），直接用系统提供的代理三下五除二搞定，那就在这时准备丝滑一下的时候，采坑了。</p>
+<p>侧滑删除干死也不响应，善于思考的我淡然是使用排除法，心想UITableView都特么用了多少年了，还能用错了？还是各种检查，发现没问题，无奈还去看了以前的代码，都是妥妥的，用法绝对没错：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">BOOL</span>)tableView:(<span class="built_in">UITableView</span> *)tableView canEditRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">UITableViewCellEditingStyle</span>)tableView:(<span class="built_in">UITableView</span> *)tableView editingStyleForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">UITableViewCellEditingStyleDelete</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那现在就怀疑是不是踩到iOS9的坑了，查阅了各种资料和发现也不是这么回事，迫于无奈还是有点怀疑自己，决定新建个空的工程单独写侧滑删除Demo试试，秒秒钟搞定运行，妥妥的，非常丝滑。最后只能检查自己代码了（程序狗出问题了最喜欢先怀疑别人）。</p>
+<p>经过一番各种检查，绝逼全都是对的写法，哥怎么肯能出错呢，回望也没在晚上发现下午的代码是一坨坨Shit嘛（PS:看来进步速度太慢了）。最后经过暴力测试，偶尔能在<code>Cell</code>上拉出侧滑删除，这一下就上升到手势问题上了，决定从手势开始排查。</p>
+<p>果不其然就是自己在<code>UINavigationController</code>加的<code>UIPanGestureRecognizer</code>这笔影响了侧滑删除手势。两个手势冲突了咋整，直接干啊，还能说啥。。。</p>
+<p>吐槽了一大堆，进入正题，其实也没啥好说的，就是使用<code>UIGestureRecognizerDelegate</code>的方法解决手势同时存在的问题。</p>
+<p>直接上代码：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UIPanGestureRecognizer</span> *panGesture = [[<span class="built_in">UIPanGestureRecognizer</span> alloc] initWithTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(panGestureRecognized:)];</span><br><span class="line">panGesture<span class="variable">.delegate</span> = <span class="keyword">self</span>;</span><br><span class="line">[<span class="keyword">self</span><span class="variable">.view</span> addGestureRecognizer:panGesture];</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">BOOL</span>)gestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)otherGestureRecognizer &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> ([[otherGestureRecognizer<span class="variable">.view</span> class] isSubclassOfClass:[<span class="built_in">UITableView</span> class]]) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( [[otherGestureRecognizer<span class="variable">.view</span> class] isSubclassOfClass:[<span class="built_in">UITableViewCell</span> class]] ||</span><br><span class="line">       [<span class="built_in">NSStringFromClass</span>([otherGestureRecognizer<span class="variable">.view</span> class]) isEqualToString:<span class="string">@"UITableViewCellScrollView"</span>] ||</span><br><span class="line">       [<span class="built_in">NSStringFromClass</span>([otherGestureRecognizer<span class="variable">.view</span> class]) isEqualToString:<span class="string">@"UITableViewWrapperView"</span>]) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>解决问题的思路和关键方法就在<code>gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:</code>方法里，我们在捕获到UITableView上的手势的时候就不允许手势的同时存在，在捕获到Cell上的手势时，这样才能侧滑删除，而其他情况下不需要处理，直接返回<code>YES</code>以便让<code>REFrostedViewController</code>处理手势滑动弹出侧滑菜单。</p>
+<p>好了，这里仅填了<code>REFrostedViewController</code>和<code>UITableViewCell</code>侧滑删除的坑，其他的有小伙伴遇到在一起解决吧。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/REFrostedViewController/">REFrostedViewController</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UITableView/">UITableView</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Issue/">Issue</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-2015-10-02-OSX-10.11-Homebrew-Issue" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -737,69 +808,6 @@
       
         <p class="article-more-link">
           <a  href="/2013/11/07/2013-11-07-UITextView-Alignment/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2013-09-27-IOS7-control-volume" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2013/09/27/2013-09-27-IOS7-control-volume/" class="article-date">
-  	<time datetime="2013-09-27T08:43:50.000Z" itemprop="datePublished">9月 27 2013</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/09/27/2013-09-27-IOS7-control-volume/">关于iOS7以及向下兼容音量控制问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近做个简单的播放界面，只是简单的设计到播放音频，iOS系统自带播放有四个类可以播放音频</p>
-<p>AVPlayer，AVAudioPlayer，MPMusicPlayerController，MPMoviePlayerController</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AVAudioPlayer/">AVAudioPlayer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AVPlayer/">AVPlayer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MPMoviePlayerController/">MPMoviePlayerController</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MPMusicPlayerController/">MPMusicPlayerController</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS7/">iOS7</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/iOS/">iOS</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2013/09/27/2013-09-27-IOS7-control-volume/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
