@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Andy矢倉">
 <meta property="og:description" content="近来项目中需要用到侧滑菜单，测试了一下REFrostedViewController还能满足需求，本着不重复造轮子的原则，决定使用。
 根据作者：romaonthego提供的Demo玩起来比较嗨，一看就明白，于是乎我也搞了个UINavigationController加入UIPanGestureRecognizer手势来实时移动菜单，所有的视图控制器都在这个UINavigationControlle">
-<meta property="og:updated_time" content="2015-10-26T18:17:31.000Z">
+<meta property="og:updated_time" content="2015-10-26T18:22:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="REFrostedViewController与UITableViewCell侧滑删除的坑">
 <meta name="twitter:description" content="近来项目中需要用到侧滑菜单，测试了一下REFrostedViewController还能满足需求，本着不重复造轮子的原则，决定使用。
@@ -221,6 +221,7 @@
         <p>近来项目中需要用到侧滑菜单，测试了一下<a href="https://github.com/romaonthego/REFrostedViewController" target="_blank" rel="external">REFrostedViewController</a>还能满足需求，本着不重复造轮子的原则，决定使用。</p>
 <p>根据作者：<a href="https://github.com/romaonthego" target="_blank" rel="external">romaonthego</a>提供的Demo玩起来比较嗨，一看就明白，于是乎我也搞了个<code>UINavigationController</code>加入<code>UIPanGestureRecognizer</code>手势来实时移动菜单，所有的视图控制器都在这个<code>UINavigationController</code>的管理下健康成长。</p>
 <p>直到我接到一个需求是表格侧滑删除（也就是Cell的侧滑删除），心想这特么多简单回事，看着这需求，还偷着乐，Android那逼蛋疼了（听说是不好整，具体我也不知道），直接用系统提供的代理三下五除二搞定，那就在这时准备丝滑一下的时候，采坑了。</p>
+<a id="more"></a>
 <p>侧滑删除干死也不响应，善于思考的我淡然是使用排除法，心想UITableView都特么用了多少年了，还能用错了？还是各种检查，发现没问题，无奈还去看了以前的代码，都是妥妥的，用法绝对没错：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">BOOL</span>)tableView:(<span class="built_in">UITableView</span> *)tableView canEditRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">UITableViewCellEditingStyle</span>)tableView:(<span class="built_in">UITableView</span> *)tableView editingStyleForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">UITableViewCellEditingStyleDelete</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>那现在就怀疑是不是踩到iOS9的坑了，查阅了各种资料和发现也不是这么回事，迫于无奈还是有点怀疑自己，决定新建个空的工程单独写侧滑删除Demo试试，秒秒钟搞定运行，妥妥的，非常丝滑。最后只能检查自己代码了（程序狗出问题了最喜欢先怀疑别人）。</p>
