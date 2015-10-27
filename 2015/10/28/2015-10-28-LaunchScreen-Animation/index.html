@@ -3,21 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Xcode7下使用git提交报错 | Andy矢倉</title>
+  <title>通过Xcode自带LaunchScreen布局文件自定义启动动画 | Andy矢倉</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近升级了Xcode7，一打开老工程就各种报警告，由于我洁癖癌晚期，一定要从本质上消灭掉警告心里才舒坦，几个小警告，秒秒钟搞定，最后把工程配置文件也升级了，run起来没有警告那叫一个爽啊，舒坦！！！
-然后，过了几天，commit的时候出现这逼提示：1The working copy &amp;#8220;***&amp;#8221; failed to commit files.&amp;#10;&amp;#10;*** Ple">
+  <meta name="description" content="大晚上刷微博，刷到一篇转发自里脊串的博客Tips:获取APP的Launch Image
+大致内容是：通过获取打包到App里的启动图，初始化一个UIImageView与屏幕同等大小再加载到UIWindow上来做启动延时，从而达到自定义启动动画的目的。代码里的各种Key没太看懂，放到工程里也没法显示效果。文中的意思是不要增加启动图的方式来适配，那我想了想iOS启动画面的方式目前我所知就两种：启动图和布">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Xcode7下使用git提交报错">
-<meta property="og:url" content="http://shicang1990.github.io/2015/09/07/2015-09-23-Xocde7-Git-Commit-Issue/index.html">
+<meta property="og:title" content="通过Xcode自带LaunchScreen布局文件自定义启动动画">
+<meta property="og:url" content="http://shicang1990.github.io/2015/10/28/2015-10-28-LaunchScreen-Animation/index.html">
 <meta property="og:site_name" content="Andy矢倉">
-<meta property="og:description" content="最近升级了Xcode7，一打开老工程就各种报警告，由于我洁癖癌晚期，一定要从本质上消灭掉警告心里才舒坦，几个小警告，秒秒钟搞定，最后把工程配置文件也升级了，run起来没有警告那叫一个爽啊，舒坦！！！
-然后，过了几天，commit的时候出现这逼提示：1The working copy &amp;#8220;***&amp;#8221; failed to commit files.&amp;#10;&amp;#10;*** Ple">
-<meta property="og:updated_time" content="2015-10-02T02:38:57.000Z">
+<meta property="og:description" content="大晚上刷微博，刷到一篇转发自里脊串的博客Tips:获取APP的Launch Image
+大致内容是：通过获取打包到App里的启动图，初始化一个UIImageView与屏幕同等大小再加载到UIWindow上来做启动延时，从而达到自定义启动动画的目的。代码里的各种Key没太看懂，放到工程里也没法显示效果。文中的意思是不要增加启动图的方式来适配，那我想了想iOS启动画面的方式目前我所知就两种：启动图和布">
+<meta property="og:image" content="http://i13.tietuku.com/02827cfb80bf1be6.gif">
+<meta property="og:updated_time" content="2015-10-27T18:33:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Xcode7下使用git提交报错">
-<meta name="twitter:description" content="最近升级了Xcode7，一打开老工程就各种报警告，由于我洁癖癌晚期，一定要从本质上消灭掉警告心里才舒坦，几个小警告，秒秒钟搞定，最后把工程配置文件也升级了，run起来没有警告那叫一个爽啊，舒坦！！！
-然后，过了几天，commit的时候出现这逼提示：1The working copy &amp;#8220;***&amp;#8221; failed to commit files.&amp;#10;&amp;#10;*** Ple">
+<meta name="twitter:title" content="通过Xcode自带LaunchScreen布局文件自定义启动动画">
+<meta name="twitter:description" content="大晚上刷微博，刷到一篇转发自里脊串的博客Tips:获取APP的Launch Image
+大致内容是：通过获取打包到App里的启动图，初始化一个UIImageView与屏幕同等大小再加载到UIWindow上来做启动延时，从而达到自定义启动动画的目的。代码里的各种Key没太看懂，放到工程里也没法显示效果。文中的意思是不要增加启动图的方式来适配，那我想了想iOS启动画面的方式目前我所知就两种：启动图和布">
   
     <link rel="alternative" href="/atom.xml" title="Andy矢倉" type="application/atom+xml">
   
@@ -177,11 +178,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-2015-09-23-Xocde7-Git-Commit-Issue" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2015-10-28-LaunchScreen-Animation" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/09/07/2015-09-23-Xocde7-Git-Commit-Issue/" class="article-date">
-  	<time datetime="2015-09-07T13:23:30.000Z" itemprop="datePublished">9月 7 2015</time>
+      <a href="/2015/10/28/2015-10-28-LaunchScreen-Animation/" class="article-date">
+  	<time datetime="2015-10-27T18:29:19.000Z" itemprop="datePublished">10月 28 2015</time>
 </a>
     </div>
   
@@ -194,7 +195,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Xcode7下使用git提交报错
+      通过Xcode自带LaunchScreen布局文件自定义启动动画
     </h1>
   
 
@@ -203,12 +204,12 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xcode/">Xcode</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
 	</div>
 
         
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Issue/">Issue</a>
+	<a class="article-category-link" href="/categories/Tips/">Tips</a>
 	</div>
 
 
@@ -218,15 +219,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近升级了<code>Xcode7</code>，一打开老工程就各种报警告，由于我洁癖癌晚期，一定要从本质上消灭掉警告心里才舒坦，几个小警告，秒秒钟搞定，最后把工程配置文件也升级了，run起来没有警告那叫一个爽啊，舒坦！！！</p>
-<p>然后，过了几天，commit的时候出现这逼提示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The working copy &#8220;***&#8221; failed to commit files.&#10;&#10;*** Please tell me who you are.&#10;&#10;Run&#10;&#10;  git config --global user.email &#34;you@example.com&#34;&#10;  git config --global user.name &#34;Your Name&#34;&#10;&#10;to set your account&#39;s default identity.&#10;Omit --global to set the identity only in this repository.&#10;&#10;fatal: unable to auto-detect email address (got &#39;***@bogon.(none)&#39;)</span><br></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>对于战五渣的我来说，一般这种提示我都会先找我大<code>Google</code>，结果瞄了一眼，机智的我发现能看懂按照上述提示，那就按照提示跑一遍吧，结果是，跑了N遍还还是照提示不误，虽然很确定是<code>Xcode7</code>的问题，但是捉急的我还是用<code>Github</code>的客户端直接<code>commit</code>了。</p>
-<p>前面的直觉告诉我是Xcode7对于本地仓库上的问题。但是，这两天打开远程仓库提交也是同一个逼样，一下就把哥给激怒了，配置全局没鸟用，那就只能单独本地配置用户名和邮箱地址了。果断切换到<code>当前项目</code>工程目录下，执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd &#123;project_path&#125;/.git/</span><br></pre></td></tr></table></figure></p>
-<p>修改配置文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi config</span><br></pre></td></tr></table></figure></p>
-<p>添加如下字段：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[user]&#10;&#9;name = Your Name&#10;&#9;email = you@example.com</span><br></pre></td></tr></table></figure></p>
-<p>或者在工程根目录执行一下命令也是同样效果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --local user.name &#34;Your Name&#34;&#10;git config --local user.email &#34;you@example.com&#34;</span><br></pre></td></tr></table></figure></p>
-<p>不得不说，每次新版本都不让人省心，好了，打完收工。。。</p>
+        <p>大晚上刷微博，刷到一篇转发自<a href="http://adad184.com/" target="_blank" rel="external">里脊串</a>的博客<a href="http://adad184.com/2015/10/15/tips-access-current-launch-image/" target="_blank" rel="external">Tips:获取APP的Launch Image</a></p>
+<p>大致内容是：通过获取打包到<code>App</code>里的启动图，初始化一个<code>UIImageView</code>与屏幕同等大小再加载到<code>UIWindow</code>上来做启动延时，从而达到自定义启动动画的目的。代码里的各种<code>Key</code>没太看懂，放到工程里也没法显示效果。文中的意思是不要增加启动图的方式来适配，那我想了想<code>iOS</code>启动画面的方式目前我所知就两种：启动图和布局文件。我现在基本上没有用图片作为启动图，都是直接用布局文件搞定。</p>
+<p>PS:今年开发的<code>App</code>基本上都是支持<code>iOS7</code>以上了，所以没太用启动图了，<code>Xcode 6</code>是<code>LaunchScreen.xib</code>，到<code>Xcode 7</code>变成了<code>LaunchScreen.storyboard</code>，无可厚非，两者本质都是一样的。</p>
+<p>教程看的云里雾里的，不过不打紧，思路还是一样的，我想如果<code>Storyboard</code>和<code>Size Class</code>玩得多同学还是喜欢布局文件作为启动图的方式吧，所以我的方式是获取<code>LaunchScreen.storyboard</code>里的<code>ViewController</code>，在把<code>View</code>提取出来加到<code>UIWindow</code>显示做动画即可。</p>
+<p>这种方式的好处就是，获取大小就是屏幕的大小，而且只要你把不同屏幕的布局搞定了，系统会帮你生成好加在的启动页，这样就免去了判断和从新设置大小的麻烦，这样才是真适配嘛~</p>
+<p>废话不多说，上代码吧~<br>（对了，记得给<code>LaunchScreen.storyboard</code>里的<code>ViewController</code>设置好<code>Storyboard ID</code>）</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UIViewController</span> *viewController = [[<span class="built_in">UIStoryboard</span> storyboardWithName:<span class="string">@"LaunchScreen"</span> bundle:<span class="literal">nil</span>] instantiateViewControllerWithIdentifier:<span class="string">@"LaunchScreen"</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">UIView</span> *launchView = viewController<span class="variable">.view</span>;</span><br><span class="line">AppDelegate *delegate = [<span class="built_in">UIApplication</span> sharedApplication]<span class="variable">.delegate</span>;</span><br><span class="line"><span class="built_in">UIWindow</span> *mainWindow = delegate<span class="variable">.window</span>;</span><br><span class="line">[mainWindow addSubview:launchView];</span><br><span class="line"></span><br><span class="line">[<span class="built_in">UIView</span> animateWithDuration:<span class="number">2.0</span>f delay:<span class="number">0.0</span>f options:<span class="built_in">UIViewAnimationOptionBeginFromCurrentState</span> animations:^&#123;</span><br><span class="line">    launchView<span class="variable">.alpha</span> = <span class="number">0.0</span>f;</span><br><span class="line">    launchView<span class="variable">.layer</span><span class="variable">.transform</span> = <span class="built_in">CATransform3DScale</span>(<span class="built_in">CATransform3DIdentity</span>, <span class="number">1.3</span>f, <span class="number">1.3</span>f, <span class="number">1.0</span>f);</span><br><span class="line">&#125; completion:^(<span class="built_in">BOOL</span> finished) &#123;</span><br><span class="line">    [launchView removeFromSuperview];</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<p><img src="http://i13.tietuku.com/02827cfb80bf1be6.gif" alt=""></p>
 
       
     </div>
@@ -236,18 +236,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/10/02/2015-10-02-OSX-10.11-Homebrew-Issue/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          升级OS X El Capitan导致Homebrew权限失效
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/09/07/2015-09-07-UIAppearanceTutorial/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">UIAppearance教程：入门</div>
+    <a href="/2015/10/27/2015-10-27-REFrostedViewController-UITableViewCell-Swipe-Delete/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">REFrostedViewController与UITableViewCell侧滑删除的坑</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -281,7 +272,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2015-09-23-Xocde7-Git-Commit-Issue" data-title="Xcode7下使用git提交报错" data-url="http://shicang1990.github.io/2015/09/07/2015-09-23-Xocde7-Git-Commit-Issue/"></div>
+	<div class="ds-thread" data-thread-key="2015-10-28-LaunchScreen-Animation" data-title="通过Xcode自带LaunchScreen布局文件自定义启动动画" data-url="http://shicang1990.github.io/2015/10/28/2015-10-28-LaunchScreen-Animation/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
