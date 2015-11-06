@@ -35,7 +35,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/311224-3ac3c733c1e75cf6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/311224-eed287eaf1a1248e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/311224-6bf8acf32d44ac91.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2015-11-06T18:36:21.000Z">
+<meta property="og:updated_time" content="2015-11-06T18:38:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手把手AutoLayout - 两个不等宽View，“共同”居中于Superview">
 <meta name="twitter:description" content="刷微博看到nixzhu的AutoLayout Tips，Tip 1是基于纯代码实现，由于本人比较懒，使用AutoLayout除非万不得已，否则是不会动代码，这里使用可视化的方式来演示，只是觉得可能更便于理解！
@@ -250,7 +250,7 @@
 <p>接下来我们开始纯可视化操作（PS：这里先不解释，直接跟着操作即可）：</p>
 <p>首先打开原作者<a href="https://github.com/nixzhu/CenterTwoViewsUseAutoLayout" target="_blank" rel="external"><code>工程</code></a>里的<code>Main.storyboard</code>，拖一个<code>UIView</code>到<code>ViewController</code>里，这里为了方便观察理解，我把图片背景色改了下。<br><img src="http://upload-images.jianshu.io/upload_images/311224-2c3c92a65f4d33da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>接着拖一个<code>UIImageView</code>和<code>UILabel</code>到<code>灰色的UIView</code>里。<br><img src="http://upload-images.jianshu.io/upload_images/311224-7b74e3e6c2a8f031.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>我们看到此时并无任何约束的警告，那好，现在开始添加约束。<br>这里先给<code>UIImageView</code>添加上下左右的约束，constant值随意。<br><img src="http://upload-images.jianshu.io/upload_images/311224-0d2ecce787e342a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>我们看到此时并无任何约束的警告，那好，现在开始添加约束。<br>这里先给<code>UIImageView</code>添加上下左右的约束，<code>constant</code>值随意。<br><img src="http://upload-images.jianshu.io/upload_images/311224-0d2ecce787e342a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>添加完成之后开始报警告，先忽略，继续拉约束。<br><img src="http://upload-images.jianshu.io/upload_images/311224-963b3e2070a51fd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>因为已经给<code>UIImageView</code>和<code>UILabel</code>添加了间隙约束，所以只用继续给<code>UILabel</code>添加<code>上</code>，<code>右</code>，<code>左</code>的约束即可。<br><img src="http://upload-images.jianshu.io/upload_images/311224-ecbd4d8ee2d8bceb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>其实这里给<code>UILabel</code>添加约束还有一种做法就是添加<code>右</code>边约束和<code>Y</code>轴上的约束即可。<br><img src="http://upload-images.jianshu.io/upload_images/311224-9f75ebf2f37ea6f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/311224-2d501f94e9ea759c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
