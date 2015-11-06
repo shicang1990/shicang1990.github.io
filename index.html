@@ -109,7 +109,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/AVAudioPlayer/" style="font-size: 10px;">AVAudioPlayer</a> <a href="/tags/AVPlayer/" style="font-size: 10px;">AVPlayer</a> <a href="/tags/Alignment/" style="font-size: 10px;">Alignment</a> <a href="/tags/AutoLayout/" style="font-size: 15px;">AutoLayout</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Homebrew/" style="font-size: 10px;">Homebrew</a> <a href="/tags/MPMoviePlayerController/" style="font-size: 10px;">MPMoviePlayerController</a> <a href="/tags/MPMusicPlayerController/" style="font-size: 10px;">MPMusicPlayerController</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/REFrostedViewController/" style="font-size: 10px;">REFrostedViewController</a> <a href="/tags/StoryBoard/" style="font-size: 10px;">StoryBoard</a> <a href="/tags/Term/" style="font-size: 10px;">Term</a> <a href="/tags/Theme/" style="font-size: 10px;">Theme</a> <a href="/tags/UIColor/" style="font-size: 10px;">UIColor</a> <a href="/tags/UIImage/" style="font-size: 10px;">UIImage</a> <a href="/tags/UITableView/" style="font-size: 10px;">UITableView</a> <a href="/tags/UITextView/" style="font-size: 10px;">UITextView</a> <a href="/tags/Xcode/" style="font-size: 15px;">Xcode</a> <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/iOS7/" style="font-size: 20px;">iOS7</a> <a href="/tags/iOS8/" style="font-size: 15px;">iOS8</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a>
+						<a href="/tags/AVAudioPlayer/" style="font-size: 10px;">AVAudioPlayer</a> <a href="/tags/AVPlayer/" style="font-size: 10px;">AVPlayer</a> <a href="/tags/Alignment/" style="font-size: 10px;">Alignment</a> <a href="/tags/AutoLayout/" style="font-size: 16.67px;">AutoLayout</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Homebrew/" style="font-size: 10px;">Homebrew</a> <a href="/tags/MPMoviePlayerController/" style="font-size: 10px;">MPMoviePlayerController</a> <a href="/tags/MPMusicPlayerController/" style="font-size: 10px;">MPMusicPlayerController</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/REFrostedViewController/" style="font-size: 10px;">REFrostedViewController</a> <a href="/tags/StoryBoard/" style="font-size: 10px;">StoryBoard</a> <a href="/tags/Term/" style="font-size: 10px;">Term</a> <a href="/tags/Theme/" style="font-size: 10px;">Theme</a> <a href="/tags/UIColor/" style="font-size: 10px;">UIColor</a> <a href="/tags/UIImage/" style="font-size: 10px;">UIImage</a> <a href="/tags/UITableView/" style="font-size: 10px;">UITableView</a> <a href="/tags/UITextView/" style="font-size: 10px;">UITextView</a> <a href="/tags/Xcode/" style="font-size: 13.33px;">Xcode</a> <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/iOS/" style="font-size: 13.33px;">iOS</a> <a href="/tags/iOS7/" style="font-size: 20px;">iOS7</a> <a href="/tags/iOS8/" style="font-size: 13.33px;">iOS8</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a>
 					</div>
 				</section>
 				
@@ -174,6 +174,71 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-2015-11-07-Two-Views-Center-Superview" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/07/2015-11-07-Two-Views-Center-Superview/" class="article-date">
+  	<time datetime="2015-11-06T18:34:39.000Z" itemprop="datePublished">11月 7 2015</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/07/2015-11-07-Two-Views-Center-Superview/">手把手AutoLayout - 两个不等宽View，“共同”居中于Superview</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>刷微博看到<a href="https://github.com/nixzhu">nixzhu</a>的<a href="https://github.com/nixzhu/dev-blog/blob/master/autolayout-tips.md">AutoLayout Tips</a>，<a href="https://github.com/nixzhu/dev-blog/blob/master/autolayout-tips.md#tip-1"><code>Tip 1</code></a>是基于纯代码实现，由于本人比较懒，使用<code>AutoLayout</code>除非万不得已，否则是不会动代码，这里使用可视化的方式来演示，只是觉得可能更便于理解！</p>
+<hr>
+<p>那么开始，新建工程就不用多说了，或者懒癌患者下载原作者<a href="https://github.com/nixzhu/CenterTwoViewsUseAutoLayout"><code>工程</code></a>（还是都下载吧，方便看效果）。</p>
+<p>打开工程跑一盘，看下效果：<br><img src="http://upload-images.jianshu.io/upload_images/311224-3aa18acf0dcbdd91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AutoLayout/">AutoLayout</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Tips/">Tips</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/11/07/2015-11-07-Two-Views-Center-Superview/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-2015-10-28-LaunchScreen-Animation" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -732,76 +797,6 @@
       
         <p class="article-more-link">
           <a  href="/2014/03/04/2014-03-04-Storyboard-Party2/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-2014-02-25-IOS-MVC" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/02/25/2014-02-25-IOS-MVC/" class="article-date">
-  	<time datetime="2014-02-25T09:28:18.000Z" itemprop="datePublished">2月 25 2014</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/02/25/2014-02-25-IOS-MVC/">浅谈iOS中的MVC设计模式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="我们今天谈谈cocoa程序设计中的_模型－视图－控制器（MVC）范型。我们将从两大方面来讨论MVC：">我们今天谈谈cocoa程序设计中的 模型－视图－控制器（MVC）范型。我们将从两大方面来讨论MVC：</h2><blockquote>
-<p>什么是MVC？<br>M、V、C之间的交流方式是什么样子的？ </p>
-</blockquote>
-<p>理解了MVC的概念，对cocoa程序开发是至关重要的。</p>
-<p>##一、MVC的概念</p>
-<p>MVC是Model-VIew-Controller，就是模型－视图－控制器，这些都是什么东西呢？<br>MVC把软件系统分为三个部分：Model，View，Controller。在cocoa中，你的程序中的每一个object（对象）都将明显地仅属于这三部分中的一个，而完全不属于另外两个。</p>
-<blockquote>
-<p>Model = 你的程序是什么(而不是你的程序是如何显示的)</p>
-</blockquote>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVC/">MVC</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/设计模式/">设计模式</a><a class="article-category-link" href="/categories/设计模式/iOS/">iOS</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2014/02/25/2014-02-25-IOS-MVC/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

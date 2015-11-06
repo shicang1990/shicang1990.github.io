@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>手把手AutoLayout - 两个不等宽View，“共同”居中于Superview | Andy矢倉</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="刷微博看到nixzhu的AutoLayout Tips，Tip 1是基于纯代码实现，由于本人比较懒，使用AutoLayout除非万不得已，否则是不会动代码，这里使用可视化的方式来演示，只是觉得可能更便于理解！
+
+那么开始，新建工程就不用多说了，或者懒癌患者下载原作者工程（还是都下载吧，方便看效果）。
+打开工程跑一盘，看下效果：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手把手AutoLayout - 两个不等宽View，“共同”居中于Superview">
+<meta property="og:url" content="http://shicang1990.github.io/2015/11/07/2015-11-07-Two-Views-Center-Superview/index.html">
+<meta property="og:site_name" content="Andy矢倉">
+<meta property="og:description" content="刷微博看到nixzhu的AutoLayout Tips，Tip 1是基于纯代码实现，由于本人比较懒，使用AutoLayout除非万不得已，否则是不会动代码，这里使用可视化的方式来演示，只是觉得可能更便于理解！
+
+那么开始，新建工程就不用多说了，或者懒癌患者下载原作者工程（还是都下载吧，方便看效果）。
+打开工程跑一盘，看下效果：">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/311224-3aa18acf0dcbdd91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/311224-2c3c92a65f4d33da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/311224-7b74e3e6c2a8f031.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/311224-0d2ecce787e342a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/311224-963b3e2070a51fd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/311224-ecbd4d8ee2d8bceb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/311224-9f75ebf2f37ea6f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/311224-2d501f94e9ea759c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/311224-59492f50ffd85f55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/311224-2e80668feb10d9dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/311224-32da2c4ef75a3cdf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/311224-a5c9a1f106983040.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/311224-b3b28e9f9f325525.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/311224-f686dbd78fdea703.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/311224-08645e415112d317.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/311224-3ac3c733c1e75cf6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/311224-eed287eaf1a1248e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/311224-6bf8acf32d44ac91.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2015-11-06T18:36:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="手把手AutoLayout - 两个不等宽View，“共同”居中于Superview">
+<meta name="twitter:description" content="刷微博看到nixzhu的AutoLayout Tips，Tip 1是基于纯代码实现，由于本人比较懒，使用AutoLayout除非万不得已，否则是不会动代码，这里使用可视化的方式来演示，只是觉得可能更便于理解！
+
+那么开始，新建工程就不用多说了，或者懒癌患者下载原作者工程（还是都下载吧，方便看效果）。
+打开工程跑一盘，看下效果：">
+  
+    <link rel="alternative" href="/atom.xml" title="Andy矢倉" type="application/atom+xml">
+  
+  
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://tp1.sinaimg.cn/1549567960/180/40056410546/1" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Andy矢倉</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">我就是我，是颜色不一样的烟火</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/shicang1990" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/ganmaojijie" title="weibo">weibo</a>
+					        
+								<a class="google" target="_blank" href="https://plus.google.com/u/0/111959925992300968239" title="google">google</a>
+					        
+								<a class="facebook" target="_blank" href="https://www.facebook.com/wiwby" title="facebook">facebook</a>
+					        
+								<a class="twitter" target="_blank" href="https://twitter.com/Andy_shicang" title="twitter">twitter</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/AVAudioPlayer/" style="font-size: 10px;">AVAudioPlayer</a> <a href="/tags/AVPlayer/" style="font-size: 10px;">AVPlayer</a> <a href="/tags/Alignment/" style="font-size: 10px;">Alignment</a> <a href="/tags/AutoLayout/" style="font-size: 16.67px;">AutoLayout</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Homebrew/" style="font-size: 10px;">Homebrew</a> <a href="/tags/MPMoviePlayerController/" style="font-size: 10px;">MPMoviePlayerController</a> <a href="/tags/MPMusicPlayerController/" style="font-size: 10px;">MPMusicPlayerController</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/REFrostedViewController/" style="font-size: 10px;">REFrostedViewController</a> <a href="/tags/StoryBoard/" style="font-size: 10px;">StoryBoard</a> <a href="/tags/Term/" style="font-size: 10px;">Term</a> <a href="/tags/Theme/" style="font-size: 10px;">Theme</a> <a href="/tags/UIColor/" style="font-size: 10px;">UIColor</a> <a href="/tags/UIImage/" style="font-size: 10px;">UIImage</a> <a href="/tags/UITableView/" style="font-size: 10px;">UITableView</a> <a href="/tags/UITextView/" style="font-size: 10px;">UITextView</a> <a href="/tags/Xcode/" style="font-size: 13.33px;">Xcode</a> <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/iOS/" style="font-size: 13.33px;">iOS</a> <a href="/tags/iOS7/" style="font-size: 20px;">iOS7</a> <a href="/tags/iOS8/" style="font-size: 13.33px;">iOS8</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Andy矢倉</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://tp1.sinaimg.cn/1549567960/180/40056410546/1" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Andy矢倉</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">我就是我，是颜色不一样的烟火</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/shicang1990" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/ganmaojijie" title="weibo">weibo</a>
+			        
+						<a class="google" target="_blank" href="https://plus.google.com/u/0/111959925992300968239" title="google">google</a>
+			        
+						<a class="facebook" target="_blank" href="https://www.facebook.com/wiwby" title="facebook">facebook</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/Andy_shicang" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2015-11-07-Two-Views-Center-Superview" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/07/2015-11-07-Two-Views-Center-Superview/" class="article-date">
+  	<time datetime="2015-11-06T18:34:39.000Z" itemprop="datePublished">11月 7 2015</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      手把手AutoLayout - 两个不等宽View，“共同”居中于Superview
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AutoLayout/">AutoLayout</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Tips/">Tips</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>刷微博看到<a href="https://github.com/nixzhu" target="_blank" rel="external">nixzhu</a>的<a href="https://github.com/nixzhu/dev-blog/blob/master/autolayout-tips.md" target="_blank" rel="external">AutoLayout Tips</a>，<a href="https://github.com/nixzhu/dev-blog/blob/master/autolayout-tips.md#tip-1" target="_blank" rel="external"><code>Tip 1</code></a>是基于纯代码实现，由于本人比较懒，使用<code>AutoLayout</code>除非万不得已，否则是不会动代码，这里使用可视化的方式来演示，只是觉得可能更便于理解！</p>
+<hr>
+<p>那么开始，新建工程就不用多说了，或者懒癌患者下载原作者<a href="https://github.com/nixzhu/CenterTwoViewsUseAutoLayout" target="_blank" rel="external"><code>工程</code></a>（还是都下载吧，方便看效果）。</p>
+<p>打开工程跑一盘，看下效果：<br><img src="http://upload-images.jianshu.io/upload_images/311224-3aa18acf0dcbdd91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<a id="more"></a>
+<p>接下来我们开始纯可视化操作（PS：这里先不解释，直接跟着操作即可）：</p>
+<p>首先打开原作者<a href="https://github.com/nixzhu/CenterTwoViewsUseAutoLayout" target="_blank" rel="external"><code>工程</code></a>里的<code>Main.storyboard</code>，拖一个<code>UIView</code>到<code>ViewController</code>里，这里为了方便观察理解，我把图片背景色改了下。<br><img src="http://upload-images.jianshu.io/upload_images/311224-2c3c92a65f4d33da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>接着拖一个<code>UIImageView</code>和<code>UILabel</code>到<code>灰色的UIView</code>里。<br><img src="http://upload-images.jianshu.io/upload_images/311224-7b74e3e6c2a8f031.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>我们看到此时并无任何约束的警告，那好，现在开始添加约束。<br>这里先给<code>UIImageView</code>添加上下左右的约束，constant值随意。<br><img src="http://upload-images.jianshu.io/upload_images/311224-0d2ecce787e342a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>添加完成之后开始报警告，先忽略，继续拉约束。<br><img src="http://upload-images.jianshu.io/upload_images/311224-963b3e2070a51fd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>因为已经给<code>UIImageView</code>和<code>UILabel</code>添加了间隙约束，所以只用继续给<code>UILabel</code>添加<code>上</code>，<code>右</code>，<code>左</code>的约束即可。<br><img src="http://upload-images.jianshu.io/upload_images/311224-ecbd4d8ee2d8bceb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>其实这里给<code>UILabel</code>添加约束还有一种做法就是添加<code>右</code>边约束和<code>Y</code>轴上的约束即可。<br><img src="http://upload-images.jianshu.io/upload_images/311224-9f75ebf2f37ea6f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/311224-2d501f94e9ea759c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>这里我选择第二种，同样的效果，约束能少则少，或者按照实际需求来就好。<br>约束已经添加完整，<code>SDK</code>还是在报警告。<br><img src="http://upload-images.jianshu.io/upload_images/311224-59492f50ffd85f55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>这里<code>SDK</code>提示我们<code>view</code>上需要<code>X</code>和<code>Y</code>轴上需要约束来确定控件位置。这里也是<code>两个不等宽的 View，彼此相邻，并“共同”居中于 Superview</code>最后的步骤。我们把<code>view</code>居中，然后在给一个<code>X</code>轴上的约束即可，所以随便搞一下，添加一个<code>竖向居中（也就是Y轴居中）</code>即可。到此我们全部约束添加完毕。<br>PS:这里为了更好区分，我给容器视图整了个备注叫<code>Container View</code>。<br><img src="http://upload-images.jianshu.io/upload_images/311224-2e80668feb10d9dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>即便是添加完了约束，<code>SDK</code>还是提示不能确认位置。<br><img src="http://upload-images.jianshu.io/upload_images/311224-32da2c4ef75a3cdf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>大家不要慌，这里其实<code>Container View</code>不能确定位置原因在于<code>UIImageView</code>大小没确定，我们只需要把<code>UIImageView</code>设置一个<code>占位</code>或者给个<code>图片</code>即可。<br><img src="http://upload-images.jianshu.io/upload_images/311224-a5c9a1f106983040.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>或者<br><img src="http://upload-images.jianshu.io/upload_images/311224-b3b28e9f9f325525.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>这里以添加图片为准，就此所有约束错误都以解决，只剩下<code>frame</code>的<code>Waring</code>。自行修复一下即可（<code>All Views Update Frames</code>）。<br><img src="http://upload-images.jianshu.io/upload_images/311224-f686dbd78fdea703.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/311224-08645e415112d317.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>最后我们来看看完成的效果。<br><img src="http://upload-images.jianshu.io/upload_images/311224-3ac3c733c1e75cf6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/311224-eed287eaf1a1248e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>总体效果出来了，间距自行调整。手把手教程到此结束。</p>
+<hr>
+<p>好了，po了一堆图之后我们再来简单说说核心思想：其实就是利用Storyboard里控件的<code>Intrinsic Size</code>特性，利用其<code>手动占位</code>或者<code>系统自动</code>帮忙占位的原理就可确认其<code>width</code>和<code>height</code>，然后在让其四边顶住<code>Container View</code>四边，<code>Container View</code>的<code>width</code>和<code>height</code>也就确认了，剩下的就是确认<code>Container View</code>的<code>X</code>轴和<code>Y</code>轴上的位置，三个控件的约束确定完成，<code>Frame</code>也就确认好了，也就达到了<code>两个不等宽的 View，彼此相邻，并“共同”居中于 Superview</code>的目的。<br>以此类推，利用两个或者多个控件占位居中。</p>
+<p>其实<a href="https://github.com/nixzhu/dev-blog/blob/master/autolayout-tips.md#tip-2" target="_blank" rel="external"><code>Tip 2 - 让 AutoLayout 与 UIScrollView 合作无间</code></a>也是类似原理，确认好<code>UIScrollView</code>的<code>ContentSize</code>即可，其实还有更多的玩法，如需要手把手教程，留言呼唤。</p>
+<p>最后再给懒癌患者配张动态图：<br><img src="http://upload-images.jianshu.io/upload_images/311224-6bf8acf32d44ac91.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p>我的界面开发原则，能不写代码就不写代码，让我们的<code>ViewController</code>更瘦，逻辑更清晰更简洁。</p>
+<p>欢迎吐槽和共同探讨无代码界面开发。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/10/28/2015-10-28-LaunchScreen-Animation/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">通过Xcode自带LaunchScreen布局文件自定义启动动画</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+	  	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	  	<span id="busuanzi_value_page_pv" class="jiathis_txt">
+		  	<i class="fa fa-spinner fa-spin jiathis_txt"></i>
+	  	</span>
+		<span class="jiathis_txt">Hits&nbsp&nbsp&nbsp</span>
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2015-11-07-Two-Views-Center-Superview" data-title="手把手AutoLayout - 两个不等宽View，“共同”居中于Superview" data-url="http://shicang1990.github.io/2015/11/07/2015-11-07-Two-Views-Center-Superview/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Andy矢倉
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    	</div>
+    	<div class="footer-right">
+    		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+    	</div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
