@@ -14,7 +14,7 @@
 <meta property="og:description" content="大晚上刷微博，刷到一篇转发自里脊串的博客Tips:获取APP的Launch Image
 大致内容是：通过获取打包到App里的启动图，初始化一个UIImageView与屏幕同等大小再加载到UIWindow上来做启动延时，从而达到自定义启动动画的目的。代码里的各种Key没太看懂，放到工程里也没法显示效果。文中的意思是不要增加启动图的方式来适配，那我想了想iOS启动画面的方式目前我所知就两种：启动图和布">
 <meta property="og:image" content="http://i13.tietuku.com/02827cfb80bf1be6.gif">
-<meta property="og:updated_time" content="2015-10-28T17:27:26.000Z">
+<meta property="og:updated_time" content="2015-12-05T01:08:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通过Xcode自带LaunchScreen布局文件自定义启动动画">
 <meta name="twitter:description" content="大晚上刷微博，刷到一篇转发自里脊串的博客Tips:获取APP的Launch Image
@@ -229,6 +229,11 @@
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UIViewController</span> *viewController = [[<span class="built_in">UIStoryboard</span> storyboardWithName:<span class="string">@"LaunchScreen"</span> bundle:<span class="literal">nil</span>] instantiateViewControllerWithIdentifier:<span class="string">@"LaunchScreen"</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">UIView</span> *launchView = viewController<span class="variable">.view</span>;</span><br><span class="line">AppDelegate *delegate = [<span class="built_in">UIApplication</span> sharedApplication]<span class="variable">.delegate</span>;</span><br><span class="line"><span class="built_in">UIWindow</span> *mainWindow = delegate<span class="variable">.window</span>;</span><br><span class="line">[mainWindow addSubview:launchView];</span><br><span class="line"></span><br><span class="line">[<span class="built_in">UIView</span> animateWithDuration:<span class="number">2.0</span>f delay:<span class="number">0.0</span>f options:<span class="built_in">UIViewAnimationOptionBeginFromCurrentState</span> animations:^&#123;</span><br><span class="line">    launchView<span class="variable">.alpha</span> = <span class="number">0.0</span>f;</span><br><span class="line">    launchView<span class="variable">.layer</span><span class="variable">.transform</span> = <span class="built_in">CATransform3DScale</span>(<span class="built_in">CATransform3DIdentity</span>, <span class="number">1.3</span>f, <span class="number">1.3</span>f, <span class="number">1.0</span>f);</span><br><span class="line">&#125; completion:^(<span class="built_in">BOOL</span> finished) &#123;</span><br><span class="line">    [launchView removeFromSuperview];</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
 <p>此代码片段，如果应用启动初始化如果是代码可以在AppDelegate加，Storyboard加载方式需要加在ViewController里。</p>
 <p><img src="http://i13.tietuku.com/02827cfb80bf1be6.gif" alt=""></p>
+<hr>
+<blockquote>
+<p>2015.11.27<br>最近项目UI框架切换到<code>UITabBarController</code>，发现这个动画没法使用，是由于如果在<code>Storyboard</code>中使用<code>UITabBarController</code>，如果做启动登录需求，肯定是按需加载，就需要自建继承自<code>UITabBarController</code>的关联，如果在<code>- (void)viewDidLoad</code>里加载就会导致如下警告：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Warning: Attempt to present &#60;HXLoginViewController: 0x7fa5a063cca0&#62; on &#60;HXMainViewController: 0x7fa5a05ae0b0&#62; whose view is not in the window hierarchy!**</span><br></pre></td></tr></table></figure></p>
+<p>系统没法知道该怎么显示，所以只能放到<code>- (void)viewDidAppear:(BOOL)animated</code>里来做，<code>UITabBarController</code>框架加载这个动画没效果也是这个原因，但是没Debug警告，不过要注意，如果只是单纯使用这个动画没啥问题，但是如果在<code>UITabBarController</code>上用<code>模态</code>视图的方式做按需加载以及转场动画需要处理<code>- (void)viewDidAppear:(BOOL)animated</code>重复调用的问题。</p>
+</blockquote>
 
       
     </div>
