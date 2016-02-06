@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>给iOS开发者的Sketch入门教程 | Andy矢倉</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="注意：这是一篇译文，如果你够装逼，完全可以浏览原文：Sketch Tutorial for iOS Developers如需转载，请注明出处。谢谢！！！转载地址：http://www.rockerhx.com/2016/02/02/2016-02-02-Sketch-Tutorial-for-iOS-Developers/
@@ -28,7 +29,15 @@
 <meta property="og:image" content="http://cdn3.raywenderlich.com/wp-content/uploads/2015/10/trapezoid.gif">
 <meta property="og:image" content="http://cdn4.raywenderlich.com/wp-content/uploads/2015/10/rotate-copies.gif">
 <meta property="og:image" content="http://cdn2.raywenderlich.com/wp-content/uploads/2015/10/watchkit-ring.gif">
-<meta property="og:updated_time" content="2016-02-05T14:10:54.000Z">
+<meta property="og:image" content="http://cdn2.raywenderlich.com/wp-content/uploads/2015/10/circle-vector-points.png">
+<meta property="og:image" content="http://cdn1.raywenderlich.com/wp-content/uploads/2015/10/vector-modes.png">
+<meta property="og:image" content="http://cdn2.raywenderlich.com/wp-content/uploads/2015/10/bezier.png">
+<meta property="og:image" content="http://cdn1.raywenderlich.com/wp-content/uploads/2015/10/bezier-curve.png">
+<meta property="og:image" content="http://cdn1.raywenderlich.com/wp-content/uploads/2015/10/map-marker.gif">
+<meta property="og:image" content="http://cdn4.raywenderlich.com/wp-content/uploads/2015/10/rw-logo-corners.gif">
+<meta property="og:image" content="http://cdn3.raywenderlich.com/wp-content/uploads/2015/10/rw-logo-disconnected.gif">
+<meta property="og:image" content="http://cdn1.raywenderlich.com/wp-content/uploads/2015/10/cloud.gif">
+<meta property="og:updated_time" content="2016-02-06T16:34:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="给iOS开发者的Sketch入门教程">
 <meta name="twitter:description" content="注意：这是一篇译文，如果你够装逼，完全可以浏览原文：Sketch Tutorial for iOS Developers如需转载，请注明出处。谢谢！！！转载地址：http://www.rockerhx.com/2016/02/02/2016-02-02-Sketch-Tutorial-for-iOS-Developers/
@@ -42,6 +51,7 @@
   
   <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
+
 <body>
   <div id="container">
     <div class="left-col">
@@ -87,10 +97,10 @@
 					<div class="tips-arrow"></div>
 					<ul class="tips-inner">
 						<li>菜单</li>
-						<li>标签</li>
+						<li>標籤</li>
 						
 						
-						<li>关于我</li>
+						<li>關於</li>
 						
 					</ul>
 				</div>
@@ -147,6 +157,7 @@
 		</div>
 	</header>				
 </div>
+
     </div>
     <div class="mid-col">
       <nav id="mobile-nav">
@@ -157,7 +168,9 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
+			
 				<img lazy-src="http://tp1.sinaimg.cn/1549567960/180/40056410546/1" class="js-avatar">
+			
 			</div>
 			<hgroup>
 			  <h1 class="header-author">Andy矢倉</h1>
@@ -193,6 +206,7 @@
 		</header>				
 	</div>
 </nav>
+
       <div class="body-wrap"><article id="post-2016-02-02-Sketch-Tutorial-for-iOS-Developers" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -357,6 +371,64 @@
 <blockquote>
 <p>小提示：你可以在使用剪刀剪断矢量路径之前用编辑功能拖动任意路径。</p>
 </blockquote>
+<h2 id="模式和操作棒_-_Modes_and_Handles">模式和操作棒 - Modes and Handles</h2><p>Sketch使用四个向量点来绘制圆。你可以画一个圆试试，然后单击工具栏中的<code>编辑Edit</code>看到这些向量点。<br>可以你会怀疑，一个长方形也有四个矢量点。 这特么到底是怎么回事？其实两者之间的区别就在于圆使用的是<code>贝塞尔曲线 - Bezier Curves</code>。<br><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2015/10/circle-vector-points.png" alt=""></p>
+<p>简单的说，<code>贝塞尔曲线 - Bezier Curves</code>就是是可以通过<code>控制点</code>弯曲的曲线线条。Sketch称这些控制点叫<code>操作棒 - handles</code>。每个向量点附带有控制每边弧度的两个操作棒。这意味着线的弯曲程度是通过操作棒的各个控制端做决定。听起来比较复杂，但是这里我们需要太深入了解，在Sketch中，您只需拖动操作棒，直到曲线变成你想要的样子就可以了。<br>Sketch方便的定义了基于在需要操作的对象上相对位置的不同的四种模式。<br><img src="http://cdn1.raywenderlich.com/wp-content/uploads/2015/10/vector-modes.png" alt=""></p>
+<ul>
+<li>直线模式 - Straight：这个模式没有操作棒，意味着也没有曲线变化，那当然也就是直线了。</li>
+<li>对称模式 - Mirrored：操作棒具有相同的长度，并形成一条直线，像飞机的机翼，操作棒是相互对称的。所以使用这个模式创建的就是对称曲线。</li>
+<li>不对称模式 - Asymmetric：操作棒任是一条直线，但它们可以有不同的长度。</li>
+<li>不连续模式 - Disconnected：两个操作棒相互独立，既不对称，长度也不相同。</li>
+</ul>
+<p>所以前两种模式都是对称形式，只不过一个是直线，一个是曲线。后两种模式是非对称形式，方便创造任意曲线。<br>实际使用中，创建曲线so easy，只需点击矢量点再选择<code>不连续模式 - Disconnected</code>即可。然后你就可以随便玩了，只要不会让曲线看起来断开就行。</p>
+<p>在实践中，使曲线是非常简单的。在矢量点只需双击，然后点击断开。然后你像电视天线的兔耳每个把手futz直到曲线看起来正确。<br>要了解更多关于模式和操作棒，这篇<a href="https://medium.com/sketch-app/mastering-the-bezier-curve-in-sketch-4da8fdf0dbbb" target="_blank" rel="external"><code>文章</code></a>可以参考。</p>
+<h2 id="贝塞尔曲线理论_-_Bezier_Curve_Theory">贝塞尔曲线理论 - Bezier Curve Theory</h2><p>其实你并不真的需要知道贝塞尔曲线背后的数学才能使用矢量工具 - 但是我偏不！ ：] 这里我有一个非数学的比喻，可以帮助了解计算机是怎么把这个东西画到屏幕上的。<br>这里原作者使用了不恰当的棒球比赛模型来来举例，里面没有裁判，我也不太了解棒球规则，就不瞎逼逼了，按照我的理解来说。</p>
+<ul>
+<li>1.绿色boy要直接冲回老家全垒打。</li>
+<li>2.蓝色boy去当然要截断，冲向绿色boy，由于绿色boy是移动的，所以蓝色boy的走位就是曲线运动。</li>
+<li>3.然而下路的红色boy心急比较重，不能眼看着绿色boy被干，当然要去KO蓝色boy，所以红色boy的走位也很风骚，也是曲线。<br><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2015/10/bezier.png" alt=""></li>
+</ul>
+<p>本垒和红色boy的位置代表矢量点，绿色和蓝色boy的位置就是操作棒。这样红色boy的运动轨迹就是<code>贝塞尔曲线</code>。<br><img src="http://cdn1.raywenderlich.com/wp-content/uploads/2015/10/bezier-curve.png" alt=""></p>
+<p>不知道这么说你们有明白了没有，如果还没明白，这里有个<a href="https://www.jasondavies.com/animated-bezier/" target="_blank" rel="external"><code>可视化工具</code></a>，自行解决了，贝塞尔说起来没完没了。</p>
+<h2 id="矢量操作棒上手">矢量操作棒上手</h2><p>接下来我们动手创建一个地图标记的图标：</p>
+<ul>
+<li>1.先在画布上拉一个圆。</li>
+<li>2.边框<code>Border</code>设置为<code>15</code>。</li>
+<li>3.进入编辑状态（顶部工具条的<code>Edit</code>），选择底部的矢量点。</li>
+<li>4.把操作模式从<code>对称模式 - Mirrored</code>改为<code>直线模式 - Straight</code>。</li>
+<li>5.把底部的向量点向下拖动。</li>
+<li>6.拖动<code>边角 - Corners</code>滑块的值到<code>35</code>（这里根据你圆的半径自行更改，效果一样就行）。<br><img src="http://cdn1.raywenderlich.com/wp-content/uploads/2015/10/map-marker.gif" alt=""></li>
+</ul>
+<p>所谓的地图标记就和上面示意图一样，点和圈之间的关系。后面的教程会对地图标记做更详细的介绍。</p>
+<h2 id="创建自定义图标">创建自定义图标</h2><p>我们来搞个Logo，这里只是用简单的铅笔工具来画线，然后拿矢量工具来描边。<br>接下来我们就搞一个<code>Ray Wenderlich</code>的Logo耍耍。</p>
+<ul>
+<li>1.<a href="http://i1.wp.com/www.raywenderlich.com/wp-content/themes/raywenderlich/images/global/rw-logo_250.png" target="_blank" rel="external"><code>这个</code></a>是Logo的低像素版本。</li>
+<li>2.把这张Logo扔进Sketch。</li>
+<li>3.选中图片，在右侧的属性编辑栏把<code>不透明 - Opacity</code>属性改为<code>20%</code>，方便描边。</li>
+<li>4.使用快捷键<code>Command-Shift-L</code>把图层锁定，防止你不小心拖动了，锁定之后图层名称旁边会有小锁的图标。</li>
+<li>5.快捷键<code>V</code>激活适量工具。</li>
+<li>6.点击Logo里图形的每个顶点，半弧形的不用点，直接回到最开始的点来闭合矢量路径。</li>
+<li>7.在图像路径上双击即可进入编辑状态。</li>
+<li>8.重新定位没有和图形顶点重合的矢量点，我们要的就是完美（图太小了别忘了放大后再定位）。<br><img src="http://cdn4.raywenderlich.com/wp-content/uploads/2015/10/rw-logo-corners.gif" alt=""></li>
+</ul>
+<p>上述步骤搞完了我们现在可以开始搞刚从忽略的弧形了。这里我们将对刚才学到的模式进行活学活用。</p>
+<ul>
+<li>1.<code>双击</code>起始点，模式会由<code>直线模式 - Straight</code>改为<code>对称模式 - Mirrored</code>。</li>
+<li>2.但是我们不是使用这个模式，切换到<code>不连续模式 - Disconnected</code>。</li>
+<li>3.拉着右边的操作棒变换弧形。</li>
+<li>4.拉着左边的操作棒和第二个矢量点重合，以免第一条直线变形。</li>
+<li>5.如果第一个矢量点右边的操作棒不能完美的画出Logo对应的弧线，可以开启Logo里弧形另外一边的点，也就是倒数第二个点。</li>
+<li>6.操作比作类似第一个矢量点的步骤，这里的目的只要把弧形调整完美即可。<br><img src="http://cdn3.raywenderlich.com/wp-content/uploads/2015/10/rw-logo-disconnected.gif" alt=""></li>
+</ul>
+<p>这里运气比较好，RW的Logo只有一条弧线，以此类推，你可以使用更多的点来描出更多复杂的曲线。有兴趣可以去下载<code>Swift</code>的Logo来临摹。过程中可以通过使用快捷键<code>Tab</code>来快速切换每个矢量点。</p>
+<h2 id="结合形状">结合形状</h2><p>想必大家小时候都玩过七巧板，我们除了通过矢量工具，还可以通过使用基本图形的结合来创建独特的形状。<br>在编程中，有运算逻辑<code>AND</code>，<code>OR</code>和<code>XOR</code>，Sketch中也有类似的表达，但是叫法不同，分为<code>融合 - Union</code>，<code>相差 - Subtract</code>，<code>相交 - Intersect</code>，<code>差异 - Difference</code>。</p>
+<h2 id="融合_-_Union">融合 - Union</h2><p><code>融合 - Union</code>就是就是两个图形加起来，使用之前的药丸和圆弄个云出来耍耍。</p>
+<ul>
+<li>1.使用矩形创建一个小药丸。</li>
+<li>2.创建一个圆。</li>
+<li>3.移动圆，使其和药丸重合。</li>
+<li>4.选中两个图形，点击<code>融合 - Union</code>按钮使其融合成一个图形。<br><img src="http://cdn1.raywenderlich.com/wp-content/uploads/2015/10/cloud.gif" alt=""></li>
+</ul>
+<p>这里是不是很奇怪，两个图形的边框直接就融合到一起了，这就是Sketch的神奇之处。</p>
 <p>未完待续，明天接着翻译。。。</p>
 
       
@@ -379,25 +451,26 @@
 </article>
 
 
-<div class="share">
+<div class="share_jia">
 	<!-- JiaThis Button BEGIN -->
 	<div class="jiathis_style">
-	  	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-	  	<span id="busuanzi_value_page_pv" class="jiathis_txt">
-		  	<i class="fa fa-spinner fa-spin jiathis_txt"></i>
-	  	</span>
-		<span class="jiathis_txt">Hits&nbsp&nbsp&nbsp</span>
-		<span class="jiathis_txt">分享到：</span>
-		<a class="jiathis_button_tsina"></a>
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
 		<a class="jiathis_button_cqq"></a>
 		<a class="jiathis_button_douban"></a>
 		<a class="jiathis_button_weixin"></a>
 		<a class="jiathis_button_tumblr"></a>
-		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
 	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
 	<!-- JiaThis Button END -->
 </div>
+
+
+
 
 
 
