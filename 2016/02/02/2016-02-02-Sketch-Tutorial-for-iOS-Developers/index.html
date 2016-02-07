@@ -37,7 +37,8 @@
 <meta property="og:image" content="http://cdn4.raywenderlich.com/wp-content/uploads/2015/10/rw-logo-corners.gif">
 <meta property="og:image" content="http://cdn3.raywenderlich.com/wp-content/uploads/2015/10/rw-logo-disconnected.gif">
 <meta property="og:image" content="http://cdn1.raywenderlich.com/wp-content/uploads/2015/10/cloud.gif">
-<meta property="og:updated_time" content="2016-02-06T16:34:39.000Z">
+<meta property="og:image" content="http://cdn4.raywenderlich.com/wp-content/uploads/2015/10/map-marker-hole.gif">
+<meta property="og:updated_time" content="2016-02-07T18:36:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="给iOS开发者的Sketch入门教程">
 <meta name="twitter:description" content="注意：这是一篇译文，如果你够装逼，完全可以浏览原文：Sketch Tutorial for iOS Developers如需转载，请注明出处。谢谢！！！转载地址：http://www.rockerhx.com/2016/02/02/2016-02-02-Sketch-Tutorial-for-iOS-Developers/
@@ -429,6 +430,23 @@
 <li>4.选中两个图形，点击<code>融合 - Union</code>按钮使其融合成一个图形。<br><img src="http://cdn1.raywenderlich.com/wp-content/uploads/2015/10/cloud.gif" alt=""></li>
 </ul>
 <p>这里是不是很奇怪，两个图形的边框直接就融合到一起了，这就是Sketch的神奇之处。</p>
+<h2 id="相差_-_Subtract">相差 - Subtract</h2><p>相差是两个图形重合在一起，一个被另一个包含，所以大集合除去小集合还会有多余的，多余的就是相差的部分，如果不变理解，可以想象为数学减法，结果就是相减之后的部分。<br>虽然之前的地图标记图标看起来已经可以了，但是我们所谓社会主义的接班人，怎么可以这么轻易就完了呢，不行，还得在标记上戳个洞看起来才爽。那就利用刚才介绍的相差的知识这么干：</p>
+<ul>
+<li>1.创建一个地图标记图标，这次不需要边框，直接取消掉。</li>
+<li>2.创建一个小圆圈，并拖入到标记里面去。</li>
+<li>3.操作左侧的图层列表，把圆圈拖动到地图标记图层重叠到一个图层下。</li>
+<li>4.展开合并生成的新图层。</li>
+<li>5.确保圆圈图册在地图标记图册上面。</li>
+<li>6.这是图层列表上地图标记图册右侧会有一个可弹出菜单。</li>
+<li>7.菜单中选择<code>相差 - Subtract</code>。</li>
+<li>8.选中圆圈图层，使用小箭头微调位置即可。<br><img src="http://cdn4.raywenderlich.com/wp-content/uploads/2015/10/map-marker-hole.gif" alt=""></li>
+</ul>
+<p>这里总结一下知识点：</p>
+<ul>
+<li>在图层列表里可以拖拽合并生成新的图层</li>
+<li>当你合并图层的时候，你基本不用操心，Sketch会帮你搞定你想要的。</li>
+<li>对于这些过程，你只用保证孔在最前既可以，如果图形小时，重新排列图层位置顺序即可。</li>
+</ul>
 <p>未完待续，明天接着翻译。。。</p>
 
       
