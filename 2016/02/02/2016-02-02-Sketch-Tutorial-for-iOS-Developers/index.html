@@ -38,7 +38,11 @@
 <meta property="og:image" content="http://cdn3.raywenderlich.com/wp-content/uploads/2015/10/rw-logo-disconnected.gif">
 <meta property="og:image" content="http://cdn1.raywenderlich.com/wp-content/uploads/2015/10/cloud.gif">
 <meta property="og:image" content="http://cdn4.raywenderlich.com/wp-content/uploads/2015/10/map-marker-hole.gif">
-<meta property="og:updated_time" content="2016-02-07T18:36:02.000Z">
+<meta property="og:image" content="http://cdn5.raywenderlich.com/wp-content/uploads/2015/10/finished-artboard.png">
+<meta property="og:image" content="http://cdn4.raywenderlich.com/wp-content/uploads/2015/10/fill-vs-outline.png">
+<meta property="og:image" content="http://cdn3.raywenderlich.com/wp-content/uploads/2015/10/calendar-fill.gif">
+<meta property="og:image" content="http://cdn4.raywenderlich.com/wp-content/uploads/2015/10/calendar-outline.gif">
+<meta property="og:updated_time" content="2016-02-08T14:16:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="给iOS开发者的Sketch入门教程">
 <meta name="twitter:description" content="注意：这是一篇译文，如果你够装逼，完全可以浏览原文：Sketch Tutorial for iOS Developers如需转载，请注明出处。谢谢！！！转载地址：http://www.rockerhx.com/2016/02/02/2016-02-02-Sketch-Tutorial-for-iOS-Developers/
@@ -447,6 +451,27 @@
 <li>当你合并图层的时候，你基本不用操心，Sketch会帮你搞定你想要的。</li>
 <li>对于这些过程，你只用保证孔在最前既可以，如果图形小时，重新排列图层位置顺序即可。</li>
 </ul>
+<h2 id="填充、轮廓">填充、轮廓</h2><p>这个节点，本教程为你准备了必须的<a href="http://cdn5.raywenderlich.com/wp-content/uploads/2015/10/RWDevConArtboards.zip" target="_blank" rel="external"><code>素材文件</code></a>。打开之后应该长这样：<br><img src="http://cdn5.raywenderlich.com/wp-content/uploads/2015/10/finished-artboard.png" alt=""></p>
+<p>这套包含了单个示例和矢量图标的素材方便你随时查阅，这些素材都是在教程前后使用的。</p>
+<p><code>Tab Bar</code>的图标颜色变化是基于选中状态，但是一些图标有太多的空间，所以颜色变化太微妙。在这种情况下，<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/BarIcons.html" target="_blank" rel="external"><code>苹果的人机界面指南</code></a>推荐使用单独填充版本作为<code>selectedImage</code>。<code>RWDevCon</code>应用的样本都有各自的<code>Tab Bar</code>独立版本。<br><img src="http://cdn4.raywenderlich.com/wp-content/uploads/2015/10/fill-vs-outline.png" alt=""></p>
+<p>在刚才下载的素描文件里，有一个被称为日历入门的画板，日历图标其中包含几个几何图形合并的而来的图标。就是一些简单的几何图形拼凑而已，前面已经很好的演示过来。<br>下面我们来创建日历图标：</p>
+<ul>
+<li>1.打开刚才的Sketch文件，在左侧图层列表展开<code>日历入门 - Calendar Starter</code>画板。</li>
+<li>2.选中<code>日历主体 - Calendar Body</code>部分和<code>分割线 - Separator</code>部分。</li>
+<li>3.使用<code>相差 - Subtract</code>功能。</li>
+<li>4.按住<code>Shift</code>再选中<code>Right Hole</code>图层，还是使用<code>相差 - Subtract</code>功能。</li>
+<li>5.同理，再把<code>Left Hole</code>图层也重复上述步骤。</li>
+<li>6.接着按住<code>Shift</code>再选中<code>Right Ring</code>图层使用<code>融合 - Union</code>功能。</li>
+<li>7.同理，<code>Left Ring</code>图层也这么照做。<br><img src="http://cdn3.raywenderlich.com/wp-content/uploads/2015/10/calendar-fill.gif" alt=""></li>
+</ul>
+<p>通过相差和融合操作，现在的日历入门的画板上就只剩一个包含了刚才所有图层的单图层了，一切都看着泛绿。如果按照上述步骤操作之后和效果图有什么出入，可以参照画板下方的实例对照。<br>现在，来搞一个填充的图标。是时候重新调整一下，让其看起来像示例版本了。</p>
+<ul>
+<li>1.在画布上找到<code>日历填充 - Calendar Fill</code>。</li>
+<li>2.在图层列表里展开<code>日历填充 - Calendar Fill</code>。</li>
+<li>3.再展开<code>日历主体 - Calendar Body</code>图层，并选择<code>分割线 - Separator</code>图层。</li>
+<li>4.把<code>分割线 - Separator</code>图层<code>高度</code>设置为<code>35</code>即可。<br><img src="http://cdn4.raywenderlich.com/wp-content/uploads/2015/10/calendar-outline.gif" alt=""></li>
+</ul>
+<p>调整分割线高度的时候，Sketch不会有明确的高度指示，所以你可以选择直接输入数值。</p>
 <p>未完待续，明天接着翻译。。。</p>
 
       
