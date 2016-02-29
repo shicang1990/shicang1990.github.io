@@ -111,7 +111,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/AVAudioPlayer/" style="font-size: 10px;">AVAudioPlayer</a> <a href="/tags/AVPlayer/" style="font-size: 10px;">AVPlayer</a> <a href="/tags/Alignment/" style="font-size: 10px;">Alignment</a> <a href="/tags/AutoLayout/" style="font-size: 16.67px;">AutoLayout</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Homebrew/" style="font-size: 10px;">Homebrew</a> <a href="/tags/MPMoviePlayerController/" style="font-size: 10px;">MPMoviePlayerController</a> <a href="/tags/MPMusicPlayerController/" style="font-size: 10px;">MPMusicPlayerController</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/REFrostedViewController/" style="font-size: 10px;">REFrostedViewController</a> <a href="/tags/Sketch/" style="font-size: 10px;">Sketch</a> <a href="/tags/StoryBoard/" style="font-size: 10px;">StoryBoard</a> <a href="/tags/Term/" style="font-size: 10px;">Term</a> <a href="/tags/Theme/" style="font-size: 10px;">Theme</a> <a href="/tags/UIColor/" style="font-size: 10px;">UIColor</a> <a href="/tags/UIImage/" style="font-size: 10px;">UIImage</a> <a href="/tags/UITableView/" style="font-size: 10px;">UITableView</a> <a href="/tags/UITextView/" style="font-size: 10px;">UITextView</a> <a href="/tags/Xcode/" style="font-size: 16.67px;">Xcode</a> <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/iOS/" style="font-size: 16.67px;">iOS</a> <a href="/tags/iOS7/" style="font-size: 20px;">iOS7</a> <a href="/tags/iOS8/" style="font-size: 13.33px;">iOS8</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a>
+						<a href="/tags/AVAudioPlayer/" style="font-size: 10px;">AVAudioPlayer</a> <a href="/tags/AVPlayer/" style="font-size: 10px;">AVPlayer</a> <a href="/tags/Alignment/" style="font-size: 10px;">Alignment</a> <a href="/tags/AutoLayout/" style="font-size: 16.67px;">AutoLayout</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Homebrew/" style="font-size: 10px;">Homebrew</a> <a href="/tags/MPMoviePlayerController/" style="font-size: 10px;">MPMoviePlayerController</a> <a href="/tags/MPMusicPlayerController/" style="font-size: 10px;">MPMusicPlayerController</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/REFrostedViewController/" style="font-size: 10px;">REFrostedViewController</a> <a href="/tags/Sketch/" style="font-size: 10px;">Sketch</a> <a href="/tags/StoryBoard/" style="font-size: 10px;">StoryBoard</a> <a href="/tags/Term/" style="font-size: 10px;">Term</a> <a href="/tags/Theme/" style="font-size: 10px;">Theme</a> <a href="/tags/UIColor/" style="font-size: 10px;">UIColor</a> <a href="/tags/UIImage/" style="font-size: 10px;">UIImage</a> <a href="/tags/UITableView/" style="font-size: 10px;">UITableView</a> <a href="/tags/UITextView/" style="font-size: 10px;">UITextView</a> <a href="/tags/Xcode/" style="font-size: 16.67px;">Xcode</a> <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/iOS/" style="font-size: 16.67px;">iOS</a> <a href="/tags/iOS7/" style="font-size: 20px;">iOS7</a> <a href="/tags/iOS8/" style="font-size: 13.33px;">iOS8</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a> <a href="/tags/流水账/" style="font-size: 10px;">流水账</a>
 					</div>
 				</section>
 				
@@ -180,6 +180,76 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-2015-01-4-Dynamic-TableViewCell-Height-By-Auto Layout" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/01/04/2015-01-4-Dynamic-TableViewCell-Height-By-Auto Layout/" class="article-date">
+  	<time datetime="2015-01-04T12:42:30.000Z" itemprop="datePublished">1月 4 2015</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/04/2015-01-4-Dynamic-TableViewCell-Height-By-Auto Layout/">使用AutoLayout来动态计算UITableViewCell的高度</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><br></br><br><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2014/05/RWImageCell-Final-Pins.jpg" alt=""></p>
+<h2 id="Learn_how_to_create_dynamic_height_table_view_cells_using_auto_layout">Learn how to create dynamic height table view cells using auto layout</h2><p>引文原版：<a href="http://www.raywenderlich.com/73602/dynamic-table-view-cell-height-auto-layout">http://www.raywenderlich.com/73602/dynamic-table-view-cell-height-auto-layout</a><br>转载请注明出处：<a href="http://www.rockerhx.com/2015/01/04/2015-01-4-Dynamic-TableViewCell-Height-By-Auto%20Layout/">http://www.rockerhx.com/2015/01/04/2015-01-4-Dynamic-TableViewCell-Height-By-Auto%20Layout/</a></p>
+<p><strong><em>11/23/2014: 已经更新兼容iOS7，iOS8和Xcode6.1</em></strong></p>
+<blockquote>
+<p>如果你在过去想创建一个自定义的表视图来完成动态适配表视图单元格的高度，你必须写很多的计算代码。你必须计算每一个label，image view，text field，以及其他一切单元格内手动创建的控件高度。<br>坦率地说，这是非常艰巨的，也是流水账，而且还容易出错。<br>在这个表视图单元格动态高度教程中，您将学习如何创建自定义单元格，并动态调整它们的大小，以适应它们的内容。如果你之前已经做过自定义单元格的工作，你可能在想，“这将需要大量的适配计算代码。”<br>但是，如果我们告诉你，你一点也不用写任何适配计算代码呢？<br>你可能会说“谬论！”。但是，你的确可以做到！<br>通过你在本教程结束的时候，你就会知道如何利用自动布局来搞定你的几百行代码。</p>
+</blockquote>
+<p><strong><em>注：本教程适用于iOS7及以上。没有使用只有iOS8才支持的自动计算tableview cell的api。</em></strong></p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AutoLayout/">AutoLayout</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS7/">iOS7</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS8/">iOS8</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/iOS/">iOS</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/01/04/2015-01-4-Dynamic-TableViewCell-Height-By-Auto Layout/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-2014-03-04-Storyboard-Party2" class="article article-type-post" itemscope itemprop="blogPost">
   
