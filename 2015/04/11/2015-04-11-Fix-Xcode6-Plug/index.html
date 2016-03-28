@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Andy矢倉">
 <meta property="og:description" content="在终端里输入以下代码获取到UUID：1defaults read /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID
 得到UUID以后运行：1find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxd">
-<meta property="og:updated_time" content="2016-03-18T15:19:02.000Z">
+<meta property="og:updated_time" content="2016-03-28T13:36:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="修复因更新Xcode7插件不能使用问题">
 <meta name="twitter:description" content="在终端里输入以下代码获取到UUID：1defaults read /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID
@@ -227,13 +227,7 @@
         <p>在终端里输入以下代码获取到UUID：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults read /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID</span><br></pre></td></tr></table></figure></p>
 <p>得到UUID以后运行：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth 3 | xargs -I&#123;&#125; defaults write &#123;&#125; DVTPlugInCompatibilityUUIDs -array-add &#123;UUID&#125;</span><br></pre></td></tr></table></figure></p>
 <p>懒癌患者可以在终端输入以下命令即可:<br><a id="more"></a></p>
-<p>Xcode 6.2:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth 3 | xargs -I&#123;&#125; defaults write &#123;&#125; DVTPlugInCompatibilityUUIDs -array-add A16FF353-8441-459E-A50C-B071F53F51B7</span><br></pre></td></tr></table></figure></p>
-<p>Xcode 6.3:<br>(Xcode 6.3.1同样适用)</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth 3 | xargs -I&#123;&#125; defaults write &#123;&#125; DVTPlugInCompatibilityUUIDs -array-add 9F75337B-21B4-4ADC-B558-F9CADF7073A7</span><br></pre></td></tr></table></figure>
-<p>Xcode 6.3.2:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth 3 | xargs -I&#123;&#125; defaults write &#123;&#125; DVTPlugInCompatibilityUUIDs -array-add E969541F-E6F9-4D25-8158-72DC3545A6C6</span><br></pre></td></tr></table></figure>
-<p>Xcode 6.4:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth 3 | xargs -I&#123;&#125; defaults write &#123;&#125; DVTPlugInCompatibilityUUIDs -array-add 7FDF5C7A-131F-4ABB-9EDC-8C5F8F0B8A90</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth 3 | xargs -I&#123;&#125; defaults write &#123;&#125; DVTPlugInCompatibilityUUIDs -array-add `defaults read /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID`</span><br></pre></td></tr></table></figure>
 <p>终极懒癌患者可以用一下脚本：<a href="https://github.com/cikelengfeng/RPAXU" target="_blank" rel="external">https://github.com/cikelengfeng/RPAXU</a></p>
 <p>如果有手残患者不小心在Xcode启动的适合Skip了插件，可以用如下命令先查看：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults read com.apple.dt.Xcode DVTPlugInManagerNonApplePlugIns-Xcode-&#123;Current Xcode Version&#125;</span><br></pre></td></tr></table></figure></p>
 <p>然后用暴力的办法，删掉它，重新Load一下就稳妥了，命令如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults delete com.apple.dt.Xcode DVTPlugInManagerNonApplePlugIns-Xcode-&#123;Current Xcode Version&#125;</span><br></pre></td></tr></table></figure></p>
