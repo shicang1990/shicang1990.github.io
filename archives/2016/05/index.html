@@ -209,9 +209,6 @@
       
         <blockquote>
 <p><strong>注意：</strong>本文的<code>UICollectionView</code>自定义是采用继承<code>UICollectionViewLayout</code>类的方式来自定义布局，而非系统默认使用<code>UICollectionViewFlowLayout</code>类来修改参数的方式。</p>
-</blockquote>
-<p>[TOC]</p>
-<blockquote>
 <p><strong>【必须】定制UICollectionViewLayout必须覆盖的方法且执行顺序如下：</strong><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)prepareLayout;</span><br><span class="line">- (<span class="built_in">CGSize</span>)collectionViewContentSize;</span><br><span class="line">- (<span class="built_in">NSArray</span>&lt;<span class="built_in">UICollectionViewLayoutAttributes</span> *&gt; *)layoutAttributesForElementsInRect:(<span class="built_in">CGRect</span>)rect;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <ul>

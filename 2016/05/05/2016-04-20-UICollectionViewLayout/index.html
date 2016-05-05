@@ -7,27 +7,18 @@
   <title>UICollectionView 布局自定义进阶 | Andy矢倉</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="注意：本文的UICollectionView自定义是采用继承UICollectionViewLayout类的方式来自定义布局，而非系统默认使用UICollectionViewFlowLayout类来修改参数的方式。
-
-[TOC]
-
-【必须】定制UICollectionViewLayout必须覆盖的方法且执行顺序如下：123- (void)prepareLayout;- (CGSize)collec">
+【必须】定制UICollectionViewLayout必须覆盖的方法且执行顺序如下：123- (void)prepareLayout;- (CGSize)collectionView">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UICollectionView 布局自定义进阶">
 <meta property="og:url" content="http://shicang1990.github.io/2016/05/05/2016-04-20-UICollectionViewLayout/index.html">
 <meta property="og:site_name" content="Andy矢倉">
 <meta property="og:description" content="注意：本文的UICollectionView自定义是采用继承UICollectionViewLayout类的方式来自定义布局，而非系统默认使用UICollectionViewFlowLayout类来修改参数的方式。
-
-[TOC]
-
-【必须】定制UICollectionViewLayout必须覆盖的方法且执行顺序如下：123- (void)prepareLayout;- (CGSize)collec">
-<meta property="og:updated_time" content="2016-05-05T04:53:44.000Z">
+【必须】定制UICollectionViewLayout必须覆盖的方法且执行顺序如下：123- (void)prepareLayout;- (CGSize)collectionView">
+<meta property="og:updated_time" content="2016-05-05T05:02:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UICollectionView 布局自定义进阶">
 <meta name="twitter:description" content="注意：本文的UICollectionView自定义是采用继承UICollectionViewLayout类的方式来自定义布局，而非系统默认使用UICollectionViewFlowLayout类来修改参数的方式。
-
-[TOC]
-
-【必须】定制UICollectionViewLayout必须覆盖的方法且执行顺序如下：123- (void)prepareLayout;- (CGSize)collec">
+【必须】定制UICollectionViewLayout必须覆盖的方法且执行顺序如下：123- (void)prepareLayout;- (CGSize)collectionView">
   
     <link rel="alternative" href="/atom.xml" title="Andy矢倉" type="application/atom+xml">
   
@@ -235,9 +226,6 @@
       
         <blockquote>
 <p><strong>注意：</strong>本文的<code>UICollectionView</code>自定义是采用继承<code>UICollectionViewLayout</code>类的方式来自定义布局，而非系统默认使用<code>UICollectionViewFlowLayout</code>类来修改参数的方式。</p>
-</blockquote>
-<p>[TOC]</p>
-<blockquote>
 <p><strong>【必须】定制UICollectionViewLayout必须覆盖的方法且执行顺序如下：</strong><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)prepareLayout;</span><br><span class="line">- (<span class="built_in">CGSize</span>)collectionViewContentSize;</span><br><span class="line">- (<span class="built_in">NSArray</span>&lt;<span class="built_in">UICollectionViewLayoutAttributes</span> *&gt; *)layoutAttributesForElementsInRect:(<span class="built_in">CGRect</span>)rect;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <ul>
