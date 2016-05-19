@@ -4,21 +4,28 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Xcode7下使用git提交报错 | Andy矢倉</title>
+  <title>2016-05-19-UIView-transitionFromView-Error | Andy矢倉</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近升级了Xcode7，一打开老工程就各种报警告，由于我洁癖癌晚期，一定要从本质上消灭掉警告心里才舒坦，几个小警告，秒秒钟搞定，最后把工程配置文件也升级了，run起来没有警告那叫一个爽啊，舒坦！！！
-然后，过了几天，commit的时候出现这逼提示：1The working copy &amp;#8220;***&amp;#8221; failed to commit files.&amp;#10;&amp;#10;*** Ple">
+  <meta name="description" content="项目开发需要实现一个简单的效果，一个音乐专辑，需要实现定时反复3D旋转的效果，这个效果很简单，利用iOS自带的动画接口对应的Flip动画即可，效果如下：
+
+开发的时候用Xib管理专辑两个子View，在使用UIView快速动画接口1+ (void)transitionFromView:(UIView *)fromView toView:(UIView *)toView duration:(NSTim">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Xcode7下使用git提交报错">
-<meta property="og:url" content="http://shicang1990.github.io/2015/09/07/2015-09-23-Xocde7-Git-Commit-Issue/index.html">
+<meta property="og:title" content="2016-05-19-UIView-transitionFromView-Error">
+<meta property="og:url" content="http://shicang1990.github.io/2016/05/19/2016-05-19-UIView-transitionFromView-Error/index.html">
 <meta property="og:site_name" content="Andy矢倉">
-<meta property="og:description" content="最近升级了Xcode7，一打开老工程就各种报警告，由于我洁癖癌晚期，一定要从本质上消灭掉警告心里才舒坦，几个小警告，秒秒钟搞定，最后把工程配置文件也升级了，run起来没有警告那叫一个爽啊，舒坦！！！
-然后，过了几天，commit的时候出现这逼提示：1The working copy &amp;#8220;***&amp;#8221; failed to commit files.&amp;#10;&amp;#10;*** Ple">
-<meta property="og:updated_time" content="2016-03-18T15:19:23.000Z">
+<meta property="og:description" content="项目开发需要实现一个简单的效果，一个音乐专辑，需要实现定时反复3D旋转的效果，这个效果很简单，利用iOS自带的动画接口对应的Flip动画即可，效果如下：
+
+开发的时候用Xib管理专辑两个子View，在使用UIView快速动画接口1+ (void)transitionFromView:(UIView *)fromView toView:(UIView *)toView duration:(NSTim">
+<meta property="og:image" content="http://i2.buimg.com/5795db82ef5d79a9.gif">
+<meta property="og:image" content="http://i2.buimg.com/2dfa20a4a0c3d5ee.png">
+<meta property="og:image" content="http://i2.buimg.com/643551903b623527.png">
+<meta property="og:image" content="http://i2.buimg.com/d946274940d2c1e3.jpg">
+<meta property="og:updated_time" content="2016-05-19T16:19:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Xcode7下使用git提交报错">
-<meta name="twitter:description" content="最近升级了Xcode7，一打开老工程就各种报警告，由于我洁癖癌晚期，一定要从本质上消灭掉警告心里才舒坦，几个小警告，秒秒钟搞定，最后把工程配置文件也升级了，run起来没有警告那叫一个爽啊，舒坦！！！
-然后，过了几天，commit的时候出现这逼提示：1The working copy &amp;#8220;***&amp;#8221; failed to commit files.&amp;#10;&amp;#10;*** Ple">
+<meta name="twitter:title" content="2016-05-19-UIView-transitionFromView-Error">
+<meta name="twitter:description" content="项目开发需要实现一个简单的效果，一个音乐专辑，需要实现定时反复3D旋转的效果，这个效果很简单，利用iOS自带的动画接口对应的Flip动画即可，效果如下：
+
+开发的时候用Xib管理专辑两个子View，在使用UIView快速动画接口1+ (void)transitionFromView:(UIView *)fromView toView:(UIView *)toView duration:(NSTim">
   
     <link rel="alternative" href="/atom.xml" title="Andy矢倉" type="application/atom+xml">
   
@@ -183,11 +190,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-2015-09-23-Xocde7-Git-Commit-Issue" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2016-05-19-UIView-transitionFromView-Error" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/09/07/2015-09-23-Xocde7-Git-Commit-Issue/" class="article-date">
-  	<time datetime="2015-09-07T13:23:30.000Z" itemprop="datePublished">9月 7 2015</time>
+      <a href="/2016/05/19/2016-05-19-UIView-transitionFromView-Error/" class="article-date">
+  	<time datetime="2016-05-19T03:58:19.000Z" itemprop="datePublished">5月 19 2016</time>
 </a>
     </div>
   
@@ -200,7 +207,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Xcode7下使用git提交报错
+      2016-05-19-UIView-transitionFromView-Error
     </h1>
   
 
@@ -209,12 +216,12 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xcode/">Xcode</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Animation/">Animation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Layout/">Layout</a></li></ul>
 	</div>
 
         
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Issue/">Issue</a>
+	<a class="article-category-link" href="/categories/iOS/">iOS</a><a class="article-category-link" href="/categories/iOS/Tips/">Tips</a>
 	</div>
 
 
@@ -224,15 +231,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近升级了<code>Xcode7</code>，一打开老工程就各种报警告，由于我洁癖癌晚期，一定要从本质上消灭掉警告心里才舒坦，几个小警告，秒秒钟搞定，最后把工程配置文件也升级了，run起来没有警告那叫一个爽啊，舒坦！！！</p>
-<p>然后，过了几天，commit的时候出现这逼提示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The working copy &#8220;***&#8221; failed to commit files.&#10;&#10;*** Please tell me who you are.&#10;&#10;Run&#10;&#10;  git config --global user.email &#34;you@example.com&#34;&#10;  git config --global user.name &#34;Your Name&#34;&#10;&#10;to set your account&#39;s default identity.&#10;Omit --global to set the identity only in this repository.&#10;&#10;fatal: unable to auto-detect email address (got &#39;***@bogon.(none)&#39;)</span><br></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>对于战五渣的我来说，一般这种提示我都会先找我大<code>Google</code>，结果瞄了一眼，机智的我发现能看懂按照上述提示，那就按照提示跑一遍吧，结果是，跑了N遍还还是照提示不误，虽然很确定是<code>Xcode7</code>的问题，但是捉急的我还是用<code>Github</code>的客户端直接<code>commit</code>了。</p>
-<p>前面的直觉告诉我是Xcode7对于本地仓库上的问题。但是，这两天打开远程仓库提交也是同一个逼样，一下就把哥给激怒了，配置全局没鸟用，那就只能单独本地配置用户名和邮箱地址了。果断切换到<code>当前项目</code>工程目录下，执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd &#123;project_path&#125;/.git/</span><br></pre></td></tr></table></figure></p>
-<p>修改配置文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi config</span><br></pre></td></tr></table></figure></p>
-<p>添加如下字段：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[user]&#10;&#9;name = Your Name&#10;&#9;email = you@example.com</span><br></pre></td></tr></table></figure></p>
-<p>或者在工程根目录执行一下命令也是同样效果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --local user.name &#34;Your Name&#34;&#10;git config --local user.email &#34;you@example.com&#34;</span><br></pre></td></tr></table></figure></p>
-<p>不得不说，每次新版本都不让人省心，好了，打完收工。。。</p>
+        <blockquote>
+<p>项目开发需要实现一个简单的效果，一个音乐专辑，需要实现定时反复3D旋转的效果，这个效果很简单，利用iOS自带的动画接口对应的Flip动画即可，效果如下：<br><img src="http://i2.buimg.com/5795db82ef5d79a9.gif" alt=""></p>
+</blockquote>
+<p>开发的时候用<code>Xib</code>管理<code>专辑两个子View</code>，在使用<code>UIView</code>快速动画接口<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="keyword">void</span>)transitionFromView:(<span class="built_in">UIView</span> *)fromView toView:(<span class="built_in">UIView</span> *)toView duration:(<span class="built_in">NSTimeInterval</span>)duration options:(<span class="built_in">UIViewAnimationOptions</span>)options completion:(<span class="keyword">void</span> (^ __nullable)(<span class="built_in">BOOL</span> finished))completion;</span><br></pre></td></tr></table></figure></p>
+<p>和<code>UIViewAnimationOptionTransitionFlipFromLeft</code>搭配使用的时候出现第一个奇怪的问题：</p>
+<blockquote>
+<p>动画执行之后在使用<code>UIViewAnimationOptionTransitionFlipFromRight</code>反转翻转效果出现的情况就是翻转一般<code>View</code>消失了，经过调试后发现，因为是使用<code>Xib</code>管理，所以<code>Property</code>声明是<code>weak</code>，就像这样：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">weak</span>, <span class="keyword">nonatomic</span>) <span class="keyword">IBOutlet</span> <span class="built_in">UIView</span> *coverContainer;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>所以<code>fromView</code>对应的子视图被系统管理在动画执行之后就被释放掉了，导致动画反转<code>两次</code>之后正反两个<code>View</code>都消失了。</p>
+<p>既然是<code>被释放</code>的问题，那好解决，声明的时候把<code>weak</code>改成<code>strong</code>不就好了，代码如下：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) <span class="keyword">IBOutlet</span> <span class="built_in">UIView</span> *coverContainer;</span><br></pre></td></tr></table></figure></p>
+<p>紧接接着出现更踏马奇怪的问题：</p>
+<blockquote>
+<p>这下视图是没有消失，有图服务端没有裁剪图片，获取到的封面图片尺寸很大，翻转两次之后封面图片把整个屏幕都占满了<br>原始效果：<img src="http://i2.buimg.com/2dfa20a4a0c3d5ee.png" alt=""><br>实际效果：<img src="http://i2.buimg.com/643551903b623527.png" alt=""><br>这个问题首先第一考虑是不是因为<code>UIView</code>的快速动画接口导致<code>UIImageView</code>的<code>ContentMode</code>发生了改变，调试之后发现根本不是，所有能预想的结果都不符合预期，最后实在没办法只能出动神器<code>Reveal</code>，通过UI调试之后发现<code>fromView</code>和<code>toView</code>对应的视图和<code>SuperView</code>的约束被破坏了导致。</p>
+</blockquote>
+<p>找到问题所在是<code>约束</code>的原因，看可以使用原生代码或者是使用<code>Masonry</code>等第三方库在执行动画之前重建约束都行。<br>不过这里无意中发现<code>UIViewAnimationOptions</code>枚举里有一个奇怪的选项叫<code>UIViewAnimationOptionShowHideTransitionViews</code>，感觉好像有得玩，果断把<code>strong</code>替换会<code>weak</code>试了一下：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UIViewAnimationOptions</span> animationOptions = _front ? <span class="built_in">UIViewAnimationOptionTransitionFlipFromLeft</span> : <span class="built_in">UIViewAnimationOptionTransitionFlipFromRight</span>;</span><br><span class="line">[<span class="built_in">UIView</span> transitionFromView:(_front ? _coverContainer : _blurContainer)</span><br><span class="line">                    toView:(_front ? _blurContainer : _coverContainer)</span><br><span class="line">                  duration:<span class="number">1.0</span>f</span><br><span class="line">                   options:(animationOptions | <span class="built_in">UIViewAnimationOptionShowHideTransitionViews</span>)</span><br><span class="line">                completion:<span class="literal">nil</span>];</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://i2.buimg.com/d946274940d2c1e3.jpg" alt=""></p>
 
       
     </div>
@@ -242,18 +256,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/09/07/2015-09-07-UIAppearanceTutorial/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          UIAppearance教程：入门
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/04/11/2015-04-11-Fix-Xcode6-Plug/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">修复因更新Xcode7插件不能使用问题</div>
+    <a href="/2016/05/05/2016-04-20-UICollectionViewLayout/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">UICollectionView 布局自定义进阶</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -288,7 +293,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2015-09-23-Xocde7-Git-Commit-Issue" data-title="Xcode7下使用git提交报错" data-url="http://shicang1990.github.io/2015/09/07/2015-09-23-Xocde7-Git-Commit-Issue/"></div>
+	<div class="ds-thread" data-thread-key="2016-05-19-UIView-transitionFromView-Error" data-title="2016-05-19-UIView-transitionFromView-Error" data-url="http://shicang1990.github.io/2016/05/19/2016-05-19-UIView-transitionFromView-Error/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

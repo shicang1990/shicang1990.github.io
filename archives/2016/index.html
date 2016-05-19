@@ -111,7 +111,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/AVAudioPlayer/" style="font-size: 10px;">AVAudioPlayer</a> <a href="/tags/AVPlayer/" style="font-size: 10px;">AVPlayer</a> <a href="/tags/Alignment/" style="font-size: 10px;">Alignment</a> <a href="/tags/AutoLayout/" style="font-size: 16.67px;">AutoLayout</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Homebrew/" style="font-size: 10px;">Homebrew</a> <a href="/tags/Layout/" style="font-size: 10px;">Layout</a> <a href="/tags/MPMoviePlayerController/" style="font-size: 10px;">MPMoviePlayerController</a> <a href="/tags/MPMusicPlayerController/" style="font-size: 10px;">MPMusicPlayerController</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/REFrostedViewController/" style="font-size: 10px;">REFrostedViewController</a> <a href="/tags/Sketch/" style="font-size: 10px;">Sketch</a> <a href="/tags/StoryBoard/" style="font-size: 10px;">StoryBoard</a> <a href="/tags/Term/" style="font-size: 10px;">Term</a> <a href="/tags/Theme/" style="font-size: 10px;">Theme</a> <a href="/tags/UICollectionView/" style="font-size: 10px;">UICollectionView</a> <a href="/tags/UICollectionViewLayout/" style="font-size: 10px;">UICollectionViewLayout</a> <a href="/tags/UIColor/" style="font-size: 10px;">UIColor</a> <a href="/tags/UIImage/" style="font-size: 10px;">UIImage</a> <a href="/tags/UITableView/" style="font-size: 10px;">UITableView</a> <a href="/tags/UITextView/" style="font-size: 10px;">UITextView</a> <a href="/tags/Xcode/" style="font-size: 16.67px;">Xcode</a> <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/iOS/" style="font-size: 16.67px;">iOS</a> <a href="/tags/iOS7/" style="font-size: 20px;">iOS7</a> <a href="/tags/iOS8/" style="font-size: 13.33px;">iOS8</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a> <a href="/tags/流水账/" style="font-size: 10px;">流水账</a>
+						<a href="/tags/AVAudioPlayer/" style="font-size: 10px;">AVAudioPlayer</a> <a href="/tags/AVPlayer/" style="font-size: 10px;">AVPlayer</a> <a href="/tags/Alignment/" style="font-size: 10px;">Alignment</a> <a href="/tags/Animation/" style="font-size: 10px;">Animation</a> <a href="/tags/AutoLayout/" style="font-size: 16.67px;">AutoLayout</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Homebrew/" style="font-size: 10px;">Homebrew</a> <a href="/tags/Layout/" style="font-size: 13.33px;">Layout</a> <a href="/tags/MPMoviePlayerController/" style="font-size: 10px;">MPMoviePlayerController</a> <a href="/tags/MPMusicPlayerController/" style="font-size: 10px;">MPMusicPlayerController</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/REFrostedViewController/" style="font-size: 10px;">REFrostedViewController</a> <a href="/tags/Sketch/" style="font-size: 10px;">Sketch</a> <a href="/tags/StoryBoard/" style="font-size: 10px;">StoryBoard</a> <a href="/tags/Term/" style="font-size: 10px;">Term</a> <a href="/tags/Theme/" style="font-size: 10px;">Theme</a> <a href="/tags/UICollectionView/" style="font-size: 10px;">UICollectionView</a> <a href="/tags/UICollectionViewLayout/" style="font-size: 10px;">UICollectionViewLayout</a> <a href="/tags/UIColor/" style="font-size: 10px;">UIColor</a> <a href="/tags/UIImage/" style="font-size: 10px;">UIImage</a> <a href="/tags/UITableView/" style="font-size: 10px;">UITableView</a> <a href="/tags/UITextView/" style="font-size: 10px;">UITextView</a> <a href="/tags/Xcode/" style="font-size: 16.67px;">Xcode</a> <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/iOS/" style="font-size: 16.67px;">iOS</a> <a href="/tags/iOS7/" style="font-size: 20px;">iOS7</a> <a href="/tags/iOS8/" style="font-size: 13.33px;">iOS8</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a> <a href="/tags/流水账/" style="font-size: 10px;">流水账</a>
 					</div>
 				</section>
 				
@@ -180,6 +180,82 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-2016-05-19-UIView-transitionFromView-Error" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/19/2016-05-19-UIView-transitionFromView-Error/" class="article-date">
+  	<time datetime="2016-05-19T03:58:19.000Z" itemprop="datePublished">5月 19 2016</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/19/2016-05-19-UIView-transitionFromView-Error/">2016-05-19-UIView-transitionFromView-Error</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>项目开发需要实现一个简单的效果，一个音乐专辑，需要实现定时反复3D旋转的效果，这个效果很简单，利用iOS自带的动画接口对应的Flip动画即可，效果如下：<br><img src="http://i2.buimg.com/5795db82ef5d79a9.gif" alt=""></p>
+</blockquote>
+<p>开发的时候用<code>Xib</code>管理<code>专辑两个子View</code>，在使用<code>UIView</code>快速动画接口<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="keyword">void</span>)transitionFromView:(<span class="built_in">UIView</span> *)fromView toView:(<span class="built_in">UIView</span> *)toView duration:(<span class="built_in">NSTimeInterval</span>)duration options:(<span class="built_in">UIViewAnimationOptions</span>)options completion:(<span class="keyword">void</span> (^ __nullable)(<span class="built_in">BOOL</span> finished))completion;</span><br></pre></td></tr></table></figure></p>
+<p>和<code>UIViewAnimationOptionTransitionFlipFromLeft</code>搭配使用的时候出现第一个奇怪的问题：</p>
+<blockquote>
+<p>动画执行之后在使用<code>UIViewAnimationOptionTransitionFlipFromRight</code>反转翻转效果出现的情况就是翻转一般<code>View</code>消失了，经过调试后发现，因为是使用<code>Xib</code>管理，所以<code>Property</code>声明是<code>weak</code>，就像这样：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">weak</span>, <span class="keyword">nonatomic</span>) <span class="keyword">IBOutlet</span> <span class="built_in">UIView</span> *coverContainer;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>所以<code>fromView</code>对应的子视图被系统管理在动画执行之后就被释放掉了，导致动画反转<code>两次</code>之后正反两个<code>View</code>都消失了。</p>
+<p>既然是<code>被释放</code>的问题，那好解决，声明的时候把<code>weak</code>改成<code>strong</code>不就好了，代码如下：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) <span class="keyword">IBOutlet</span> <span class="built_in">UIView</span> *coverContainer;</span><br></pre></td></tr></table></figure></p>
+<p>紧接接着出现更踏马奇怪的问题：</p>
+<blockquote>
+<p>这下视图是没有消失，有图服务端没有裁剪图片，获取到的封面图片尺寸很大，翻转两次之后封面图片把整个屏幕都占满了<br>原始效果：<img src="http://i2.buimg.com/2dfa20a4a0c3d5ee.png" alt=""><br>实际效果：<img src="http://i2.buimg.com/643551903b623527.png" alt=""><br>这个问题首先第一考虑是不是因为<code>UIView</code>的快速动画接口导致<code>UIImageView</code>的<code>ContentMode</code>发生了改变，调试之后发现根本不是，所有能预想的结果都不符合预期，最后实在没办法只能出动神器<code>Reveal</code>，通过UI调试之后发现<code>fromView</code>和<code>toView</code>对应的视图和<code>SuperView</code>的约束被破坏了导致。</p>
+</blockquote>
+<p>找到问题所在是<code>约束</code>的原因，看可以使用原生代码或者是使用<code>Masonry</code>等第三方库在执行动画之前重建约束都行。<br>不过这里无意中发现<code>UIViewAnimationOptions</code>枚举里有一个奇怪的选项叫<code>UIViewAnimationOptionShowHideTransitionViews</code>，感觉好像有得玩，果断把<code>strong</code>替换会<code>weak</code>试了一下：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UIViewAnimationOptions</span> animationOptions = _front ? <span class="built_in">UIViewAnimationOptionTransitionFlipFromLeft</span> : <span class="built_in">UIViewAnimationOptionTransitionFlipFromRight</span>;</span><br><span class="line">[<span class="built_in">UIView</span> transitionFromView:(_front ? _coverContainer : _blurContainer)</span><br><span class="line">                    toView:(_front ? _blurContainer : _coverContainer)</span><br><span class="line">                  duration:<span class="number">1.0</span>f</span><br><span class="line">                   options:(animationOptions | <span class="built_in">UIViewAnimationOptionShowHideTransitionViews</span>)</span><br><span class="line">                completion:<span class="literal">nil</span>];</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://i2.buimg.com/d946274940d2c1e3.jpg" alt=""></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Animation/">Animation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Layout/">Layout</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/iOS/">iOS</a><a class="article-category-link" href="/categories/iOS/Tips/">Tips</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-2016-04-20-UICollectionViewLayout" class="article article-type-post" itemscope itemprop="blogPost">
   
