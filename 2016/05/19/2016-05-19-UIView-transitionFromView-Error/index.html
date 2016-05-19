@@ -6,26 +6,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>2016-05-19-UIView-transitionFromView-Error | Andy矢倉</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="项目开发需要实现一个简单的效果，一个音乐专辑，需要实现定时反复3D旋转的效果，这个效果很简单，利用iOS自带的动画接口对应的Flip动画即可，效果如下：
-
-开发的时候用Xib管理专辑两个子View，在使用UIView快速动画接口1+ (void)transitionFromView:(UIView *)fromView toView:(UIView *)toView duration:(NSTim">
+  <meta name="description" content="项目开发需要实现一个简单的效果，一个音乐专辑，需要实现定时反复3D旋转的效果，这个效果很简单，利用iOS自带的动画接口对应的Flip动画即可，效果如下：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2016-05-19-UIView-transitionFromView-Error">
 <meta property="og:url" content="http://shicang1990.github.io/2016/05/19/2016-05-19-UIView-transitionFromView-Error/index.html">
 <meta property="og:site_name" content="Andy矢倉">
-<meta property="og:description" content="项目开发需要实现一个简单的效果，一个音乐专辑，需要实现定时反复3D旋转的效果，这个效果很简单，利用iOS自带的动画接口对应的Flip动画即可，效果如下：
-
-开发的时候用Xib管理专辑两个子View，在使用UIView快速动画接口1+ (void)transitionFromView:(UIView *)fromView toView:(UIView *)toView duration:(NSTim">
+<meta property="og:description" content="项目开发需要实现一个简单的效果，一个音乐专辑，需要实现定时反复3D旋转的效果，这个效果很简单，利用iOS自带的动画接口对应的Flip动画即可，效果如下：">
 <meta property="og:image" content="http://i2.buimg.com/5795db82ef5d79a9.gif">
 <meta property="og:image" content="http://i2.buimg.com/2dfa20a4a0c3d5ee.png">
 <meta property="og:image" content="http://i2.buimg.com/643551903b623527.png">
 <meta property="og:image" content="http://i2.buimg.com/d946274940d2c1e3.jpg">
-<meta property="og:updated_time" content="2016-05-19T16:19:15.000Z">
+<meta property="og:updated_time" content="2016-05-19T16:27:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2016-05-19-UIView-transitionFromView-Error">
-<meta name="twitter:description" content="项目开发需要实现一个简单的效果，一个音乐专辑，需要实现定时反复3D旋转的效果，这个效果很简单，利用iOS自带的动画接口对应的Flip动画即可，效果如下：
-
-开发的时候用Xib管理专辑两个子View，在使用UIView快速动画接口1+ (void)transitionFromView:(UIView *)fromView toView:(UIView *)toView duration:(NSTim">
+<meta name="twitter:description" content="项目开发需要实现一个简单的效果，一个音乐专辑，需要实现定时反复3D旋转的效果，这个效果很简单，利用iOS自带的动画接口对应的Flip动画即可，效果如下：">
   
     <link rel="alternative" href="/atom.xml" title="Andy矢倉" type="application/atom+xml">
   
@@ -234,6 +228,7 @@
         <blockquote>
 <p>项目开发需要实现一个简单的效果，一个音乐专辑，需要实现定时反复3D旋转的效果，这个效果很简单，利用iOS自带的动画接口对应的Flip动画即可，效果如下：<br><img src="http://i2.buimg.com/5795db82ef5d79a9.gif" alt=""></p>
 </blockquote>
+<a id="more"></a>
 <p>开发的时候用<code>Xib</code>管理<code>专辑两个子View</code>，在使用<code>UIView</code>快速动画接口<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="keyword">void</span>)transitionFromView:(<span class="built_in">UIView</span> *)fromView toView:(<span class="built_in">UIView</span> *)toView duration:(<span class="built_in">NSTimeInterval</span>)duration options:(<span class="built_in">UIViewAnimationOptions</span>)options completion:(<span class="keyword">void</span> (^ __nullable)(<span class="built_in">BOOL</span> finished))completion;</span><br></pre></td></tr></table></figure></p>
 <p>和<code>UIViewAnimationOptionTransitionFlipFromLeft</code>搭配使用的时候出现第一个奇怪的问题：</p>
 <blockquote>
