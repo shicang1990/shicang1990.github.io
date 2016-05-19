@@ -210,6 +210,12 @@
         <blockquote>
 <p>项目开发需要实现一个简单的效果，一个音乐专辑，需要实现定时反复3D旋转的效果，这个效果很简单，利用iOS自带的动画接口对应的Flip动画即可，效果如下：<br><img src="http://i2.buimg.com/5795db82ef5d79a9.gif" alt=""></p>
 </blockquote>
+<p>开发的时候用<code>Xib</code>管理<code>专辑两个子View</code>，在使用<code>UIView</code>快速动画接口<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="keyword">void</span>)transitionFromView:(<span class="built_in">UIView</span> *)fromView toView:(<span class="built_in">UIView</span> *)toView duration:(<span class="built_in">NSTimeInterval</span>)duration options:(<span class="built_in">UIViewAnimationOptions</span>)options completion:(<span class="keyword">void</span> (^ __nullable)(<span class="built_in">BOOL</span> finished))completion;</span><br></pre></td></tr></table></figure></p>
+<p>和<code>UIViewAnimationOptionTransitionFlipFromLeft</code>搭配使用的时候出现第一个奇怪的问题：</p>
+<blockquote>
+<p>动画执行之后在使用<code>UIViewAnimationOptionTransitionFlipFromRight</code>反转翻转效果出现的情况就是翻转一般<code>View</code>消失了，经过调试后发现，因为是使用<code>Xib</code>管理，所以<code>Property</code>声明是<code>weak</code>，就像这样：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">weak</span>, <span class="keyword">nonatomic</span>) <span class="keyword">IBOutlet</span> <span class="built_in">UIView</span> *coverContainer;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>所以<code>fromView</code>对应的子视图被系统管理在动画执行之后就被释放掉了，导致动画反转<code>两次</code>之后正反两个<code>View</code>都消失了。</p>
       
     </div>
     
