@@ -207,31 +207,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本人是个升级控，只要有需要升级的看看日志没啥问题就开整，等了大半年的<code>Cocoapods</code>的<code>1.0.0</code>终于出正式版本了，介于<code>0.38.0</code>到<code>0.39.0</code>的痛苦过程，心里有点小担心，不过那时还好是<code>Objective-C</code>，问题出在配置上都可以<a href="http://stackoverflow.com/" target="_blank" rel="external"><code>stackoverflow</code></a>解决，这次要面对这次还要多面临<code>Swift</code>的挑战，废话太多了，直接开整。</p>
+        <p>本人是个升级控，只要有需要升级的看看日志没啥问题就开整，等了大半年的<code>Cocoapods</code>的<code>1.0.0</code>终于出正式版本了，介于<code>0.38.0</code>到<code>0.39.0</code>的痛苦过程，心里有点小担心，不过那时还好是<code>Objective-C</code>，问题出在配置上都可以<a href="http://stackoverflow.com/"><code>stackoverflow</code></a>解决，这次要面对这次还要多面临<code>Swift</code>的挑战，废话太多了，直接开整。</p>
 <p>升级的过程还是老套路：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install cocoapods</span><br></pre></td></tr></table></figure>
 <p>老套路还是还是老问题<code>/usr</code>下路径权限不够，试着改变权限：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown $(whoami):admin /usr/<span class="built_in">local</span> &amp;&amp; sudo chown -R $(whoami):admin /usr/<span class="built_in">local</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown $(whoami):admin /usr/bin &amp;&amp; sudo chown -R $(whoami):admin /usr/bin</span><br></pre></td></tr></table></figure>
-<p>改变<code>/usr/local</code>的权限没有问题，新提示的<code>/usr/bin</code>通过这种方式没办法改权限，由于<code>OS X EI Capitan</code>安全措施<code>Rootless机制</code>，导致<code>/usr/bin</code>不能随意写文件操作，但是想改还是有办法的，网上去年就贴出了这个解决方法，就是在安全模式下操作终端命令，这里不想误导非程序狗去操作这个大风险的玩意儿，所以这里我简单给出<a href="https://developer.apple.com/videos/play/wwdc2015/706/" target="_blank" rel="external"><code>苹果官方解决方案</code></a>，看看就好，我就不详细介绍了，有需要的搜索关键字<code>Operation not permitted</code>。</p>
-<p>由于我洁癖比较严重，既然官方不让搞咱们就另辟蹊径，对于<code>gem</code>来说，其实是可以在<code>install</code>的时候使用<code>-n</code>参数来指定路径的，那么这里我们就选择<code>/usr/local/bin</code>这个可写的路径来操作，废话不多说，直接上命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install -n /usr/<span class="built_in">local</span>/bin cocoapods</span><br></pre></td></tr></table></figure>
-<p>这个命令也是大多数人多于安装<code>Cocoapods</code>的<code>1.0.0</code>版本报权限问题给出的解决方案，但是这里有个小问题，由于以前的老版本是默认安装在<code>/usr/bin</code>，我们这要操作之后就有两个<code>pod</code>，实际使用的时候系统就傻傻分不清了，很多人觉得改下系统的<code>bash</code>再<code>source</code>不久好了，其实我最讨厌这种做法，我的原则不到万不得已不做额外的操作，经过我一晚上的跳坑，得到的解决方案就是先删除老版本的<code>Cocoapods</code>，然后直接用上面的命令安装即可。</p>
-<p>新版是安装好了，那必须得<code>pod update</code>一下啊，不然咋体验升级的快感，你说是不，结果可想而知的肯定是报错，提示需要指明<code>target</code>才能执行<code>pod</code>，对于新版本的严谨我很欣赏，于是乎就得改改我们老的<code>Podfile</code>：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">platform <span class="symbol">:ios</span>, <span class="string">'8.0'</span></span><br><span class="line">use_frameworks!</span><br><span class="line"></span><br><span class="line">target <span class="string">'EShop'</span> <span class="keyword">do</span></span><br><span class="line">	pod <span class="string">'xxx'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p><code>use_frameworks</code>加不加看你自己需求，如果是版本都用到<code>8.0</code>了还不用动态库就是脑壳有屎，不知道动态库和静态库的自己查资料。或者说还有人在<code>8.0</code>下坚持写<code>Swift</code>的我也很是佩服。</p>
-<p><code>Bingo</code>，果不其然，这盘顺利<code>update</code>了之后<code>Build</code>新工程，得到如下的煞笔提示：</p>
-<p><img src="http://i2.buimg.com/b83551dacce124a6.png" alt=""></p>
-<p>踏马的提示<code>桥接文件</code>找不到，于是乎上<code>stackoverflow</code>各种找答案啊，最后得来的都是让确保如下配置是否正确：</p>
-<p><img src="http://i2.buimg.com/dc89116150dbfc84.png" alt=""></p>
-<p>我踏马升级之前都是好的，工程配置和文件肯定是好的啊，看到各种复制粘贴的答案那叫一个暴躁，作为程序狗这个时候必须点根烟冷静一盘，突然定睛一看其实不是找不到<code>桥接文件</code>，而是<code>failed to import bridging header</code>导入出错，仔细分析了一下踏马的原来是找不到头文件儿导致<code>桥接文件</code>导入出错。由于<code>Cocoapods</code>新版本的问题是根据<code>target</code>来<code>install</code>的，所以在头文件导入上较以前严谨太多了，所以上述的解决方案就是用<code>库的方式引入</code>，不要用<code>相对导入</code>，学过<code>C</code>的应该在第一课的时候就知道这个事情了，所以上述问题就这么改：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">import</span> "MJExtension.h"</span><br></pre></td></tr></table></figure>
-<p>改为</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">import</span> &lt;MJExtension/MJExtension.h&gt;</span><br></pre></td></tr></table></figure>
-<p>其实这种问题在纯<code>Objective-C</code>项目里即便是新版本也没有问题的，主要是<code>1.0.0</code>以后的<code>Cocoapods</code>强制的<code>target</code>的概念，又由于<code>Objective-C</code>和<code>Swift</code>混编的项目需要<code>xxx-Bridging-Header.h</code>这个<code>桥接文件</code>，所以<code>import</code>的时候必须要用<code>库</code>的引入方式才能正常导入。</p>
-<p>其实平时只要是用到库，不管是静态还是动态我都是用<code>&lt;&gt;</code>库的方式来导入，为啥这里会煞笔呢，那就安利一款快速添加头文件的插件，对于写纯<code>Objective-C</code>的同学来说是很提高效率的插件：<a href="https://github.com/markohlebar/Peckham" target="_blank" rel="external"><code>Peckham</code></a></p>
-<p>PS：不过<code>Xcode 7.3</code>以后因为<code>Xcode</code>自身的原因，猜测可能是项目解析慢或者是预处理不及时，导致像<code>FuzzyAutocomplete</code>这类插件都有点力不从心了，<code>7.3</code>以后的版本使用<code>Peckham</code>也开始蛋疼起来，如果是新添加的<code>.h</code>和<code>.m</code>文件找不到，直接<code>Command + B</code>build一盘就好了。</p>
-
       
     </div>
     
@@ -248,6 +229,10 @@
 	</div>
 
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/05/31/2016-05-31-Failed-Import-Bridging-Header/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>

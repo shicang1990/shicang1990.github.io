@@ -18,7 +18,7 @@
 1sudo gem install cocoa">
 <meta property="og:image" content="http://i2.buimg.com/b83551dacce124a6.png">
 <meta property="og:image" content="http://i2.buimg.com/dc89116150dbfc84.png">
-<meta property="og:updated_time" content="2016-05-30T16:08:58.000Z">
+<meta property="og:updated_time" content="2016-05-30T16:09:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Failed to import bridging header 的奇葩解决方案">
 <meta name="twitter:description" content="本人是个升级控，只要有需要升级的看看日志没啥问题就开整，等了大半年的Cocoapods的1.0.0终于出正式版本了，介于0.38.0到0.39.0的痛苦过程，心里有点小担心，不过那时还好是Objective-C，问题出在配置上都可以stackoverflow解决，这次要面对这次还要多面临Swift的挑战，废话太多了，直接开整。
@@ -235,6 +235,7 @@
 <p>老套路还是还是老问题<code>/usr</code>下路径权限不够，试着改变权限：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown $(whoami):admin /usr/<span class="built_in">local</span> &amp;&amp; sudo chown -R $(whoami):admin /usr/<span class="built_in">local</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown $(whoami):admin /usr/bin &amp;&amp; sudo chown -R $(whoami):admin /usr/bin</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>改变<code>/usr/local</code>的权限没有问题，新提示的<code>/usr/bin</code>通过这种方式没办法改权限，由于<code>OS X EI Capitan</code>安全措施<code>Rootless机制</code>，导致<code>/usr/bin</code>不能随意写文件操作，但是想改还是有办法的，网上去年就贴出了这个解决方法，就是在安全模式下操作终端命令，这里不想误导非程序狗去操作这个大风险的玩意儿，所以这里我简单给出<a href="https://developer.apple.com/videos/play/wwdc2015/706/" target="_blank" rel="external"><code>苹果官方解决方案</code></a>，看看就好，我就不详细介绍了，有需要的搜索关键字<code>Operation not permitted</code>。</p>
 <p>由于我洁癖比较严重，既然官方不让搞咱们就另辟蹊径，对于<code>gem</code>来说，其实是可以在<code>install</code>的时候使用<code>-n</code>参数来指定路径的，那么这里我们就选择<code>/usr/local/bin</code>这个可写的路径来操作，废话不多说，直接上命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install -n /usr/<span class="built_in">local</span>/bin cocoapods</span><br></pre></td></tr></table></figure>
