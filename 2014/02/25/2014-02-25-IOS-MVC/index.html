@@ -1,243 +1,170 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>浅谈iOS中的MVC设计模式 | Andy矢倉</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我们今天谈谈cocoa程序设计中的 模型－视图－控制器（MVC）范型。我们将从两大方面来讨论MVC：
-什么是MVC？M、V、C之间的交流方式是什么样子的？ 
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>浅谈iOS中的MVC设计模式 | Andy矢倉</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-理解了MVC的概念，对cocoa程序开发是至关重要的。
-##一、MVC的概念
-MVC是Model-VIew-Controller，就是模型－视图－控制器，这些都是什么东西呢？MVC把软件系统分为三个部分：Model，View，Control">
-<meta property="og:type" content="article">
-<meta property="og:title" content="浅谈iOS中的MVC设计模式">
-<meta property="og:url" content="http://shicang1990.github.io/2014/02/25/2014-02-25-IOS-MVC/index.html">
-<meta property="og:site_name" content="Andy矢倉">
-<meta property="og:description" content="我们今天谈谈cocoa程序设计中的 模型－视图－控制器（MVC）范型。我们将从两大方面来讨论MVC：
-什么是MVC？M、V、C之间的交流方式是什么样子的？ 
+    <meta name="description" content="曾梦想仗剑走天涯">
 
-理解了MVC的概念，对cocoa程序开发是至关重要的。
-##一、MVC的概念
-MVC是Model-VIew-Controller，就是模型－视图－控制器，这些都是什么东西呢？MVC把软件系统分为三个部分：Model，View，Control">
-<meta property="og:image" content="http://i2.tietuku.com/18cee4d60e92dbfa.jpg">
-<meta property="og:updated_time" content="2015-10-01T15:02:30.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅谈iOS中的MVC设计模式">
-<meta name="twitter:description" content="我们今天谈谈cocoa程序设计中的 模型－视图－控制器（MVC）范型。我们将从两大方面来讨论MVC：
-什么是MVC？M、V、C之间的交流方式是什么样子的？ 
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="浅谈iOS中的MVC设计模式 | Andy矢倉">
+    <meta name="twitter:description" content="曾梦想仗剑走天涯">
 
-理解了MVC的概念，对cocoa程序开发是至关重要的。
-##一、MVC的概念
-MVC是Model-VIew-Controller，就是模型－视图－控制器，这些都是什么东西呢？MVC把软件系统分为三个部分：Model，View，Control">
-  
-    <link rel="alternative" href="/atom.xml" title="Andy矢倉" type="application/atom+xml">
-  
-  
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="浅谈iOS中的MVC设计模式 | Andy矢倉">
+    <meta property="og:description" content="曾梦想仗剑走天涯">
+
+    
+    <meta name="author" content="Andy矢倉">
+    
+    <link rel="stylesheet" href="/css/vno.css" type="text/css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" type="text/css">
+
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Andy矢倉" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://shicang1990.github.io/2014/02/25/2014-02-25-IOS-MVC/"/>
+
+    
+      
 </head>
 
-<body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img lazy-src="http://tp1.sinaimg.cn/1549567960/180/40056410546/1" class="js-avatar">
-			
-		</a>
+<body class="home-template no-js">
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <script src="/js/main.js" type="text/javascript"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
 
-		<hgroup>
-		  <h1 class="header-author"><a href="/">Andy矢倉</a></h1>
-		</hgroup>
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
 
-		
-		<p class="header-subtitle">老板 来杯董小姐 去冰 少糖 多放点小姐</p>
-		
+        <a href="/" title="前往 Andy矢倉 的主页"><img src="/images/avatar.jpg" width="80" alt="Andy矢倉 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Andy矢倉">Andy矢倉</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">老板 来杯董小姐 去冰 少糖 多放点小姐</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">曾梦想仗剑走天涯</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
 
-		
-			<div class="switch-btn">
-				<div class="icon">
-					<div class="icon-ctn">
-						<div class="icon-wrap icon-house" data-idx="0">
-							<div class="birdhouse"></div>
-							<div class="birdhouse_holes"></div>
-						</div>
-						<div class="icon-wrap icon-ribbon hide" data-idx="1">
-							<div class="ribbon"></div>
-						</div>
-						
-						
-						<div class="icon-wrap icon-me hide" data-idx="3">
-							<div class="user"></div>
-							<div class="shoulder"></div>
-						</div>
-						
-					</div>
-					
-				</div>
-				<div class="tips-box hide">
-					<div class="tips-arrow"></div>
-					<ul class="tips-inner">
-						<li>菜单</li>
-						<li>標籤</li>
-						
-						
-						<li>關於</li>
-						
-					</ul>
-				</div>
-			</div>
-		
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/favourite">黄金屋</a></li>
+            
+              <li class="navigation__item"><a href="/favourite/time.html">时光机</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
 
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/">主页</a></li>
-				        
-							<li><a href="/archives">所有文章</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-								<a class="github" target="_blank" href="https://github.com/shicang1990" title="github">github</a>
-					        
-								<a class="weibo" target="_blank" href="http://weibo.com/ganmaojijie" title="weibo">weibo</a>
-					        
-								<a class="google" target="_blank" href="https://plus.google.com/u/0/111959925992300968239" title="google">google</a>
-					        
-								<a class="facebook" target="_blank" href="https://www.facebook.com/wiwby" title="facebook">facebook</a>
-					        
-								<a class="twitter" target="_blank" href="https://twitter.com/Andy_shicang" title="twitter">twitter</a>
-					        
-						</div>
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/AVAudioPlayer/" style="font-size: 10px;">AVAudioPlayer</a> <a href="/tags/AVPlayer/" style="font-size: 10px;">AVPlayer</a> <a href="/tags/Alignment/" style="font-size: 10px;">Alignment</a> <a href="/tags/Animation/" style="font-size: 10px;">Animation</a> <a href="/tags/AutoLayout/" style="font-size: 16.67px;">AutoLayout</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Homebrew/" style="font-size: 10px;">Homebrew</a> <a href="/tags/Layout/" style="font-size: 13.33px;">Layout</a> <a href="/tags/MPMoviePlayerController/" style="font-size: 10px;">MPMoviePlayerController</a> <a href="/tags/MPMusicPlayerController/" style="font-size: 10px;">MPMusicPlayerController</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/REFrostedViewController/" style="font-size: 10px;">REFrostedViewController</a> <a href="/tags/Sketch/" style="font-size: 10px;">Sketch</a> <a href="/tags/StoryBoard/" style="font-size: 10px;">StoryBoard</a> <a href="/tags/Term/" style="font-size: 10px;">Term</a> <a href="/tags/Theme/" style="font-size: 10px;">Theme</a> <a href="/tags/UICollectionView/" style="font-size: 10px;">UICollectionView</a> <a href="/tags/UICollectionViewLayout/" style="font-size: 10px;">UICollectionViewLayout</a> <a href="/tags/UIColor/" style="font-size: 10px;">UIColor</a> <a href="/tags/UIImage/" style="font-size: 10px;">UIImage</a> <a href="/tags/UITableView/" style="font-size: 10px;">UITableView</a> <a href="/tags/UITextView/" style="font-size: 10px;">UITextView</a> <a href="/tags/Xcode/" style="font-size: 20px;">Xcode</a> <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/iOS/" style="font-size: 16.67px;">iOS</a> <a href="/tags/iOS7/" style="font-size: 20px;">iOS7</a> <a href="/tags/iOS8/" style="font-size: 13.33px;">iOS8</a> <a href="/tags/开始/" style="font-size: 10px;">开始</a> <a href="/tags/流水账/" style="font-size: 20px;">流水账</a>
-					</div>
-				</section>
-				
-				
-				
+  <!-- Weibo-->
+  
 
-				
-				
-				<section class="switch-part switch-part3">
-				
-					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
-				</section>
-				
-			</div>
-		</div>
-	</header>				
-</div>
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/monniya" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
 
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide">Andy矢倉</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-			
-				<img lazy-src="http://tp1.sinaimg.cn/1549567960/180/40056410546/1" class="js-avatar">
-			
-			</div>
-			<hgroup>
-			  <h1 class="header-author">Andy矢倉</h1>
-			</hgroup>
-			
-			<p class="header-subtitle">老板 来杯董小姐 去冰 少糖 多放点小姐</p>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/archives">所有文章</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="https://github.com/shicang1990" title="github">github</a>
-			        
-						<a class="weibo" target="_blank" href="http://weibo.com/ganmaojijie" title="weibo">weibo</a>
-			        
-						<a class="google" target="_blank" href="https://plus.google.com/u/0/111959925992300968239" title="google">google</a>
-			        
-						<a class="facebook" target="_blank" href="https://www.facebook.com/wiwby" title="facebook">facebook</a>
-			        
-						<a class="twitter" target="_blank" href="https://twitter.com/Andy_shicang" title="twitter">twitter</a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/onlymonniya" title="上Twitter找我" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+  <li class="navigation__item">
+    <a href="mailto:shicang1990@gmail.com" title="邮件联系我" target="_blank">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+
+
+  </ul>
 </nav>
 
-      <div class="body-wrap"><article id="post-2014-02-25-IOS-MVC" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/02/25/2014-02-25-IOS-MVC/" class="article-date">
-  	<time datetime="2014-02-25T09:28:18.000Z" itemprop="datePublished">2月 25 2014</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      浅谈iOS中的MVC设计模式
-    </h1>
-  
+          </div>
+        </div>
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVC/">MVC</a></li></ul>
-	</div>
-
-        
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/设计模式/">设计模式</a><a class="article-category-link" href="/categories/设计模式/iOS/">iOS</a>
-	</div>
-
-
-        <div class="clearfix"></div>
       </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="我们今天谈谈cocoa程序设计中的_模型－视图－控制器（MVC）范型。我们将从两大方面来讨论MVC：">我们今天谈谈cocoa程序设计中的 模型－视图－控制器（MVC）范型。我们将从两大方面来讨论MVC：</h2><blockquote>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2014-02-25T09:28:18.000Z" class="post-list__meta--date date">2月 25 2014</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/MVC/">MVC</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">浅谈iOS中的MVC设计模式</h1>
+  </header>
+
+  <section class="post">
+    <h2 id="我们今天谈谈cocoa程序设计中的_模型－视图－控制器（MVC）范型。我们将从两大方面来讨论MVC：">我们今天谈谈cocoa程序设计中的 模型－视图－控制器（MVC）范型。我们将从两大方面来讨论MVC：</h2><blockquote>
 <p>什么是MVC？<br>M、V、C之间的交流方式是什么样子的？ </p>
 </blockquote>
 <p>理解了MVC的概念，对cocoa程序开发是至关重要的。</p>
@@ -283,145 +210,99 @@ MVC是Model-VIew-Controller，就是模型－视图－控制器，这些都是�
 <p>2.View不允许直接引用Controller和Model，它很专一地被Controller控制来进行数据的显示和接收用户的交互。我们知道View显示的时候需要数据，我们也知道在View上会产生事件。如果要达到不和Controller，Model直接打交道，就需要机制来支持。在Objective－C中有Protocol的东西，并且提出Delegate（代理模式）就是来解决UIView想和Controller松耦合互动问题的。除了这个外，iOS还提供了Action－Target模式来让Controller监听View的事件。那对View如何获得数据，iOS中提了Data Source的概念，其实也是Protocol的应用。</p>
 <p>3.每一次推给用户的一个操作屏幕，最好都是MVC的三者组合，不要出现一组以上的MVC组合。</p>
 
-      
-    </div>
-    
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2014/03/04/2014-03-04-Storyboard-Party2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          iOS 7教程 - StoryBoards Part2
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2013/11/07/2013-11-07-UITextView-Alignment/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">如何让UITextView文字垂直居中</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
+  </section>
 
-  
 </article>
-
-
-<div class="share_jia">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">分享到: &nbsp; </span>
-		<a class="jiathis_button_facebook"></a> 
-    <a class="jiathis_button_twitter"></a>
-    <a class="jiathis_button_plus"></a> 
-    <a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
-
-
-
-
-
-
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2014-02-25-IOS-MVC" data-title="浅谈iOS中的MVC设计模式" data-url="http://shicang1990.github.io/2014/02/25/2014-02-25-IOS-MVC/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"true"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-
-
-
-</div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2016 Andy矢倉
-        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        <span id="busuanzi_container_site_pv">
-          本站总访问量<span id="busuanzi_value_site_pv"></span>次
-        </span>
-    	</div>
-    	<div class="footer-right">
-    		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-    	</div>
-    </div>
-  </div>
-</footer>
-
-    </div>
+<section class="read-more">
+           
     
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2014/03/04/2014-03-04-Storyboard-Party2/" title="iOS 7教程 - StoryBoards Part2">iOS 7教程 - StoryBoards Part2</a></h2>
+                <p class="excerpt">
+                
+                原文地址：http://www.raywenderlich.com/50310/storyboards-tutorial-in-iOS-7-part-2iOS 7教程 - Storyboards Part1 译文地址：iOS 7教程 - Storyboards Part1
 
+iOS开发也好些日子了，一直都是纯code，偶尔用用xib，最近闲来无事想体验下storyboard，于是网上找到了各种关于storyboard的入门教程，可惜很多都比较老了都是iOS5，和iOS6系列的教程，我想这xcode都更新小半年了，iOS7.1都快出了，再整老版本不太合适吧，于是找到了泰然网翻译的一篇iOS7 storyboard教程，可惜只翻译了第一篇，第二篇估计还没来得及吧！捉摸着都看了开头了，怎么着也得看完是吧，就寻着原文找到了第二篇，坑爹的英文，虽然不是很感冒鸟文，加上Google也多少能看明白，一下算是自己理解的然后加上些口水话，有兴趣的童鞋凑合着看吧，第一次翻译，哈哈哈，开始吧，Ready,go…
 
+温馨提示：教程成员Matthijs Hollemans(iOS Apprentice系列的作者)已经发表了这个教程的iOS5版本至iOS7版本。这是本书第三版的预览,这个版本将会更新到iOS 7。好好享受吧!
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2014-03-04T08:30:08.000Z" class="post-list__meta--date date">3月 4 2014</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/StoryBoard/">StoryBoard</a>, <a class="tag-link" href="/tags/iOS7/">iOS7</a>
+</span><a class="btn-border-small" href="/2014/03/04/2014-03-04-Storyboard-Party2/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2013/11/07/2013-11-07-UITextView-Alignment/" title="如何让UITextView文字垂直居中">如何让UITextView文字垂直居中</a></h2>
+                <p class="excerpt">
+                
+                让UITextView和UITextField同样拥有垂直居中的属性，建议单独一个类继承自UITextView只需要初始化UITextView之后用KVO监听 “contentSize” 属性即可
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2013-11-07T09:50:00.000Z" class="post-list__meta--date date">11月 7 2013</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Alignment/">Alignment</a>, <a class="tag-link" href="/tags/UITextView/">UITextView</a>
+</span><a class="btn-border-small" href="/2013/11/07/2013-11-07-UITextView-Alignment/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2016 - 本站由 <a href="/">@Monniya</a> 创建,
+        使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">hexo-theme-new-vno</a> 主题,
+        修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+</footer>
+        </div>
+    </div>
+
+    
+
+     
 <script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: true,
-		animate: true,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false
-	}
-</script>
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="/js/main.js" type="text/javascript"></script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-
-
-
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
 </script>
 
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 
 
-  </div>
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
 </body>
 </html>
