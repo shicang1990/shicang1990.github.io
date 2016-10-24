@@ -25,8 +25,8 @@
     
     <meta name="author" content="Andy矢倉">
     
-    <link rel="stylesheet" href="/css/vno.css" type="text/css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
     
     <link rel="icon" href="/images/favicon.ico">
@@ -44,8 +44,8 @@
 </head>
 
 <body class="home-template no-js">
-    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
-    <script src="/js/main.js" type="text/javascript"></script>
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
     <span class="mobile btn-mobile-menu">
         <i class="fa fa-list btn-mobile-menu__icon"></i>
         <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
@@ -180,26 +180,26 @@
   <section class="post">
     <p>本人是个升级控，只要有需要升级的看看日志没啥问题就开整，等了大半年的<code>Cocoapods</code>的<code>1.0.0</code>终于出正式版本了，介于<code>0.38.0</code>到<code>0.39.0</code>的痛苦过程，心里有点小担心，不过那时还好是<code>Objective-C</code>，问题出在配置上都可以<a href="http://stackoverflow.com/" target="_blank" rel="external"><code>stackoverflow</code></a>解决，这次要面对这次还要多面临<code>Swift</code>的挑战，废话太多了，直接开整。</p>
 <p>升级的过程还是老套路：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install cocoapods</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install cocoapods</div></pre></td></tr></table></figure>
 <p>老套路还是还是老问题<code>/usr</code>下路径权限不够，试着改变权限：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown $(whoami):admin /usr/<span class="built_in">local</span> &amp;&amp; sudo chown -R $(whoami):admin /usr/<span class="built_in">local</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown $(whoami):admin /usr/bin &amp;&amp; sudo chown -R $(whoami):admin /usr/bin</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown $(whoami):admin /usr/<span class="built_in">local</span> &amp;&amp; sudo chown -R $(whoami):admin /usr/<span class="built_in">local</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown $(whoami):admin /usr/bin &amp;&amp; sudo chown -R $(whoami):admin /usr/bin</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>改变<code>/usr/local</code>的权限没有问题，新提示的<code>/usr/bin</code>通过这种方式没办法改权限，由于<code>OS X EI Capitan</code>安全措施<code>Rootless机制</code>，导致<code>/usr/bin</code>不能随意写文件操作，但是想改还是有办法的，网上去年就贴出了这个解决方法，就是在安全模式下操作终端命令，这里不想误导非程序狗去操作这个大风险的玩意儿，所以这里我简单给出<a href="https://developer.apple.com/videos/play/wwdc2015/706/" target="_blank" rel="external"><code>苹果官方解决方案</code></a>，看看就好，我就不详细介绍了，有需要的搜索关键字<code>Operation not permitted</code>。</p>
 <p>由于我洁癖比较严重，既然官方不让搞咱们就另辟蹊径，对于<code>gem</code>来说，其实是可以在<code>install</code>的时候使用<code>-n</code>参数来指定路径的，那么这里我们就选择<code>/usr/local/bin</code>这个可写的路径来操作，废话不多说，直接上命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install -n /usr/<span class="built_in">local</span>/bin cocoapods</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install -n /usr/<span class="built_in">local</span>/bin cocoapods</div></pre></td></tr></table></figure>
 <p>这个命令也是大多数人多于安装<code>Cocoapods</code>的<code>1.0.0</code>版本报权限问题给出的解决方案，但是这里有个小问题，由于以前的老版本是默认安装在<code>/usr/bin</code>，我们这要操作之后就有两个<code>pod</code>，实际使用的时候系统就傻傻分不清了，很多人觉得改下系统的<code>bash</code>再<code>source</code>不久好了，其实我最讨厌这种做法，我的原则不到万不得已不做额外的操作，经过我一晚上的跳坑，得到的解决方案就是先删除老版本的<code>Cocoapods</code>，然后直接用上面的命令安装即可。</p>
 <p>新版是安装好了，那必须得<code>pod update</code>一下啊，不然咋体验升级的快感，你说是不，结果可想而知的肯定是报错，提示需要指明<code>target</code>才能执行<code>pod</code>，对于新版本的严谨我很欣赏，于是乎就得改改我们老的<code>Podfile</code>：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">platform <span class="symbol">:ios</span>, <span class="string">'8.0'</span></span><br><span class="line">use_frameworks!</span><br><span class="line"></span><br><span class="line">target <span class="string">'EShop'</span> <span class="keyword">do</span></span><br><span class="line">	pod <span class="string">'xxx'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">platform <span class="symbol">:ios</span>, <span class="string">'8.0'</span></div><div class="line">use_frameworks!</div><div class="line"></div><div class="line">target <span class="string">'EShop'</span> <span class="keyword">do</span></div><div class="line">	pod <span class="string">'xxx'</span></div><div class="line"></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
 <p><code>use_frameworks</code>加不加看你自己需求，如果是版本都用到<code>8.0</code>了还不用动态库就是脑壳有屎，不知道动态库和静态库的自己查资料。或者说还有人在<code>8.0</code>下坚持写<code>Swift</code>的我也很是佩服。</p>
 <p><code>Bingo</code>，果不其然，这盘顺利<code>update</code>了之后<code>Build</code>新工程，得到如下的煞笔提示：</p>
 <p><img src="http://i2.buimg.com/b83551dacce124a6.png" alt=""></p>
 <p>踏马的提示<code>桥接文件</code>找不到，于是乎上<code>stackoverflow</code>各种找答案啊，最后得来的都是让确保如下配置是否正确：</p>
 <p><img src="http://i2.buimg.com/dc89116150dbfc84.png" alt=""></p>
 <p>我踏马升级之前都是好的，工程配置和文件肯定是好的啊，看到各种复制粘贴的答案那叫一个暴躁，作为程序狗这个时候必须点根烟冷静一盘，突然定睛一看其实不是找不到<code>桥接文件</code>，而是<code>failed to import bridging header</code>导入出错，仔细分析了一下踏马的原来是找不到头文件儿导致<code>桥接文件</code>导入出错。由于<code>Cocoapods</code>新版本的问题是根据<code>target</code>来<code>install</code>的，所以在头文件导入上较以前严谨太多了，所以上述的解决方案就是用<code>库的方式引入</code>，不要用<code>相对导入</code>，学过<code>C</code>的应该在第一课的时候就知道这个事情了，所以上述问题就这么改：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">import</span> "MJExtension.h"</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#<span class="keyword">import</span> "MJExtension.h"</div></pre></td></tr></table></figure>
 <p>改为</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">import</span> &lt;MJExtension/MJExtension.h&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#<span class="keyword">import</span> &lt;MJExtension/MJExtension.h&gt;</div></pre></td></tr></table></figure>
 <p>其实这种问题在纯<code>Objective-C</code>项目里即便是新版本也没有问题的，主要是<code>1.0.0</code>以后的<code>Cocoapods</code>强制的<code>target</code>的概念，又由于<code>Objective-C</code>和<code>Swift</code>混编的项目需要<code>xxx-Bridging-Header.h</code>这个<code>桥接文件</code>，所以<code>import</code>的时候必须要用<code>库</code>的引入方式才能正常导入。</p>
 <p>其实平时只要是用到库，不管是静态还是动态我都是用<code>&lt;&gt;</code>库的方式来导入，为啥这里会煞笔呢，那就安利一款快速添加头文件的插件，对于写纯<code>Objective-C</code>的同学来说是很提高效率的插件：<a href="https://github.com/markohlebar/Peckham" target="_blank" rel="external"><code>Peckham</code></a></p>
 <p>PS：不过<code>Xcode 7.3</code>以后因为<code>Xcode</code>自身的原因，猜测可能是项目解析慢或者是预处理不及时，导致像<code>FuzzyAutocomplete</code>这类插件都有点力不从心了，<code>7.3</code>以后的版本使用<code>Peckham</code>也开始蛋疼起来，如果是新添加的<code>.h</code>和<code>.m</code>文件找不到，直接<code>Command + B</code>build一盘就好了。</p>
@@ -216,7 +216,9 @@
                 <h2 class="post-list__post-title post-title"><a href="/2016/06/30/2016-06-30-Running-Account-2014-Chuanzang01/" title="14年流水账 - 川藏线（一）">14年流水账 - 川藏线（一）</a></h2>
                 <p class="excerpt">
                 
-                转眼到了2016，由于拖延症加上工作和各种糟心的鸟事，14年的出行流水账拖到现在才静下心来整理。希望两个半月路上的各种经历还能依稀记起来，完成第二篇记事流水账。给最后几十年活着留美（Zhuang）好（Bi）回忆。
+                
+
+转眼到了2016，由于拖延症加上工作和各种糟心的鸟事，14年的出行流水账拖到现在才静下心来整理。希望两个半月路上的各种经历还能依稀记起来，完成第二篇记事流水账。给最后几十年活着留美（Zhuang）好（Bi）回忆。
 出发之前总喜欢找各种理由和借口来逼逼一下，才会有足够狠的心来再次背上包包。一言不合就要走走走。
 对于13年和好基友的318搭车之行来的激情和刺激，显然还有很多的遗憾，由于13年时间和资金的缘故，14天的旅程更像是拉练完成的，路上有太多的点没去，有太多的事没做，14年琢磨着应该把13年未装完的逼给装完。
 
@@ -230,6 +232,7 @@
 爱人，如果能牵手的话，我很想带上她再去一次，买个越野，在新藏线上放着摇滚，何等狂野。
 父母，计划在爸妈55岁之前带上他们去趟布宫，看下羊湖，走走纳木错，可能的话再去敦煌和新疆。
 孩子，我一直想着以后带着我儿子再来一次转山之旅，女儿就不要了，性子带野了容易吃亏，以后是女儿话，还请原谅我现在就歧视你了。不够照现在这情况，估计要去第二次转山可能是22年后了。
+
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2016-06-29T16:13:13.000Z" class="post-list__meta--date date">6月 30 2016</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -245,7 +248,8 @@
                 <h2 class="post-list__post-title post-title"><a href="/2016/05/19/2016-05-19-UIView-transitionFromView-Error/" title="UIView transitionFromView导致子视图Constraints失效">UIView transitionFromView导致子视图Constraints失效</a></h2>
                 <p class="excerpt">
                 
-                项目开发需要实现一个简单的效果，一个音乐专辑，需要实现定时反复3D旋转的效果，这个效果很简单，利用iOS自带的动画接口对应的Flip动画即可，效果如下：
+                
+项目开发需要实现一个简单的效果，一个音乐专辑，需要实现定时反复3D旋转的效果，这个效果很简单，利用iOS自带的动画接口对应的Flip动画即可，效果如下：
 
 开发的时候用Xib管理专辑两个子View，在使用UIView快速动画接口1+ (void)transitionFromView:(UIView *)fromView toView:(UIView *)toView duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(void (^ __nullable)(BOOL finished))completion;
 和UIViewAnimationOptionTransitionFlipFromLeft搭配使用的时候出现第一个奇怪的问题：动画执行之后在使用UIViewAnimationOptionTransitionFlipFromRight反转翻转效果出现的情况就是翻转一般View消失了，经过调试后发现，因为是使用Xib管理，所以Property声明是weak，就像这样：1@property (weak, nonatomic) IBOutlet UIView *coverContainer;

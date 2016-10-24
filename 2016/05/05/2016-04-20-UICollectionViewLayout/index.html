@@ -25,8 +25,8 @@
     
     <meta name="author" content="Andy矢倉">
     
-    <link rel="stylesheet" href="/css/vno.css" type="text/css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
     
     <link rel="icon" href="/images/favicon.ico">
@@ -44,8 +44,8 @@
 </head>
 
 <body class="home-template no-js">
-    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
-    <script src="/js/main.js" type="text/javascript"></script>
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
     <span class="mobile btn-mobile-menu">
         <i class="fa fa-list btn-mobile-menu__icon"></i>
         <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
@@ -180,7 +180,7 @@
   <section class="post">
     <blockquote>
 <p><strong>注意：</strong>本文的<code>UICollectionView</code>自定义是采用继承<code>UICollectionViewLayout</code>类的方式来自定义布局，而非系统默认使用<code>UICollectionViewFlowLayout</code>类来修改参数的方式。</p>
-<p><strong>【必须】定制UICollectionViewLayout必须覆盖的方法且执行顺序如下：</strong><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)prepareLayout;</span><br><span class="line">- (<span class="built_in">CGSize</span>)collectionViewContentSize;</span><br><span class="line">- (<span class="built_in">NSArray</span>&lt;<span class="built_in">UICollectionViewLayoutAttributes</span> *&gt; *)layoutAttributesForElementsInRect:(<span class="built_in">CGRect</span>)rect;</span><br></pre></td></tr></table></figure></p>
+<p><strong>【必须】定制UICollectionViewLayout必须覆盖的方法且执行顺序如下：</strong><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)prepareLayout;</div><div class="line">- (<span class="built_in">CGSize</span>)collectionViewContentSize;</div><div class="line">- (<span class="built_in">NSArray</span>&lt;<span class="built_in">UICollectionViewLayoutAttributes</span> *&gt; *)layoutAttributesForElementsInRect:(<span class="built_in">CGRect</span>)rect;</div></pre></td></tr></table></figure></p>
 </blockquote>
 <a id="more"></a>
 <ul>
@@ -203,7 +203,7 @@
 </li>
 </ul>
 <blockquote>
-<p><strong>【可选】交互定制方法：</strong><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">BOOL</span>)shouldInvalidateLayoutForBoundsChange:(<span class="built_in">CGRect</span>)newBounds;</span><br><span class="line">- (<span class="built_in">CGPoint</span>)targetContentOffsetForProposedContentOffset:(<span class="built_in">CGPoint</span>)proposedContentOffset withScrollingVelocity:(<span class="built_in">CGPoint</span>)velocity;</span><br></pre></td></tr></table></figure></p>
+<p><strong>【可选】交互定制方法：</strong><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">BOOL</span>)shouldInvalidateLayoutForBoundsChange:(<span class="built_in">CGRect</span>)newBounds;</div><div class="line">- (<span class="built_in">CGPoint</span>)targetContentOffsetForProposedContentOffset:(<span class="built_in">CGPoint</span>)proposedContentOffset withScrollingVelocity:(<span class="built_in">CGPoint</span>)velocity;</div></pre></td></tr></table></figure></p>
 </blockquote>
 <ul>
 <li><strong><code>shouldInvalidateLayoutForBoundsChange:</code>：</strong><br>如果返回YES，那么collectionView显示的范围发生改变时，就会重新刷新布局。<br>一旦重新刷新布局，就会按顺序调用下面的方法：<ul>
@@ -222,16 +222,16 @@
 </ul>
 </li>
 </ul>
-<h3 id="1-计算Item位置">1.计算Item位置</h3><p>在第一步<code>prepareLayout</code>方法执行的时候<code>预先计算</code>好每个<code>Item</code>在<code>UICollectionView</code>上的位置信息，然后保存在<code>UICollectionViewLayoutAttributes</code>对象里，再将其缓存。以便第二步和第三步计算。</p>
-<h3 id="2-计算拖动范围">2.计算拖动范围</h3><p>第二步在<code>collectionViewContentSize</code>方法内利用第一步缓存的<code>Item</code>的位置信息计算<code>CollectionView</code>可拖动范围。</p>
-<h3 id="3-根据可视范围显示Item">3.根据可视范围显示Item</h3><p>第三步在<code>layoutAttributesForElementsInRect:</code>方法内利用第一步缓存的<code>UICollectionViewLayoutAttributes</code>对象来计算<code>Item</code>是否在可视返回内，提取出可视的<code>Item</code>添加到<code>数组</code>对象并做返回。</p>
+<h3 id="1-计算Item位置"><a href="#1-计算Item位置" class="headerlink" title="1.计算Item位置"></a>1.计算Item位置</h3><p>在第一步<code>prepareLayout</code>方法执行的时候<code>预先计算</code>好每个<code>Item</code>在<code>UICollectionView</code>上的位置信息，然后保存在<code>UICollectionViewLayoutAttributes</code>对象里，再将其缓存。以便第二步和第三步计算。</p>
+<h3 id="2-计算拖动范围"><a href="#2-计算拖动范围" class="headerlink" title="2.计算拖动范围"></a>2.计算拖动范围</h3><p>第二步在<code>collectionViewContentSize</code>方法内利用第一步缓存的<code>Item</code>的位置信息计算<code>CollectionView</code>可拖动范围。</p>
+<h3 id="3-根据可视范围显示Item"><a href="#3-根据可视范围显示Item" class="headerlink" title="3.根据可视范围显示Item"></a>3.根据可视范围显示Item</h3><p>第三步在<code>layoutAttributesForElementsInRect:</code>方法内利用第一步缓存的<code>UICollectionViewLayoutAttributes</code>对象来计算<code>Item</code>是否在可视返回内，提取出可视的<code>Item</code>添加到<code>数组</code>对象并做返回。</p>
 <blockquote>
 <p>通过以上三步我们缓存了每个<code>Item</code>的位置信息，再计算出<code>CollectionView</code>的可拖动范围，并且通过计算返回可视化区域需要的<code>UICollectionViewLayoutAttributes</code>对象数组。</p>
 <blockquote>
 <p>最基本的<code>CollectionView</code>自定义布局就可以呈现了。</p>
 </blockquote>
 </blockquote>
-<h3 id="4-根据系统计算的偏移位置决定最后的悬停位置">4.根据系统计算的偏移位置决定最后的悬停位置</h3><p>这一步比较随意，卡片悬停的位置算法需要根据<code>第一步</code>布局情况而定。<br>如果是需要高度优化悬停效果还需要用到<code>targetContentOffsetForProposedContentOffset:withScrollingVelocity:</code>方法里的<code>velocity</code>参数才做校正。</p>
+<h3 id="4-根据系统计算的偏移位置决定最后的悬停位置"><a href="#4-根据系统计算的偏移位置决定最后的悬停位置" class="headerlink" title="4.根据系统计算的偏移位置决定最后的悬停位置"></a>4.根据系统计算的偏移位置决定最后的悬停位置</h3><p>这一步比较随意，卡片悬停的位置算法需要根据<code>第一步</code>布局情况而定。<br>如果是需要高度优化悬停效果还需要用到<code>targetContentOffsetForProposedContentOffset:withScrollingVelocity:</code>方法里的<code>velocity</code>参数才做校正。</p>
 <blockquote>
 <ul>
 <li>这里如果是做单卡的分页悬停，只需要处理<code>向量速度</code>和实时偏移量也就是<code>contentOffset</code>，再判断卡片的<code>中线位置</code>和<code>偏移量</code>的关系来决定是要悬停在上一张还是下一张卡。<ul>
@@ -258,7 +258,8 @@
                 <h2 class="post-list__post-title post-title"><a href="/2016/05/19/2016-05-19-UIView-transitionFromView-Error/" title="UIView transitionFromView导致子视图Constraints失效">UIView transitionFromView导致子视图Constraints失效</a></h2>
                 <p class="excerpt">
                 
-                项目开发需要实现一个简单的效果，一个音乐专辑，需要实现定时反复3D旋转的效果，这个效果很简单，利用iOS自带的动画接口对应的Flip动画即可，效果如下：
+                
+项目开发需要实现一个简单的效果，一个音乐专辑，需要实现定时反复3D旋转的效果，这个效果很简单，利用iOS自带的动画接口对应的Flip动画即可，效果如下：
 
 开发的时候用Xib管理专辑两个子View，在使用UIView快速动画接口1+ (void)transitionFromView:(UIView *)fromView toView:(UIView *)toView duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(void (^ __nullable)(BOOL finished))completion;
 和UIViewAnimationOptionTransitionFlipFromLeft搭配使用的时候出现第一个奇怪的问题：动画执行之后在使用UIViewAnimationOptionTransitionFlipFromRight反转翻转效果出现的情况就是翻转一般View消失了，经过调试后发现，因为是使用Xib管理，所以Property声明是weak，就像这样：1@property (weak, nonatomic) IBOutlet UIView *coverContainer;
@@ -278,7 +279,9 @@
                 <h2 class="post-list__post-title post-title"><a href="/2016/02/02/2016-02-02-Sketch-Tutorial-for-iOS-Developers/" title="给iOS开发者的Sketch入门教程">给iOS开发者的Sketch入门教程</a></h2>
                 <p class="excerpt">
                 
-                注意：这是一篇译文，如果你够装逼，完全可以浏览原文：Sketch Tutorial for iOS Developers如需转载，请注明出处。谢谢！！！转载地址：http://www.rockerhx.com/2016/02/02/2016-02-02-Sketch-Tutorial-for-iOS-Developers/此教程已整理成GitBook：GitBook - 给iOS开发者的Sketch入门教程国内入口：极客学院 - 给iOS开发者的Sketch入门教程
+                
+
+注意：这是一篇译文，如果你够装逼，完全可以浏览原文：Sketch Tutorial for iOS Developers如需转载，请注明出处。谢谢！！！转载地址：http://www.rockerhx.com/2016/02/02/2016-02-02-Sketch-Tutorial-for-iOS-Developers/此教程已整理成GitBook：GitBook - 给iOS开发者的Sketch入门教程国内入口：极客学院 - 给iOS开发者的Sketch入门教程
 
 作为一名iOS开发者，我经历过几个没有设计师的项目，结果就是，痛苦的一逼。做这种类型的项目，设计是非常重要的，特别是迭代设计。在每个项目最开始的时候，客户其实并不知道自己想要什么。直接堆码之前我们还是有点小小的设计知识更有助于你跟客户撕逼的时候占上风，其实我们只是想更完美，难道不是吗？
 
@@ -290,6 +293,8 @@
 使用矢量工具创建Icon。
 通过组合基本形状制作Icon。
 为Xcode导出图片素材资源。而最重要的，你能以开发者的身份来学习这份教程。准备好就可以升级了您的设计技能！Let’s do it！
+
+
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2016-02-02T13:33:15.000Z" class="post-list__meta--date date">2月 2 2016</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;

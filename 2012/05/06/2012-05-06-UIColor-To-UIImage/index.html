@@ -25,8 +25,8 @@
     
     <meta name="author" content="Andy矢倉">
     
-    <link rel="stylesheet" href="/css/vno.css" type="text/css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
     
     <link rel="icon" href="/images/favicon.ico">
@@ -44,8 +44,8 @@
 </head>
 
 <body class="home-template no-js">
-    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
-    <script src="/js/main.js" type="text/javascript"></script>
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
     <span class="mobile btn-mobile-menu">
         <i class="fa fa-list btn-mobile-menu__icon"></i>
         <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
@@ -180,7 +180,7 @@
   <section class="post">
     <p>Creating a UIImage from a UIColor to use as a background image for UIButton</p>
 <a id="more"></a>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CGRect rect = CGRectMake(0, 0, 1, 1);&#10;UIGraphicsBeginImageContext(rect.size);&#10;CGContextRef context = UIGraphicsGetCurrentContext();&#10;CGContextSetFillColorWithColor(context, [[UIColor redColor] CGColor]);&#10;CGContextFillRect(context, rect);&#10;UIImage *image = [[UIImage alloc] init];&#10;image = UIGraphicsGetImageFromCurrentImageContext();&#10;UIGraphicsEndImageContext();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">CGRect rect = CGRectMake(0, 0, 1, 1);</div><div class="line">UIGraphicsBeginImageContext(rect.size);</div><div class="line">CGContextRef context = UIGraphicsGetCurrentContext();</div><div class="line">CGContextSetFillColorWithColor(context, [[UIColor redColor] CGColor]);</div><div class="line">CGContextFillRect(context, rect);</div><div class="line">UIImage *image = [[UIImage alloc] init];</div><div class="line">image = UIGraphicsGetImageFromCurrentImageContext();</div><div class="line">UIGraphicsEndImageContext();</div></pre></td></tr></table></figure>
 
   </section>
 
@@ -194,7 +194,7 @@
                 <h2 class="post-list__post-title post-title"><a href="/2012/07/13/2012-07-13-cocos2d-2-0/" title="cocos2d 2.0 模板安装问题及旧版本卸载">cocos2d 2.0 模板安装问题及旧版本卸载</a></h2>
                 <p class="excerpt">
                 
-                本人也是菜菜一个，最近接触cocos2d-iphone，去社区上看到2.0的稳定版出了，果断把1.01给卸载了，在mac下面卸载xcode的模板非常的方便，直接删除模板文件夹就可以了，具体文件位置1/Users/&amp;#24403;&amp;#21069;&amp;#29992;&amp;#25143;&amp;#21517;/Library/Developer/Xcode/Templates/cocos2d&amp;#10;/Users/&amp;#24403;&amp;#21069;&amp;#29992;&amp;#25143;&amp;#21517;/Library/Developer/Xcode/Templates/File Templates
+                本人也是菜菜一个，最近接触cocos2d-iphone，去社区上看到2.0的稳定版出了，果断把1.01给卸载了，在mac下面卸载xcode的模板非常的方便，直接删除模板文件夹就可以了，具体文件位置12/Users/当前用户名/Library/Developer/Xcode/Templates/cocos2d/Users/当前用户名/Library/Developer/Xcode/Templates/File Templates
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2012-07-13T15:06:35.000Z" class="post-list__meta--date date">7月 13 2012</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -211,7 +211,7 @@
                 <p class="excerpt">
                 
                 这是新的开始，我用hexo创建了第一篇文章。
-通过下面的命令，就可以创建新文章1&amp;#62;hexo new &amp;#26032;&amp;#30340;&amp;#24320;&amp;#22987;&amp;#10;[info] File created at *:*\source\_posts\NewStart.md
+通过下面的命令，就可以创建新文章12&amp;gt;hexo new 新的开始[info] File created at *:*\source\_posts\NewStart.md
 感觉非常好。
                 &hellip;
                 </p>

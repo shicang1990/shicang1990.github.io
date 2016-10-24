@@ -25,8 +25,8 @@
     
     <meta name="author" content="Andy矢倉">
     
-    <link rel="stylesheet" href="/css/vno.css" type="text/css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
     
     <link rel="icon" href="/images/favicon.ico">
@@ -44,8 +44,8 @@
 </head>
 
 <body class="home-template no-js">
-    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
-    <script src="/js/main.js" type="text/javascript"></script>
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
     <span class="mobile btn-mobile-menu">
         <i class="fa fa-list btn-mobile-menu__icon"></i>
         <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
@@ -222,7 +222,9 @@
       <h2 class="post-list__post-title post-title"><a href="/2016/06/30/2016-06-30-Running-Account-2014-Chuanzang01/" title="link to post.title">14年流水账 - 川藏线（一）</a></h2>
       <p class="excerpt">
     
-      转眼到了2016，由于拖延症加上工作和各种糟心的鸟事，14年的出行流水账拖到现在才静下心来整理。希望两个半月路上的各种经历还能依稀记起来，完成第二篇记事流水账。给最后几十年活着留美（Zhuang）好（Bi）回忆。
+      
+
+转眼到了2016，由于拖延症加上工作和各种糟心的鸟事，14年的出行流水账拖到现在才静下心来整理。希望两个半月路上的各种经历还能依稀记起来，完成第二篇记事流水账。给最后几十年活着留美（Zhuang）好（Bi）回忆。
 出发之前总喜欢找各种理由和借口来逼逼一下，才会有足够狠的心来再次背上包包。一言不合就要走走走。
 对于13年和好基友的318搭车之行来的激情和刺激，显然还有很多的遗憾，由于13年时间和资金的缘故，14天的旅程更像是拉练完成的，路上有太多的点没去，有太多的事没做，14年琢磨着应该把13年未装完的逼给装完。
 
@@ -236,6 +238,7 @@
 爱人，如果能牵手的话，我很想带上她再去一次，买个越野，在新藏线上放着摇滚，何等狂野。
 父母，计划在爸妈55岁之前带上他们去趟布宫，看下羊湖，走走纳木错，可能的话再去敦煌和新疆。
 孩子，我一直想着以后带着我儿子再来一次转山之旅，女儿就不要了，性子带野了容易吃亏，以后是女儿话，还请原谅我现在就歧视你了。不够照现在这情况，估计要去第二次转山可能是22年后了。
+
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2016-06-29T16:13:13.000Z" class="post-list__meta--date date">6月 30 2016</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -268,7 +271,8 @@
       <h2 class="post-list__post-title post-title"><a href="/2016/05/19/2016-05-19-UIView-transitionFromView-Error/" title="link to post.title">UIView transitionFromView导致子视图Constraints失效</a></h2>
       <p class="excerpt">
     
-      项目开发需要实现一个简单的效果，一个音乐专辑，需要实现定时反复3D旋转的效果，这个效果很简单，利用iOS自带的动画接口对应的Flip动画即可，效果如下：
+      
+项目开发需要实现一个简单的效果，一个音乐专辑，需要实现定时反复3D旋转的效果，这个效果很简单，利用iOS自带的动画接口对应的Flip动画即可，效果如下：
 
 开发的时候用Xib管理专辑两个子View，在使用UIView快速动画接口1+ (void)transitionFromView:(UIView *)fromView toView:(UIView *)toView duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(void (^ __nullable)(BOOL finished))completion;
 和UIViewAnimationOptionTransitionFlipFromLeft搭配使用的时候出现第一个奇怪的问题：动画执行之后在使用UIViewAnimationOptionTransitionFlipFromRight反转翻转效果出现的情况就是翻转一般View消失了，经过调试后发现，因为是使用Xib管理，所以Property声明是weak，就像这样：1@property (weak, nonatomic) IBOutlet UIView *coverContainer;
@@ -286,8 +290,10 @@
       <h2 class="post-list__post-title post-title"><a href="/2016/05/05/2016-04-20-UICollectionViewLayout/" title="link to post.title">UICollectionView 布局自定义进阶</a></h2>
       <p class="excerpt">
     
-      注意：本文的UICollectionView自定义是采用继承UICollectionViewLayout类的方式来自定义布局，而非系统默认使用UICollectionViewFlowLayout类来修改参数的方式。
+      
+注意：本文的UICollectionView自定义是采用继承UICollectionViewLayout类的方式来自定义布局，而非系统默认使用UICollectionViewFlowLayout类来修改参数的方式。
 【必须】定制UICollectionViewLayout必须覆盖的方法且执行顺序如下：123- (void)prepareLayout;- (CGSize)collectionViewContentSize;- (NSArray&amp;lt;UICollectionViewLayoutAttributes *&amp;gt; *)layoutAttributesForElementsInRect:(CGRect)rect;
+
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2016-05-05T04:52:15.000Z" class="post-list__meta--date date">5月 5 2016</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -301,7 +307,9 @@
       <h2 class="post-list__post-title post-title"><a href="/2016/02/02/2016-02-02-Sketch-Tutorial-for-iOS-Developers/" title="link to post.title">给iOS开发者的Sketch入门教程</a></h2>
       <p class="excerpt">
     
-      注意：这是一篇译文，如果你够装逼，完全可以浏览原文：Sketch Tutorial for iOS Developers如需转载，请注明出处。谢谢！！！转载地址：http://www.rockerhx.com/2016/02/02/2016-02-02-Sketch-Tutorial-for-iOS-Developers/此教程已整理成GitBook：GitBook - 给iOS开发者的Sketch入门教程国内入口：极客学院 - 给iOS开发者的Sketch入门教程
+      
+
+注意：这是一篇译文，如果你够装逼，完全可以浏览原文：Sketch Tutorial for iOS Developers如需转载，请注明出处。谢谢！！！转载地址：http://www.rockerhx.com/2016/02/02/2016-02-02-Sketch-Tutorial-for-iOS-Developers/此教程已整理成GitBook：GitBook - 给iOS开发者的Sketch入门教程国内入口：极客学院 - 给iOS开发者的Sketch入门教程
 
 作为一名iOS开发者，我经历过几个没有设计师的项目，结果就是，痛苦的一逼。做这种类型的项目，设计是非常重要的，特别是迭代设计。在每个项目最开始的时候，客户其实并不知道自己想要什么。直接堆码之前我们还是有点小小的设计知识更有助于你跟客户撕逼的时候占上风，其实我们只是想更完美，难道不是吗？
 
@@ -313,6 +321,8 @@
 使用矢量工具创建Icon。
 通过组合基本形状制作Icon。
 为Xcode导出图片素材资源。而最重要的，你能以开发者的身份来学习这份教程。准备好就可以升级了您的设计技能！Let’s do it！
+
+
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2016-02-02T13:33:15.000Z" class="post-list__meta--date date">2月 2 2016</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;

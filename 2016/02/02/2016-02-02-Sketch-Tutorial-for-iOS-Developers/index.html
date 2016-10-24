@@ -25,8 +25,8 @@
     
     <meta name="author" content="Andy矢倉">
     
-    <link rel="stylesheet" href="/css/vno.css" type="text/css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
     
     <link rel="icon" href="/images/favicon.ico">
@@ -44,8 +44,8 @@
 </head>
 
 <body class="home-template no-js">
-    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
-    <script src="/js/main.js" type="text/javascript"></script>
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
     <span class="mobile btn-mobile-menu">
         <i class="fa fa-list btn-mobile-menu__icon"></i>
         <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
@@ -195,13 +195,13 @@
 </ul>
 </blockquote>
 <a id="more"></a>
-<h2 id="开始">开始</h2><p>首先第一件事情，你需要<a href="http://www.sketchapp.com/" target="_blank" rel="external"><code>Sketch</code></a>。在<a href="http://www.sketchapp.com/" target="_blank" rel="external"><code>www.sketchapp.com</code></a>14天试用版。购买激活需要<code>$99</code>，要什么版本自己看着办。<br>一旦你已经安装了Sketch，打开Sketch，坐下来，放松，吸气，呼气，放屁，然后就可以开始一场盛大之旅了！<br>在下面的章节中，我将指导里在Sketch中挑战各种UI元素来制作图标。请注意，这些都只是出于学习目的，等你自己上手后，完全可以让其狗带，毕竟本教程后面已经不需要这些东东了。</p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>首先第一件事情，你需要<a href="http://www.sketchapp.com/" target="_blank" rel="external"><code>Sketch</code></a>。在<a href="http://www.sketchapp.com/" target="_blank" rel="external"><code>www.sketchapp.com</code></a>14天试用版。购买激活需要<code>$99</code>，要什么版本自己看着办。<br>一旦你已经安装了Sketch，打开Sketch，坐下来，放松，吸气，呼气，放屁，然后就可以开始一场盛大之旅了！<br>在下面的章节中，我将指导里在Sketch中挑战各种UI元素来制作图标。请注意，这些都只是出于学习目的，等你自己上手后，完全可以让其狗带，毕竟本教程后面已经不需要这些东东了。</p>
 <blockquote>
 <p>正所谓，能动手就憋逼逼，那就不瞎逼逼了，直接开整。</p>
 </blockquote>
-<h2 id="模板_-_Templates">模板 - Templates</h2><p>iOS的界面设计模板包含一套矢量格式UIKit组件集合。它有一个标签栏，导航栏，表视图，以及更多。您可以使用它创建一套设计原型。<br>操作路径<code>File\New From Template\iOS UI Design</code>，你会看到以下内容：<br><img src="http://cdn1.raywenderlich.com/wp-content/uploads/2015/11/SketchNewTemplate.png" alt=""></p>
+<h2 id="模板-Templates"><a href="#模板-Templates" class="headerlink" title="模板 - Templates"></a>模板 - Templates</h2><p>iOS的界面设计模板包含一套矢量格式UIKit组件集合。它有一个标签栏，导航栏，表视图，以及更多。您可以使用它创建一套设计原型。<br>操作路径<code>File\New From Template\iOS UI Design</code>，你会看到以下内容：<br><img src="http://cdn1.raywenderlich.com/wp-content/uploads/2015/11/SketchNewTemplate.png" alt=""></p>
 <p>注意这个菜单里也可以选择Android的<code>Material Design</code>设计模板。<br>打开之后你会看到一个包含各种iOS的UI组件的巨大模板。你可以通过在画布上拖拽选择各个控件，你可以通过按住<code>Command</code>，并使用鼠标滚轮进行画布缩放。</p>
-<h2 id="画板_-_Artboards">画板 - Artboards</h2><p>你可以在Sketch这个无限大的画布上绘制你想要的任何图形，如果你要展现多个App屏幕的内容，那就要通过<code>画板</code>这个东西。画板组织一个固定的画布图层。当你导出画板，所有的图层将会合并成一个单一的文件。这里可以把它看做成Xcode里一个Storyboard的控制器场景(ViewController Scenes)。</p>
+<h2 id="画板-Artboards"><a href="#画板-Artboards" class="headerlink" title="画板 - Artboards"></a>画板 - Artboards</h2><p>你可以在Sketch这个无限大的画布上绘制你想要的任何图形，如果你要展现多个App屏幕的内容，那就要通过<code>画板</code>这个东西。画板组织一个固定的画布图层。当你导出画板，所有的图层将会合并成一个单一的文件。这里可以把它看做成Xcode里一个Storyboard的控制器场景(ViewController Scenes)。</p>
 <p>通过执行以下步骤来创建一个新的画板：</p>
 <ul>
 <li>拖动画布，移动到一个空白区域。</li>
@@ -216,7 +216,7 @@
 <blockquote>
 <p>注意：如果你想要任意大小的画板，你可以<code>Insert\Artboard</code>，随便选择一个画板，任意拖动大小即可，至于命名，在左边的文件组织列表栏里把画布所在的分组栏重命名即可。</p>
 </blockquote>
-<h2 id="复制，粘贴">复制，粘贴</h2><p>现在，你已经有了一个画板，从UIKit模板中拖动这几个控件。一个<code>Navigation Bar</code>，<code>Tab Bar</code>和<code>Table View Cell</code>。<br>虽然你可以复制和粘贴<code>⌘C和⌘V</code>，但这很难预测粘贴后控件出现的位置。所以还是老实点，按住<code>Option</code>键拖动一个控件，在你想要粘贴的地方松开鼠标左键即可。<br><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2015/10/steal-from-template.gif" alt=""></p>
+<h2 id="复制，粘贴"><a href="#复制，粘贴" class="headerlink" title="复制，粘贴"></a>复制，粘贴</h2><p>现在，你已经有了一个画板，从UIKit模板中拖动这几个控件。一个<code>Navigation Bar</code>，<code>Tab Bar</code>和<code>Table View Cell</code>。<br>虽然你可以复制和粘贴<code>⌘C和⌘V</code>，但这很难预测粘贴后控件出现的位置。所以还是老实点，按住<code>Option</code>键拖动一个控件，在你想要粘贴的地方松开鼠标左键即可。<br><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2015/10/steal-from-template.gif" alt=""></p>
 <blockquote>
 <p>提示：如何使用快捷键<code>⌘D</code>重复前面的动作。使用<code>Option</code>拖拽粘贴与<code>⌘D</code>创建多个副本：</p>
 <ul>
@@ -225,7 +225,7 @@
 </ul>
 <p>如上图演示一样，你有没有吃精呢？</p>
 </blockquote>
-<h2 id="基础形状_-_Basic_Shapes">基础形状 - Basic Shapes</h2><p>首先，新开个文件或者在画布上找个空白的地方插入一个画板：<code>Insert\Artboard</code><br>接着，我们来搞个图形玩玩，<code>Insert\Shape</code>选择一个可用的形状。<br><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2015/10/shape-options.png" alt=""></p>
+<h2 id="基础形状-Basic-Shapes"><a href="#基础形状-Basic-Shapes" class="headerlink" title="基础形状 - Basic Shapes"></a>基础形状 - Basic Shapes</h2><p>首先，新开个文件或者在画布上找个空白的地方插入一个画板：<code>Insert\Artboard</code><br>接着，我们来搞个图形玩玩，<code>Insert\Shape</code>选择一个可用的形状。<br><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2015/10/shape-options.png" alt=""></p>
 <blockquote>
 <p>实际上，我们可以使用快捷键来插入新的形状。使用<code>快捷键O</code>再按住鼠标左键拖拽即可插入一个椭圆，同样使用<code>快捷键R</code>可以插入一个矩形。下面，罗列出一些常用的图形插入快捷键：</p>
 <ul>
@@ -239,7 +239,7 @@
 <blockquote>
 <p>注意：在插入的时候你可以按住<code>Shift</code>来保证图形绘制成圆形和正方形。</p>
 </blockquote>
-<h2 id="制作图形_-_Styling_a_Shape">制作图形 - Styling a Shape</h2><p>基础的形状虽然好，但是基本上不能给人留下深刻的印象，所以我们可以使用窗口右侧的<code>Inspector</code>栏来编辑图形的一些基础属性，比如颜色，边框半径啥的。这个东西你可以理解为<code>Xcode</code>的<code>Attributes Inspector</code>工具栏。<br><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2015/10/style-options1.png" alt=""></p>
+<h2 id="制作图形-Styling-a-Shape"><a href="#制作图形-Styling-a-Shape" class="headerlink" title="制作图形 - Styling a Shape"></a>制作图形 - Styling a Shape</h2><p>基础的形状虽然好，但是基本上不能给人留下深刻的印象，所以我们可以使用窗口右侧的<code>Inspector</code>栏来编辑图形的一些基础属性，比如颜色，边框半径啥的。这个东西你可以理解为<code>Xcode</code>的<code>Attributes Inspector</code>工具栏。<br><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2015/10/style-options1.png" alt=""></p>
 <p>下面罗列的选项你可以多试试，熟悉一下：</p>
 <ul>
 <li>位置/大小 - Position/Size：对于有的图形或者画布很难拖动调整，你就可以利用这个选项调整画布，点击<code>Size</code>选项中间的<code>小锁图标</code>可以锁定比例，在调整大小的时候就会按照你想要的比例等比例缩放。</li>
@@ -258,7 +258,7 @@
 </ul>
 <p><img src="http://cdn5.raywenderlich.com/wp-content/uploads/2015/10/pill-shape.gif" alt=""></p>
 <p>就如刚才说的一样，你可以自己试试其他的设置，提升一下熟练度。</p>
-<h2 id="图层列表_-_Layer_List">图层列表 - Layer List</h2><p>这个功能区<code>图层列表 - Layer List</code> 位于窗口的左边，它包含了图层列表所包含的所有图层文件。图层是重叠起来的，结构类似于<code>Storyboard</code>中的视图层次结构。<br>文件组织层逻辑，你可以把多个图层作为一个单元一起移动，你还可以使用导出把它到合并成一个单一的对象并导出成图片。在图层列表中，组的概念用文件夹图标表示。</p>
+<h2 id="图层列表-Layer-List"><a href="#图层列表-Layer-List" class="headerlink" title="图层列表 - Layer List"></a>图层列表 - Layer List</h2><p>这个功能区<code>图层列表 - Layer List</code> 位于窗口的左边，它包含了图层列表所包含的所有图层文件。图层是重叠起来的，结构类似于<code>Storyboard</code>中的视图层次结构。<br>文件组织层逻辑，你可以把多个图层作为一个单元一起移动，你还可以使用导出把它到合并成一个单一的对象并导出成图片。在图层列表中，组的概念用文件夹图标表示。</p>
 <p>下列是图层组管理常用的快捷键：</p>
 <ul>
 <li>⌘G：选择多个图层拉进一个组。使用<code>⌘-Shift-G</code>键取消组合。</li>
@@ -271,8 +271,8 @@
 <p>提示：使用这些功能能让我们很好的组织图层结构，就如一个有洁癖的开发需要好的工程目录组织一样，快速定位和爽心悦目是必须的，比如动态图利演示的<code>TableView</code>和<code>Tab Bar</code>一样。然后你可以使用<code>⌘-Option-Up</code>组合快捷键把图层移动到整个画板前沿，避免被其他图层挡住。这里我们尽量不要选择拖拽来排列，避免不小心拖到一个组到另一个组里去了（老版本的<code>Xcode</code>经常有这鸟问题，一不小心组就拖错了）。</p>
 </blockquote>
 <p>试试加些分组到你的<code>iPhone</code>画板里，记得多练习下分组命名。</p>
-<h2 id="矢量工具_-_Vector_Tool">矢量工具 - Vector Tool</h2><p>画圆啊，矩形啊，线条这些都太low逼了，限制也比较多。接下来我们就试试矢量工具来把刚才这些基本图形变变形。</p>
-<h2 id="用直线来画图形">用直线来画图形</h2><p>您可以通过点击创建任意多边形，接下来试着做一个多边形：</p>
+<h2 id="矢量工具-Vector-Tool"><a href="#矢量工具-Vector-Tool" class="headerlink" title="矢量工具 - Vector Tool"></a>矢量工具 - Vector Tool</h2><p>画圆啊，矩形啊，线条这些都太low逼了，限制也比较多。接下来我们就试试矢量工具来把刚才这些基本图形变变形。</p>
+<h2 id="用直线来画图形"><a href="#用直线来画图形" class="headerlink" title="用直线来画图形"></a>用直线来画图形</h2><p>您可以通过点击创建任意多边形，接下来试着做一个多边形：</p>
 <ul>
 <li>1.使用快捷键<code>V</code>激活矢量图形工具。</li>
 <li>2.开始画梯形的边角。</li>
@@ -283,7 +283,7 @@
 </ul>
 <p><img src="http://cdn3.raywenderlich.com/wp-content/uploads/2015/10/trapezoid.gif" alt=""></p>
 <p>非常爽的是，因为Sketch可以让你在事后重新定位每个矢量点，因此不需要你有很大的绘画技巧就可以使用矢量工具。当你拖拽矢量点的适合还有跟<code>Storyboard</code>里面拖拽控件一样，会有对齐提示，只不过这里是红色的实现。</p>
-<h2 id="旋转副本_-_Rotate_Copies">旋转副本 - Rotate Copies</h2><p>如果你以为这里就只是画个梯形简直图样，接着我们就使用旋转副本功能来搞个风车耍耍。旋转副本创建了复制图形并给你创建了一圈，看起来有木有像个花瓣（像个毛）？又在瞎逼逼了，动手试试：</p>
+<h2 id="旋转副本-Rotate-Copies"><a href="#旋转副本-Rotate-Copies" class="headerlink" title="旋转副本 - Rotate Copies"></a>旋转副本 - Rotate Copies</h2><p>如果你以为这里就只是画个梯形简直图样，接着我们就使用旋转副本功能来搞个风车耍耍。旋转副本创建了复制图形并给你创建了一圈，看起来有木有像个花瓣（像个毛）？又在瞎逼逼了，动手试试：</p>
 <ul>
 <li>1.选择菜单<code>Layer\Paths\Rotate Copies</code>。</li>
 <li>2.输入<code>3</code>，制作三份副本（算上你画的那个一个是四个）。</li>
@@ -291,7 +291,7 @@
 </ul>
 <p><img src="http://cdn4.raywenderlich.com/wp-content/uploads/2015/10/rotate-copies.gif" alt=""></p>
 <p>Sketch的旋转副本功能会自动创建一个循环副本，至于组合型，我们后面会讲到。</p>
-<h2 id="剪刀_-_Scissors">剪刀 - Scissors</h2><p>位于旋转副本功能上面有个叫做<code>剪刀 - Scissors</code>的菜单选项。这里我们使用它投机倒把，创建一个WatchKit活动环耍耍：</p>
+<h2 id="剪刀-Scissors"><a href="#剪刀-Scissors" class="headerlink" title="剪刀 - Scissors"></a>剪刀 - Scissors</h2><p>位于旋转副本功能上面有个叫做<code>剪刀 - Scissors</code>的菜单选项。这里我们使用它投机倒把，创建一个WatchKit活动环耍耍：</p>
 <ul>
 <li>1.创建一个圆（记住，使用快捷键<code>O</code>并按住<code>Shift</code>拖动出一个圆圈）。</li>
 <li>2.取消填充<code>Fill</code>。</li>
@@ -306,7 +306,7 @@
 <blockquote>
 <p>小提示：你可以在使用剪刀剪断矢量路径之前用编辑功能拖动任意路径。</p>
 </blockquote>
-<h2 id="模式和操作棒_-_Modes_and_Handles">模式和操作棒 - Modes and Handles</h2><p>Sketch使用四个向量点来绘制圆。你可以画一个圆试试，然后单击工具栏中的<code>编辑Edit</code>看到这些向量点。<br>可以你会怀疑，一个长方形也有四个矢量点。 这特么到底是怎么回事？其实两者之间的区别就在于圆使用的是<code>贝塞尔曲线 - Bezier Curves</code>。<br><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2015/10/circle-vector-points.png" alt=""></p>
+<h2 id="模式和操作棒-Modes-and-Handles"><a href="#模式和操作棒-Modes-and-Handles" class="headerlink" title="模式和操作棒 - Modes and Handles"></a>模式和操作棒 - Modes and Handles</h2><p>Sketch使用四个向量点来绘制圆。你可以画一个圆试试，然后单击工具栏中的<code>编辑Edit</code>看到这些向量点。<br>可以你会怀疑，一个长方形也有四个矢量点。 这特么到底是怎么回事？其实两者之间的区别就在于圆使用的是<code>贝塞尔曲线 - Bezier Curves</code>。<br><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2015/10/circle-vector-points.png" alt=""></p>
 <p>简单的说，<code>贝塞尔曲线 - Bezier Curves</code>就是是可以通过<code>控制点</code>弯曲的曲线线条。Sketch称这些控制点叫<code>操作棒 - handles</code>。每个向量点附带有控制每边弧度的两个操作棒。这意味着线的弯曲程度是通过操作棒的各个控制端做决定。听起来比较复杂，但是这里我们需要太深入了解，在Sketch中，您只需拖动操作棒，直到曲线变成你想要的样子就可以了。<br>Sketch方便的定义了基于在需要操作的对象上相对位置的不同的四种模式。<br><img src="http://cdn1.raywenderlich.com/wp-content/uploads/2015/10/vector-modes.png" alt=""></p>
 <ul>
 <li>直线模式 - Straight：这个模式没有操作棒，意味着也没有曲线变化，那当然也就是直线了。</li>
@@ -316,7 +316,7 @@
 </ul>
 <p>所以前两种模式都是对称形式，只不过一个是直线，一个是曲线。后两种模式是非对称形式，方便创造任意曲线。<br>实际使用中，创建曲线so easy，只需点击矢量点再选择<code>不连续模式 - Disconnected</code>即可。然后你就可以随便玩了，只要不会让曲线看起来断开就行。</p>
 <p>在实践中，使曲线是非常简单的。在矢量点只需双击，然后点击断开。然后你像电视天线的兔耳每个把手futz直到曲线看起来正确。<br>要了解更多关于模式和操作棒，这篇<a href="https://medium.com/sketch-app/mastering-the-bezier-curve-in-sketch-4da8fdf0dbbb" target="_blank" rel="external"><code>文章</code></a>可以参考。</p>
-<h2 id="贝塞尔曲线理论_-_Bezier_Curve_Theory">贝塞尔曲线理论 - Bezier Curve Theory</h2><p>其实你并不真的需要知道贝塞尔曲线背后的数学才能使用矢量工具 - 但是我偏不！ ：] 这里我有一个非数学的比喻，可以帮助了解计算机是怎么把这个东西画到屏幕上的。<br>这里原作者使用了不恰当的棒球比赛模型来来举例，里面没有裁判，我也不太了解棒球规则，就不瞎逼逼了，按照我的理解来说。</p>
+<h2 id="贝塞尔曲线理论-Bezier-Curve-Theory"><a href="#贝塞尔曲线理论-Bezier-Curve-Theory" class="headerlink" title="贝塞尔曲线理论 - Bezier Curve Theory"></a>贝塞尔曲线理论 - Bezier Curve Theory</h2><p>其实你并不真的需要知道贝塞尔曲线背后的数学才能使用矢量工具 - 但是我偏不！ ：] 这里我有一个非数学的比喻，可以帮助了解计算机是怎么把这个东西画到屏幕上的。<br>这里原作者使用了不恰当的棒球比赛模型来来举例，里面没有裁判，我也不太了解棒球规则，就不瞎逼逼了，按照我的理解来说。</p>
 <ul>
 <li>1.绿色boy要直接冲回老家全垒打。</li>
 <li>2.蓝色boy去当然要截断，冲向绿色boy，由于绿色boy是移动的，所以蓝色boy的走位就是曲线运动。</li>
@@ -325,7 +325,7 @@
 <p><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2015/10/bezier.png" alt=""></p>
 <p>本垒和红色boy的位置代表矢量点，绿色和蓝色boy的位置就是操作棒。这样红色boy的运动轨迹就是<code>贝塞尔曲线</code>。<br><img src="http://cdn1.raywenderlich.com/wp-content/uploads/2015/10/bezier-curve.png" alt=""></p>
 <p>不知道这么说你们有明白了没有，如果还没明白，这里有个<a href="https://www.jasondavies.com/animated-bezier/" target="_blank" rel="external"><code>可视化工具</code></a>，自行解决了，贝塞尔说起来没完没了。</p>
-<h2 id="矢量操作棒上手">矢量操作棒上手</h2><p>接下来我们动手创建一个地图标记的图标：</p>
+<h2 id="矢量操作棒上手"><a href="#矢量操作棒上手" class="headerlink" title="矢量操作棒上手"></a>矢量操作棒上手</h2><p>接下来我们动手创建一个地图标记的图标：</p>
 <ul>
 <li>1.先在画布上拉一个圆。</li>
 <li>2.边框<code>Border</code>设置为<code>15</code>。</li>
@@ -336,7 +336,7 @@
 </ul>
 <p><img src="http://cdn1.raywenderlich.com/wp-content/uploads/2015/10/map-marker.gif" alt=""></p>
 <p>所谓的地图标记就和上面示意图一样，点和圈之间的关系。后面的教程会对地图标记做更详细的介绍。</p>
-<h2 id="创建自定义图标">创建自定义图标</h2><p>我们来搞个Logo，这里只是用简单的铅笔工具来画线，然后拿矢量工具来描边。<br>接下来我们就搞一个<code>Ray Wenderlich</code>的Logo耍耍。</p>
+<h2 id="创建自定义图标"><a href="#创建自定义图标" class="headerlink" title="创建自定义图标"></a>创建自定义图标</h2><p>我们来搞个Logo，这里只是用简单的铅笔工具来画线，然后拿矢量工具来描边。<br>接下来我们就搞一个<code>Ray Wenderlich</code>的Logo耍耍。</p>
 <ul>
 <li>1.<a href="http://i1.wp.com/www.raywenderlich.com/wp-content/themes/raywenderlich/images/global/rw-logo_250.png" target="_blank" rel="external"><code>这个</code></a>是Logo的低像素版本。</li>
 <li>2.把这张Logo扔进Sketch。</li>
@@ -359,8 +359,8 @@
 </ul>
 <p><img src="http://cdn3.raywenderlich.com/wp-content/uploads/2015/10/rw-logo-disconnected.gif" alt=""></p>
 <p>这里运气比较好，RW的Logo只有一条弧线，以此类推，你可以使用更多的点来描出更多复杂的曲线。有兴趣可以去下载<code>Swift</code>的Logo来临摹。过程中可以通过使用快捷键<code>Tab</code>来快速切换每个矢量点。</p>
-<h2 id="结合形状">结合形状</h2><p>想必大家小时候都玩过七巧板，我们除了通过矢量工具，还可以通过使用基本图形的结合来创建独特的形状。<br>在编程中，有运算逻辑<code>AND</code>，<code>OR</code>和<code>XOR</code>，Sketch中也有类似的表达，但是叫法不同，分为<code>融合 - Union</code>，<code>相差 - Subtract</code>，<code>相交 - Intersect</code>，<code>差异 - Difference</code>。</p>
-<h2 id="融合_-_Union">融合 - Union</h2><p><code>融合 - Union</code>就是就是两个图形加起来，使用之前的药丸和圆弄个云出来耍耍。</p>
+<h2 id="结合形状"><a href="#结合形状" class="headerlink" title="结合形状"></a>结合形状</h2><p>想必大家小时候都玩过七巧板，我们除了通过矢量工具，还可以通过使用基本图形的结合来创建独特的形状。<br>在编程中，有运算逻辑<code>AND</code>，<code>OR</code>和<code>XOR</code>，Sketch中也有类似的表达，但是叫法不同，分为<code>融合 - Union</code>，<code>相差 - Subtract</code>，<code>相交 - Intersect</code>，<code>差异 - Difference</code>。</p>
+<h2 id="融合-Union"><a href="#融合-Union" class="headerlink" title="融合 - Union"></a>融合 - Union</h2><p><code>融合 - Union</code>就是就是两个图形加起来，使用之前的药丸和圆弄个云出来耍耍。</p>
 <ul>
 <li>1.使用矩形创建一个小药丸。</li>
 <li>2.创建一个圆。</li>
@@ -369,7 +369,7 @@
 </ul>
 <p><img src="http://cdn1.raywenderlich.com/wp-content/uploads/2015/10/cloud.gif" alt=""></p>
 <p>这里是不是很奇怪，两个图形的边框直接就融合到一起了，这就是Sketch的神奇之处。</p>
-<h2 id="相差_-_Subtract">相差 - Subtract</h2><p>相差是两个图形重合在一起，一个被另一个包含，所以大集合除去小集合还会有多余的，多余的就是相差的部分，如果不变理解，可以想象为数学减法，结果就是相减之后的部分。<br>虽然之前的地图标记图标看起来已经可以了，但是我们所谓社会主义的接班人，怎么可以这么轻易就完了呢，不行，还得在标记上戳个洞看起来才爽。那就利用刚才介绍的相差的知识这么干：</p>
+<h2 id="相差-Subtract"><a href="#相差-Subtract" class="headerlink" title="相差 - Subtract"></a>相差 - Subtract</h2><p>相差是两个图形重合在一起，一个被另一个包含，所以大集合除去小集合还会有多余的，多余的就是相差的部分，如果不变理解，可以想象为数学减法，结果就是相减之后的部分。<br>虽然之前的地图标记图标看起来已经可以了，但是我们所谓社会主义的接班人，怎么可以这么轻易就完了呢，不行，还得在标记上戳个洞看起来才爽。那就利用刚才介绍的相差的知识这么干：</p>
 <ul>
 <li>1.创建一个地图标记图标，这次不需要边框，直接取消掉。</li>
 <li>2.创建一个小圆圈，并拖入到标记里面去。</li>
@@ -387,7 +387,7 @@
 <li>当你合并图层的时候，你基本不用操心，Sketch会帮你搞定你想要的。</li>
 <li>对于这些过程，你只用保证孔在最前既可以，如果图形小时，重新排列图层位置顺序即可。</li>
 </ul>
-<h2 id="填充、轮廓">填充、轮廓</h2><p>这个节点，本教程为你准备了必须的<a href="http://cdn5.raywenderlich.com/wp-content/uploads/2015/10/RWDevConArtboards.zip" target="_blank" rel="external"><code>素材文件</code></a>。打开之后应该长这样：<br><img src="http://cdn5.raywenderlich.com/wp-content/uploads/2015/10/finished-artboard.png" alt=""></p>
+<h2 id="填充、轮廓"><a href="#填充、轮廓" class="headerlink" title="填充、轮廓"></a>填充、轮廓</h2><p>这个节点，本教程为你准备了必须的<a href="http://cdn5.raywenderlich.com/wp-content/uploads/2015/10/RWDevConArtboards.zip" target="_blank" rel="external"><code>素材文件</code></a>。打开之后应该长这样：<br><img src="http://cdn5.raywenderlich.com/wp-content/uploads/2015/10/finished-artboard.png" alt=""></p>
 <p>这套包含了单个示例和矢量图标的素材方便你随时查阅，这些素材都是在教程前后使用的。</p>
 <p><code>Tab Bar</code>的图标颜色变化是基于选中状态，但是一些图标有太多的空间，所以颜色变化太微妙。在这种情况下，<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/BarIcons.html" target="_blank" rel="external"><code>苹果的人机界面指南</code></a>推荐使用单独填充版本作为<code>selectedImage</code>。<code>RWDevCon</code>应用的样本都有各自的<code>Tab Bar</code>独立版本。<br><img src="http://cdn4.raywenderlich.com/wp-content/uploads/2015/10/fill-vs-outline.png" alt=""></p>
 <p>在刚才下载的素描文件里，有一个被称为日历入门的画板，日历图标其中包含几个几何图形合并的而来的图标。就是一些简单的几何图形拼凑而已，前面已经很好的演示过来。<br>下面我们来创建日历图标：</p>
@@ -410,7 +410,7 @@
 </ul>
 <p><img src="http://cdn4.raywenderlich.com/wp-content/uploads/2015/10/calendar-outline.gif" alt=""></p>
 <p>调整分割线高度的时候，Sketch不会有明确的高度指示，所以你可以选择直接输入数值。</p>
-<h2 id="圆形轮廓头像">圆形轮廓头像</h2><p>在应用中，往往用户头像都圆形边框的。为了达到这种效果，我们将使用蒙版功能，这和相差功能很类似。但是，这不是从内掏空，而是从外延切掉。<br>下面我们来创建一个头像：</p>
+<h2 id="圆形轮廓头像"><a href="#圆形轮廓头像" class="headerlink" title="圆形轮廓头像"></a>圆形轮廓头像</h2><p>在应用中，往往用户头像都圆形边框的。为了达到这种效果，我们将使用蒙版功能，这和相差功能很类似。但是，这不是从内掏空，而是从外延切掉。<br>下面我们来创建一个头像：</p>
 <ul>
 <li>1.在左侧的图层列表里展开<code>Greg Before</code>画板。</li>
 <li>2.在画板里画个圆出来，圆要足够大，大到把整张脸都能遮住。</li>
@@ -422,12 +422,12 @@
 </ul>
 <p><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2015/10/greg-mask.gif" alt=""></p>
 <p>跟相差功能在顶部刚刚相反，蒙版需要在图层底部。</p>
-<h2 id="图像导出">图像导出</h2><p>在Sketch窗口的右下角有<code>导图功能 - Make Exportable</code>。<br>如果需要导出多个图层，有以下两种方法：<br>组 - Group：使用组导出，会把多个图层合并成单一图层导出。<br>画板 - Artboard：画板同组一样，会把多个图层导出成单一图层，图片大小根据画板的画布大小确定。<br>在导出之前请先确定好画板的宽高，这些参数是基于1x的图片大小。</p>
+<h2 id="图像导出"><a href="#图像导出" class="headerlink" title="图像导出"></a>图像导出</h2><p>在Sketch窗口的右下角有<code>导图功能 - Make Exportable</code>。<br>如果需要导出多个图层，有以下两种方法：<br>组 - Group：使用组导出，会把多个图层合并成单一图层导出。<br>画板 - Artboard：画板同组一样，会把多个图层导出成单一图层，图片大小根据画板的画布大小确定。<br>在导出之前请先确定好画板的宽高，这些参数是基于1x的图片大小。</p>
 <blockquote>
 <p>小提示：需要缩放的话可以使用缩放按钮，点击<code>Mask</code>旁边的<code>Scale</code>按钮即可，缩放功能是等比例，不用像下面这样分别调整。</p>
 </blockquote>
 <p><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2015/10/scale.png" alt=""></p>
-<h2 id="PNG">PNG</h2><p>Sketch可以很容易的输出各种尺寸的图片：</p>
+<h2 id="PNG"><a href="#PNG" class="headerlink" title="PNG"></a>PNG</h2><p>Sketch可以很容易的输出各种尺寸的图片：</p>
 <ul>
 <li>1.在窗口右下方使用<code>图层输出 - Make Exportable</code>。</li>
 <li>2.点击<code>加号+</code>增加一个@2x输出。</li>
@@ -435,7 +435,7 @@
 <li>4.最后点击<code>导出Export</code>按钮把三张图片导出。</li>
 </ul>
 <p><img src="http://cdn5.raywenderlich.com/wp-content/uploads/2015/10/exporting.gif" alt=""></p>
-<h2 id="PDF">PDF</h2><p>虽然每个图像都可以导出@2x和@3x尺寸的图，但是我们的<code>Xcode</code>早就支持<code>矢量图像</code>，而且还是<code>PDF</code>格式的矢量图形，这就好比<code>带了图像的SVG</code>一样。</p>
+<h2 id="PDF"><a href="#PDF" class="headerlink" title="PDF"></a>PDF</h2><p>虽然每个图像都可以导出@2x和@3x尺寸的图，但是我们的<code>Xcode</code>早就支持<code>矢量图像</code>，而且还是<code>PDF</code>格式的矢量图形，这就好比<code>带了图像的SVG</code>一样。</p>
 <ul>
 <li>1.在窗口右下方使用<code>图层输出 - Make Exportable</code>。</li>
 <li>2.保持<code>1x</code>尺寸。</li>
@@ -451,7 +451,7 @@
 </ul>
 <p><img src="http://cdn1.raywenderlich.com/wp-content/uploads/2015/10/scale-factors.png" alt=""></p>
 <p>有了这个矢量的PDF文件，Xcode会自动生成<code>@2x</code>和<code>@3x</code>图，这样不仅省去了PNG图片还减少了图片资源众多管理，命名的麻烦，有没有很爽的样子？</p>
-<h2 id="结语">结语</h2><p>Sketch的入门使用就介绍到这里，教程中所使用的工程文件可以在这里<a href="http://cdn5.raywenderlich.com/wp-content/uploads/2015/10/RWDevConArtboards.zip" target="_blank" rel="external"><code>下载</code></a>。<br>面对强大的Sketch，我们还有很多需要学习的地方，此后如有问题不能解决可以直接上<a href="http://static-download.s3-website-us-east-1.amazonaws.com/manual.pdf" target="_blank" rel="external"><code>官方文档</code></a>。或者多看看这些<a href="http://www.sketchtips.info/" target="_blank" rel="external"><code>博客</code></a>和<a href="http://www.learnsketch.com/tutorials.html" target="_blank" rel="external"><code>视频</code></a>。<br>你要是喜欢我这里有些<a href="http://www.sketchappsources.com/category/icon.html" target="_blank" rel="external"><code>矢量图标的素材</code></a>，随便下。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>Sketch的入门使用就介绍到这里，教程中所使用的工程文件可以在这里<a href="http://cdn5.raywenderlich.com/wp-content/uploads/2015/10/RWDevConArtboards.zip" target="_blank" rel="external"><code>下载</code></a>。<br>面对强大的Sketch，我们还有很多需要学习的地方，此后如有问题不能解决可以直接上<a href="http://static-download.s3-website-us-east-1.amazonaws.com/manual.pdf" target="_blank" rel="external"><code>官方文档</code></a>。或者多看看这些<a href="http://www.sketchtips.info/" target="_blank" rel="external"><code>博客</code></a>和<a href="http://www.learnsketch.com/tutorials.html" target="_blank" rel="external"><code>视频</code></a>。<br>你要是喜欢我这里有些<a href="http://www.sketchappsources.com/category/icon.html" target="_blank" rel="external"><code>矢量图标的素材</code></a>，随便下。</p>
 <p>最后，非常感谢你们看完这边教程，要是有什么不足或者意见，欢迎大家一起留言讨论。</p>
 
   </section>
@@ -466,8 +466,10 @@
                 <h2 class="post-list__post-title post-title"><a href="/2016/05/05/2016-04-20-UICollectionViewLayout/" title="UICollectionView 布局自定义进阶">UICollectionView 布局自定义进阶</a></h2>
                 <p class="excerpt">
                 
-                注意：本文的UICollectionView自定义是采用继承UICollectionViewLayout类的方式来自定义布局，而非系统默认使用UICollectionViewFlowLayout类来修改参数的方式。
+                
+注意：本文的UICollectionView自定义是采用继承UICollectionViewLayout类的方式来自定义布局，而非系统默认使用UICollectionViewFlowLayout类来修改参数的方式。
 【必须】定制UICollectionViewLayout必须覆盖的方法且执行顺序如下：123- (void)prepareLayout;- (CGSize)collectionViewContentSize;- (NSArray&amp;lt;UICollectionViewLayoutAttributes *&amp;gt; *)layoutAttributesForElementsInRect:(CGRect)rect;
+
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2016-05-05T04:52:15.000Z" class="post-list__meta--date date">5月 5 2016</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;

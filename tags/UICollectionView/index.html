@@ -25,8 +25,8 @@
     
     <meta name="author" content="Andy矢倉">
     
-    <link rel="stylesheet" href="/css/vno.css" type="text/css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
     
     <link rel="icon" href="/images/favicon.ico">
@@ -44,8 +44,8 @@
 </head>
 
 <body class="home-template no-js">
-    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
-    <script src="/js/main.js" type="text/javascript"></script>
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
     <span class="mobile btn-mobile-menu">
         <i class="fa fa-list btn-mobile-menu__icon"></i>
         <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
@@ -171,8 +171,10 @@
       <h2 class="post-list__post-title post-title"><a href="/2016/05/05/2016-04-20-UICollectionViewLayout/" title="link to post.title">UICollectionView 布局自定义进阶</a></h2>
       <p class="excerpt">
     
-      注意：本文的UICollectionView自定义是采用继承UICollectionViewLayout类的方式来自定义布局，而非系统默认使用UICollectionViewFlowLayout类来修改参数的方式。
+      
+注意：本文的UICollectionView自定义是采用继承UICollectionViewLayout类的方式来自定义布局，而非系统默认使用UICollectionViewFlowLayout类来修改参数的方式。
 【必须】定制UICollectionViewLayout必须覆盖的方法且执行顺序如下：123- (void)prepareLayout;- (CGSize)collectionViewContentSize;- (NSArray&amp;lt;UICollectionViewLayoutAttributes *&amp;gt; *)layoutAttributesForElementsInRect:(CGRect)rect;
+
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2016-05-05T04:52:15.000Z" class="post-list__meta--date date">5月 5 2016</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;

@@ -25,8 +25,8 @@
     
     <meta name="author" content="Andy矢倉">
     
-    <link rel="stylesheet" href="/css/vno.css" type="text/css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
     
     <link rel="icon" href="/images/favicon.ico">
@@ -44,8 +44,8 @@
 </head>
 
 <body class="home-template no-js">
-    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
-    <script src="/js/main.js" type="text/javascript"></script>
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
     <span class="mobile btn-mobile-menu">
         <i class="fa fa-list btn-mobile-menu__icon"></i>
         <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
@@ -182,9 +182,9 @@
 <p>AVPlayer，AVAudioPlayer，MPMusicPlayerController，MPMoviePlayerController</p>
 <a id="more"></a>
 <p>因为设计到播放本地和网络音频，人又比较偷懒，尝试看用自带的类能不能做个较好的功能，经过各种尝试之后，决定用AVAudioPlayer播放本地音频，网络音频用MPMoviePlayerController。其实AVPlayer既可以播放本地又可以播放网络音频，但是由于官方封装的东西太少，本来都还可以凑合着用一下，但是因为最近推出了iOS7，在iOS7下运行会出现获取不到网络音频的时间信息，以至于错误到0/0这种表达式跳转到汇编里卡主，调试了好久才找到问题，刚开始还以为是基础数据类型强转出现了问题（不知道是不是官方文档没注意更新，获取时间的接口被弃用还是改用别的api了，总之就是在iOS7以下能获取音频时间，iOS7以上就全部是0）。各种纠结之后决定AVAudioPlayer和MPMoviePlayerController组合，但是问题冒出来了，MPMoviePlayerController不能控制音量，必须通过</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[MPMusicPlayerController applicationMusicPlayer] setVolume:value];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[[MPMusicPlayerController applicationMusicPlayer] setVolume:value];</div></pre></td></tr></table></figure>
 <p>来设置系统音量，好吧，凑合着用吧，但是奇葩问题是接二连三的，iOS7以上次api废弃，这是神马节奏，看官方解释</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// The current volume of playing music, in the range of 0.0 to 1.0.&#10;// This property is deprecated -- use MPVolumeView for volume control instead.&#10;&#10;@property(nonatomic) float volume NS_DEPRECATED_iOS(3_0, 7_0);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// The current volume of playing music, in the range of 0.0 to 1.0.</div><div class="line">// This property is deprecated -- use MPVolumeView for volume control instead.</div><div class="line"></div><div class="line">@property(nonatomic) float volume NS_DEPRECATED_iOS(3_0, 7_0);</div></pre></td></tr></table></figure>
 <p>ok，那没办法了，就用MPVolumeView来搞吧，各种addSubview之后，我插，怎么样都看不到slider，无奈在网上也搜了很久，在谷歌里输关键字的时候看到了“mpvolumeview not showing in simulator”这句，我去，果断真机调试，这尼玛才有了slider，惊讶啊，为毛这种东西文档里没找到，难道我傻逼了，吐槽到此了。<br>最后说一下，关于音量控制</p>
 <p>AVPlayer：提供音量控制api，但是只支持iOS7</p>
 <p>AVAudioPlayer：提供音量控制api，目前是都支持</p>
@@ -220,7 +220,7 @@
                 <h2 class="post-list__post-title post-title"><a href="/2012/07/13/2012-07-13-cocos2d-2-0/" title="cocos2d 2.0 模板安装问题及旧版本卸载">cocos2d 2.0 模板安装问题及旧版本卸载</a></h2>
                 <p class="excerpt">
                 
-                本人也是菜菜一个，最近接触cocos2d-iphone，去社区上看到2.0的稳定版出了，果断把1.01给卸载了，在mac下面卸载xcode的模板非常的方便，直接删除模板文件夹就可以了，具体文件位置1/Users/&amp;#24403;&amp;#21069;&amp;#29992;&amp;#25143;&amp;#21517;/Library/Developer/Xcode/Templates/cocos2d&amp;#10;/Users/&amp;#24403;&amp;#21069;&amp;#29992;&amp;#25143;&amp;#21517;/Library/Developer/Xcode/Templates/File Templates
+                本人也是菜菜一个，最近接触cocos2d-iphone，去社区上看到2.0的稳定版出了，果断把1.01给卸载了，在mac下面卸载xcode的模板非常的方便，直接删除模板文件夹就可以了，具体文件位置12/Users/当前用户名/Library/Developer/Xcode/Templates/cocos2d/Users/当前用户名/Library/Developer/Xcode/Templates/File Templates
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2012-07-13T15:06:35.000Z" class="post-list__meta--date date">7月 13 2012</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;

@@ -25,8 +25,8 @@
     
     <meta name="author" content="Andy矢倉">
     
-    <link rel="stylesheet" href="/css/vno.css" type="text/css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
     
     <link rel="icon" href="/images/favicon.ico">
@@ -44,8 +44,8 @@
 </head>
 
 <body class="home-template no-js">
-    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
-    <script src="/js/main.js" type="text/javascript"></script>
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
     <span class="mobile btn-mobile-menu">
         <i class="fa fa-list btn-mobile-menu__icon"></i>
         <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
@@ -187,7 +187,7 @@
       <h2 class="post-list__post-title post-title"><a href="/2015/10/02/2015-10-02-OSX-10.11-Homebrew-Issue/" title="link to post.title">升级OS X El Capitan导致Homebrew权限失效</a></h2>
       <p class="excerpt">
     
-      昨天刚升级了Homebrew，今天使用Homebrew导致权限不够，找资料看到因为OS X El Capitan引入了系统完整性保护机制，所以使用Homebrew的同学请在升级后在终端执行1sudo chown $(whoami):admin /usr/local &amp;#38;&amp;#38; sudo chown -R $(whoami):admin /usr/local
+      昨天刚升级了Homebrew，今天使用Homebrew导致权限不够，找资料看到因为OS X El Capitan引入了系统完整性保护机制，所以使用Homebrew的同学请在升级后在终端执行1sudo chown $(whoami):admin /usr/local &amp;amp;&amp;amp; sudo chown -R $(whoami):admin /usr/local
 Macports因为安装在/o
     &hellip;
       </p>
@@ -203,7 +203,7 @@ Macports因为安装在/o
       <p class="excerpt">
     
       最近升级了Xcode7，一打开老工程就各种报警告，由于我洁癖癌晚期，一定要从本质上消灭掉警告心里才舒坦，几个小警告，秒秒钟搞定，最后把工程配置文件也升级了，run起来没有警告那叫一个爽啊，舒坦！！！
-然后，过了几天，commit的时候出现这逼提示：1The working copy &amp;#8220;***&amp;#8221; failed to commit files.&amp;#10;&amp;#10;*** Please tell me who you are.&amp;#10;&amp;#10;Run&amp;#10;&amp;#10;  git config --global user.email &amp;#34;you@example.com&amp;#34;&amp;#10;  git config --global user.name &amp;#34;Your Name&amp;#34;&amp;#10;&amp;#10;to set your account&amp;#39;s default identity.&amp;#10;Omit --global to set the identity only in this repository.&amp;#10;&amp;#10;fatal: unable to auto-detect email address (got &amp;#39;***@bogon.(none)&amp;#39;)
+然后，过了几天，commit的时候出现这逼提示：12345678910111213The working copy “***” failed to commit files.*** Please tell me who you are.Run  git config --global user.email &amp;quot;you@example.com&amp;quot;  git config --global user.name &amp;quot;Your Name&amp;quot;to set your account&amp;apos;s default identity.Omit --global to set the identity only in this repository.fatal: unable to auto-detect email address (got &amp;apos;***@bogon.(none)&amp;apos;)
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2015-09-07T13:23:30.000Z" class="post-list__meta--date date">9月 7 2015</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -265,7 +265,8 @@ Macports因为安装在/o
       <h2 class="post-list__post-title post-title"><a href="/2015/01/04/2015-01-4-Dynamic-TableViewCell-Height-By-Auto Layout/" title="link to post.title">使用AutoLayout来动态计算UITableViewCell的高度</a></h2>
       <p class="excerpt">
     
-      Learn how to create dynamic height table view cells using auto layout引文原版：http://www.raywenderlich.com/73602/dynamic-table-view-cell-height-auto-layout转载请注明出处：http://www.rockerhx.com/2015/01/04/2015-01-4-Dynamic-TableViewCell-Height-By-Auto%20Layout/
+      
+Learn how to create dynamic height table view cells using auto layout引文原版：http://www.raywenderlich.com/73602/dynamic-table-view-cell-height-auto-layout转载请注明出处：http://www.rockerhx.com/2015/01/04/2015-01-4-Dynamic-TableViewCell-Height-By-Auto%20Layout/
 11/23/2014: 已经更新兼容iOS7，iOS8和Xcode6.1
 
 如果你在过去想创建一个自定义的表视图来完成动态适配表视图单元格的高度，你必须写很多的计算代码。你必须计算每一个label，image view，text field，以及其他一切单元格内手动创建的控件高度。坦率地说，这是非常艰巨的，也是流水账，而且还容易出错。在这个表视图单元格动态高度教程中，您将学习如何创建自定义单元格，并动态调整它们的大小，以适应它们的内容。如果你之前已经做过自定义单元格的工作，你可能在想，“这将需要大量的适配计算代码。”但是，如果我们告诉你，你一点也不用写任何适配计算代码呢？你可能会说“谬论！”。但是，你的确可以做到！通过你在本教程结束的时候，你就会知道如何利用自动布局来搞定你的几百行代码。
@@ -310,6 +311,7 @@ iOS开发也好些日子了，一直都是纯code，偶尔用用xib，最近闲�
 MVC是Model-VIew-Controller，就是模型－视图－控制器，这些都是什么东西呢？MVC把软件系统分为三个部分：Model，View，Controller。在cocoa中，你的程序中的每一个object（对象）都将明显地仅属于这三部分中的一个，而完全不属于另外两个。
 
 Model = 你的程序是什么(而不是你的程序是如何显示的)
+
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2014-02-25T09:28:18.000Z" class="post-list__meta--date date">2月 25 2014</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
