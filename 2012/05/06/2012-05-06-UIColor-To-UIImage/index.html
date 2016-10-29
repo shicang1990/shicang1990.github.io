@@ -178,9 +178,8 @@
   </header>
 
   <section class="post">
-    <p>Creating a UIImage from a UIColor to use as a background image for UIButton</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">CGRect rect = CGRectMake(0, 0, 1, 1);</div><div class="line">UIGraphicsBeginImageContext(rect.size);</div><div class="line">CGContextRef context = UIGraphicsGetCurrentContext();</div><div class="line">CGContextSetFillColorWithColor(context, [[UIColor redColor] CGColor]);</div><div class="line">CGContextFillRect(context, rect);</div><div class="line">UIImage *image = [[UIImage alloc] init];</div><div class="line">image = UIGraphicsGetImageFromCurrentImageContext();</div><div class="line">UIGraphicsEndImageContext();</div></pre></td></tr></table></figure>
+    <p>创建一个UIImage的Category添加一下方法：<br><a id="more"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">+ (instancetype)imageWithColor:(UIColor *)color &#123;</div><div class="line">    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);</div><div class="line">    UIGraphicsBeginImageContext(rect.size);</div><div class="line">    CGContextRef context = UIGraphicsGetCurrentContext();</div><div class="line">    CGContextSetFillColorWithColor(context, [color CGColor]);</div><div class="line">    CGContextFillRect(context, rect);</div><div class="line">    UIImage *image = [UIImage new];</div><div class="line">    image = UIGraphicsGetImageFromCurrentImageContext();</div><div class="line">    UIGraphicsEndImageContext();</div><div class="line">    </div><div class="line">    return image;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
   </section>
 
