@@ -178,8 +178,9 @@
   </header>
 
   <section class="post">
-    <p>创建一个UIImage的Category添加一下方法：<br><a id="more"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">+ (instancetype)imageWithColor:(UIColor *)color &#123;</div><div class="line">    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);</div><div class="line">    UIGraphicsBeginImageContext(rect.size);</div><div class="line">    CGContextRef context = UIGraphicsGetCurrentContext();</div><div class="line">    CGContextSetFillColorWithColor(context, [color CGColor]);</div><div class="line">    CGContextFillRect(context, rect);</div><div class="line">    UIImage *image = [UIImage new];</div><div class="line">    image = UIGraphicsGetImageFromCurrentImageContext();</div><div class="line">    UIGraphicsEndImageContext();</div><div class="line">    </div><div class="line">    return image;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+    <p>创建一个UIImage的Category添加一下方法：</p>
+<a id="more"></a>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">+ (<span class="keyword">instancetype</span>)imageWithColor:(<span class="built_in">UIColor</span> *)color &#123;</div><div class="line">    <span class="built_in">CGRect</span> rect = <span class="built_in">CGRectMake</span>(<span class="number">0.0</span>f, <span class="number">0.0</span>f, <span class="number">1.0</span>f, <span class="number">1.0</span>f);</div><div class="line">    <span class="built_in">UIGraphicsBeginImageContext</span>(rect.size);</div><div class="line">    <span class="built_in">CGContextRef</span> context = <span class="built_in">UIGraphicsGetCurrentContext</span>();</div><div class="line">    <span class="built_in">CGContextSetFillColorWithColor</span>(context, [color <span class="built_in">CGColor</span>]);</div><div class="line">    <span class="built_in">CGContextFillRect</span>(context, rect);</div><div class="line">    <span class="built_in">UIImage</span> *image = [<span class="built_in">UIImage</span> new];</div><div class="line">    image = <span class="built_in">UIGraphicsGetImageFromCurrentImageContext</span>();</div><div class="line">    <span class="built_in">UIGraphicsEndImageContext</span>();</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> image;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
   </section>
 
@@ -193,7 +194,7 @@
                 <h2 class="post-list__post-title post-title"><a href="/2012/07/13/2012-07-13-cocos2d-2-0/" title="cocos2d 2.0 模板安装问题及旧版本卸载">cocos2d 2.0 模板安装问题及旧版本卸载</a></h2>
                 <p class="excerpt">
                 
-                本人也是菜菜一个，最近接触cocos2d-iphone，去社区上看到2.0的稳定版出了，果断把1.01给卸载了，在mac下面卸载xcode的模板非常的方便，直接删除模板文件夹就可以了，具体文件位置12/Users/当前用户名/Library/Developer/Xcode/Templates/cocos2d/Users/当前用户名/Library/Developer/Xcode/Templates/File Templates
+                最近接触cocos2d-iphone，去社区上看到2.0的稳定版出了，果断把1.01给卸载了，在mac下面卸载xcode的模板非常的方便，直接删除模板文件夹就可以了，具体文件位置12/Users/当前用户名/Library/Developer/Xcode/Templates/cocos2d/Users/当前用户名/Library/Developer/Xcode/Templates/File Templates
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2012-07-13T15:06:35.000Z" class="post-list__meta--date date">7月 13 2012</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
