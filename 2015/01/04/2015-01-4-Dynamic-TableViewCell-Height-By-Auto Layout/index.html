@@ -178,8 +178,7 @@
   </header>
 
   <section class="post">
-    <p><br><br><br><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2014/05/RWImageCell-Final-Pins.jpg" alt=""></p>
-<h2 id="Learn-how-to-create-dynamic-height-table-view-cells-using-auto-layout"><a href="#Learn-how-to-create-dynamic-height-table-view-cells-using-auto-layout" class="headerlink" title="Learn how to create dynamic height table view cells using auto layout"></a>Learn how to create dynamic height table view cells using auto layout</h2><p>引文原版：<a href="http://www.raywenderlich.com/73602/dynamic-table-view-cell-height-auto-layout" target="_blank" rel="external">http://www.raywenderlich.com/73602/dynamic-table-view-cell-height-auto-layout</a><br>转载请注明出处：<a href="http://www.rockerhx.com/2015/01/04/2015-01-4-Dynamic-TableViewCell-Height-By-Auto%20Layout/" target="_blank" rel="external">http://www.rockerhx.com/2015/01/04/2015-01-4-Dynamic-TableViewCell-Height-By-Auto%20Layout/</a></p>
+    <p>引文原版：<a href="http://www.raywenderlich.com/73602/dynamic-table-view-cell-height-auto-layout" target="_blank" rel="external">http://www.raywenderlich.com/73602/dynamic-table-view-cell-height-auto-layout</a><br>转载请注明出处：<a href="http://www.rockerhx.com/2015/01/04/2015-01-4-Dynamic-TableViewCell-Height-By-Auto%20Layout/" target="_blank" rel="external">http://www.rockerhx.com/2015/01/04/2015-01-4-Dynamic-TableViewCell-Height-By-Auto%20Layout/</a></p>
 <p><strong><em>11/23/2014: 已经更新兼容iOS7，iOS8和Xcode6.1</em></strong></p>
 <blockquote>
 <p>如果你在过去想创建一个自定义的表视图来完成动态适配表视图单元格的高度，你必须写很多的计算代码。你必须计算每一个label，image view，text field，以及其他一切单元格内手动创建的控件高度。<br>坦率地说，这是非常艰巨的，也是流水账，而且还容易出错。<br>在这个表视图单元格动态高度教程中，您将学习如何创建自定义单元格，并动态调整它们的大小，以适应它们的内容。如果你之前已经做过自定义单元格的工作，你可能在想，“这将需要大量的适配计算代码。”<br>但是，如果我们告诉你，你一点也不用写任何适配计算代码呢？<br>你可能会说“谬论！”。但是，你的确可以做到！<br>通过你在本教程结束的时候，你就会知道如何利用自动布局来搞定你的几百行代码。</p>
@@ -190,18 +189,22 @@
 <ul>
 <li><a href="http://www.raywenderlich.com/64392/video-tutorial-beginning-auto-layout" target="_blank" rel="external">Video Tutorial: Beginning Auto Layout</a></li>
 <li><a href="http://www.raywenderlich.com/50317/beginning-auto-layout-tutorial-in-iOS-7-part-1" target="_blank" rel="external">Beginning Auto Layout Tutorial in iOS 7: Part 1</a>（<a href="http://http://www.rockerhx.com//2014/03/04/2014-03-04-Storyboard-Party2/" target="_blank" rel="external">iOS 7教程 - StoryBoards Part2</a>）</li>
-<li><a href="http://www.raywenderlich.com/video-tutorials#tableview" target="_blank" rel="external">Table View series of video tutorials</a><br><br><br></li>
+<li><a href="http://www.raywenderlich.com/video-tutorials#tableview" target="_blank" rel="external">Table View series of video tutorials</a></li>
 </ul>
-<p>##那就开始吧</p>
-<blockquote>
+<h2 id="那就开始吧"><a href="#那就开始吧" class="headerlink" title="那就开始吧"></a>那就开始吧</h2><blockquote>
 <p>iOS6推出了精彩的新技术：自动布局。开发者们欢欣鼓舞，吃着火锅，唱着歌，出门就被干翻在地了。。。<br>好了，这些都说早了，自动布局，我们有一个大问题需要面对。<br>当它希望忽悠无数开发者，最初，Autolayout使用起来非常的笨重。手动编写自动布局代码，到现在仍然是对累赘的Objective-C中很好的解决办法，<strong>Interface Builder</strong>希望通过约束条件<strong>(constraints)</strong>来助人为乐往往适得其反。</p>
 </blockquote>
 <p>随着Xcode5.1和iOS7的到来，<strong>Interface Builder</strong>对自动布局的支持有了质的飞跃。除此之外，iOS7中引入了一个非常重要的委托方法<code>UITableViewDelegate:</code></p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView estimatedHeightForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath;</div></pre></td></tr></table></figure>
-<p>该方法允许表视图<strong>(TableView)</strong>通过懒加载的方式来计算cell实际的高度，甚至可以把计算推迟到cell将要显现的时候。自动布局终于可以搞定动态计算单元格高度这种繁重的活了。<br>但是，你不想现在就掉进理论那大坑，我说的对不？你是否开始准备老老实实的编码了！所以让我们言归正传吧。<br><br><br></p>
-<p>##教程总览</p>
-<p>试想一下，你的首要客户跑来对你逼逼：“我们的用户都吵着要用一种方式来查看自己喜欢的Deviant Artists的意见书”。<br>你有听过这种艺术吗？槽。。。<br>“嗯，这是一个流行的社交网络平台，让艺术家们可以分享他们的艺术创作，被称为叛逆博客。”你的客户又逼逼：“你真的应该看看<a href="http://deviantart.com/" target="_blank" rel="external">Deviant Art</a>网站。”<br>幸运的是，Deviant Art提供了一个<a href="https://www.deviantart.com/developers/rss" target="_blank" rel="external">RSS订阅</a>入口，您可以通过艺术家来访问这些帖子。<br>“我们开始制作的应用程序，但我们被如何显示在表视图中显示正确内容难倒了，”你的客户怀疑。 “你能搞的定吗？”<br>现在，你什么都特么不用多考虑，只需要工具来搞定它，这样你的客户就会觉得你屌爆了或者屌翻了。<br><em>(老外都喜欢叨逼叨半天才开始，妹的，最烦翻译这些扯鸡巴蛋的东东)</em></p>
-<p>首先下载“客户端的代码”（本教程开始的工程）在<a href="http://cdn4.raywenderlich.com/wp-content/uploads/2014/07/DeviantArtBrowser_Starter.zip" target="_blank" rel="external">这里</a>。<br><em>(老外除了会扯鸡巴蛋以外，让我最想亲近他们菊花的原因就在这里，太特么上手了，该替我们省的统统省掉，擦拉黑)</em></p>
+<p>该方法允许表视图<strong>(TableView)</strong>通过懒加载的方式来计算cell实际的高度，甚至可以把计算推迟到cell将要显现的时候。自动布局终于可以搞定动态计算单元格高度这种繁重的活了。<br>但是，你不想现在就掉进理论那大坑，我说的对不？你是否开始准备老老实实的编码了！所以让我们言归正传吧。</p>
+<h2 id="教程总览"><a href="#教程总览" class="headerlink" title="教程总览"></a>教程总览</h2><p>试想一下，你的首要客户跑来对你逼逼：“我们的用户都吵着要用一种方式来查看自己喜欢的Deviant Artists的意见书”。<br>你有听过这种艺术吗？槽。。。<br>“嗯，这是一个流行的社交网络平台，让艺术家们可以分享他们的艺术创作，被称为叛逆博客。”你的客户又逼逼：“你真的应该看看<a href="http://deviantart.com/" target="_blank" rel="external">Deviant Art</a>网站。”<br>幸运的是，Deviant Art提供了一个<a href="https://www.deviantart.com/developers/rss" target="_blank" rel="external">RSS订阅</a>入口，您可以通过艺术家来访问这些帖子。<br>“我们开始制作的应用程序，但我们被如何显示在表视图中显示正确内容难倒了，”你的客户怀疑。 “你能搞的定吗？”<br>现在，你什么都特么不用多考虑，只需要工具来搞定它，这样你的客户就会觉得你屌爆了或者屌翻了。</p>
+<ul>
+<li>(老外都喜欢叨逼叨半天才开始，妹的，最烦翻译这些扯鸡巴蛋的东东)*</li>
+</ul>
+<p>首先下载“客户端的代码”（本教程开始的工程）在<a href="http://cdn4.raywenderlich.com/wp-content/uploads/2014/07/DeviantArtBrowser_Starter.zip" target="_blank" rel="external">这里</a>。</p>
+<ul>
+<li>(老外除了会扯鸡巴蛋以外，让我最想亲近他们菊花的原因就在这里，太特么上手了，该替我们省的统统省掉，擦拉黑)*</li>
+</ul>
 <p>本项目采用CocoaPods，所以双击打开<strong>DeviantArtBrowser.xcworkspace</strong>（而不是.xcodeproj文件）。压缩包里已经包含了依赖库，根本不需要你去开终端来pod install神马的，就是这么跩。</p>
 <blockquote>
 <p>什么？你个逼搞了这么就iOS，都会搜索<strong>TableViewCell</strong> <strong>height</strong>加<strong>Autolayout</strong>这种关键词了还不知道<strong>CocoaPods</strong>？可以滚犊子了好伐。算了，还是一起给你吧，<a href="http://www.raywenderlich.com/?p=64546" target="_blank" rel="external">牛宝宝</a>。</p>
@@ -225,8 +228,8 @@
 <p>这个方法初始化一个网络请求来得到RSS反馈，然后它返回一个<strong>RSSChannel</strong>成功的<code>block</code>。格式化后，简单的把HTML转换为纯文本，并存储<code>channel.items</code>设置给当前<code>feedItems</code>属性。<br><code>channel.items</code>数组对象里全部包含<code>RSSItem</code>对象，其中每个都是RSS反馈的元素。不用我说，你也应该知道用什么在表视图里刷新了：<code>feedItems</code>数组！<br>最后，注意到项目有三个警告。WTF，too?<br>是哪个煞笔写了<code>#warning</code>出来报警告，老外就是这么调皮，做事细微，可以来我家兼职保姆了，其实这是为了提示你需要实现些代码。it’s so easy，妈妈再也不用担心我被老板加到办公室加班了。。。</p>
 <center><img src="http://cdn1.raywenderlich.com/wp-content/uploads/2014/05/convenient.jpg"></center>
 
-<p>##创建一个自定义Cell</p>
-<p>经过快速跳转，相信你已经找到了APP获取的数据，但没有显示任何东西。为了做到这一点，首先需要创建一个自定义的TableViewCell来显示数据。<br>添加一个新类到<strong>DeviantArtBrowser</strong>项目并将其命名为<code>RWBasicCell</code>。它是<code>UITableViewCell</code>的子类；确保<strong>Also create xib file</strong>没有被选中；并确保将编程语言设置为Objective-C。<br>打开<code>RWBasicCell.h</code>，并且添加一下属性:</p>
+
+<h2 id="创建一个自定义Cell"><a href="#创建一个自定义Cell" class="headerlink" title="创建一个自定义Cell"></a>创建一个自定义Cell</h2><p>经过快速跳转，相信你已经找到了APP获取的数据，但没有显示任何东西。为了做到这一点，首先需要创建一个自定义的TableViewCell来显示数据。<br>添加一个新类到<strong>DeviantArtBrowser</strong>项目并将其命名为<code>RWBasicCell</code>。它是<code>UITableViewCell</code>的子类；确保<strong>Also create xib file</strong>没有被选中；并确保将编程语言设置为Objective-C。<br>打开<code>RWBasicCell.h</code>，并且添加一下属性:</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">RWBasicCell</span> : <span class="title">UITableViewCell</span></span></div><div class="line"></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="keyword">IBOutlet</span> <span class="built_in">UILabel</span> *titleLabel;</div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="keyword">IBOutlet</span> <span class="built_in">UILabel</span> *subtitleLabel;</div></pre></td></tr></table></figure>
 <p>接下来打开<strong>Main.storyboard</strong>，拖拽一个新的<code>UITableViewCell</code>到<code>RWFeedViewController</code>的表视图内。<br>给cell设置自定义类为<code>RWBasicCell</code>。</p>
 <center><img src="http://cdn1.raywenderlich.com/wp-content/uploads/2014/05/RWBasicCell-Class.jpg"></center>
@@ -274,8 +277,7 @@
 
 <p>类似title label，这些约束一起工作，以确保subtitle label总是在从底部20分，并跨越该cell的整个宽度减去一个小的填充。</p>
 <blockquote>
-<p>##提示：</p>
-<blockquote>
+<h2 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h2><blockquote>
 <p>这种让自动布局在一<strong>UITableViewCell</strong>内确保有足够的约束来让子视图顶到边缘 - 也就是说，每个子视图应该有上，下，左，右的约束。<br>此外，应该有一个明确的约束，从<strong>contentView</strong>的顶部到底部。通过这种方式，自动布局可以基于子视图正确的搞定<strong>contentView</strong>的高度。<br>最棘手的部分是，<strong>Interface Builder</strong>中往往不会警告你，如果你搞错某些约束条件。<br>当您尝试运行该项目，自动布局将根本无法返回正确的高度。例如，它可以总是返回0的高度，这是一条很好的线索，它在提示你约束可能是错的。<br>如果您遇到的问题在自己的项目，尝试调整的制约，直到上述条件得到满足。</p>
 </blockquote>
 </blockquote>
@@ -302,8 +304,7 @@
 <center><img src="http://cdn2.raywenderlich.com/wp-content/uploads/2014/05/Say_What.jpg"></center>
 
 <p>还记得以前的那些<code>#warning</code>声明吗？是的，就是那些搞你蛋的。您需要实现的表视图的数据源(data source)和委托(delegate)方法。</p>
-<p>##实现UITableView的数据源(Data source)和委托(Delegate)</p>
-<p>在<code>RWFeedViewController.m</code>的顶部添加这些东东:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">"RWBasicCell.h"</span></span></div><div class="line"><span class="keyword">static</span> <span class="built_in">NSString</span> * <span class="keyword">const</span> RWBasicCellIdentifier = <span class="string">@"RWBasicCell"</span>;</div></pre></td></tr></table></figure></p>
+<h2 id="实现UITableView的数据源-Data-source-和委托-Delegate"><a href="#实现UITableView的数据源-Data-source-和委托-Delegate" class="headerlink" title="实现UITableView的数据源(Data source)和委托(Delegate)"></a>实现UITableView的数据源(Data source)和委托(Delegate)</h2><p>在<code>RWFeedViewController.m</code>的顶部添加这些东东:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">"RWBasicCell.h"</span></span></div><div class="line"><span class="keyword">static</span> <span class="built_in">NSString</span> * <span class="keyword">const</span> RWBasicCellIdentifier = <span class="string">@"RWBasicCell"</span>;</div></pre></td></tr></table></figure></p>
 <p>你将在数据源和委托方法中使用<strong>RWBasicCell</strong>，这将需要你在故事板中设置<strong>RWBasicCellIdentifier</strong>重用标识符，总之，保持一致就行了。<br>接下来，实现数据源方法。<br>用下面的代码复写<code>tableView:numberOfRowsInSection:</code>方法：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">NSInteger</span>)tableView:(<span class="built_in">UITableView</span> *)tableView numberOfRowsInSection:(<span class="built_in">NSInteger</span>)section &#123;</div><div class="line">  <span class="keyword">return</span> [<span class="keyword">self</span>.feedItems count];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>继续复写<code>tableView:cellForRowAtIndexPath:</code>方法：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">UITableViewCell</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView cellForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath &#123;</div><div class="line">    <span class="keyword">return</span> [<span class="keyword">self</span> basicCellAtIndexPath:indexPath];</div><div class="line">&#125;</div><div class="line"> </div><div class="line">- (RWBasicCell *)basicCellAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath &#123;</div><div class="line">  RWBasicCell *cell = [<span class="keyword">self</span>.tableView dequeueReusableCellWithIdentifier:RWBasicCellIdentifier forIndexPath:indexPath];</div><div class="line">  [<span class="keyword">self</span> configureBasicCell:cell atIndexPath:indexPath];</div><div class="line">  <span class="keyword">return</span> cell;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">- (<span class="keyword">void</span>)configureBasicCell:(RWBasicCell *)cell atIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath &#123;</div><div class="line">  RSSItem *item = <span class="keyword">self</span>.feedItems[indexPath.row];</div><div class="line">  [<span class="keyword">self</span> setTitleForCell:cell item:item];</div><div class="line">  [<span class="keyword">self</span> setSubtitleForCell:cell item:item];</div><div class="line">&#125;</div><div class="line"> </div><div class="line">- (<span class="keyword">void</span>)setTitleForCell:(RWBasicCell *)cell item:(RSSItem *)item &#123;</div><div class="line">  <span class="built_in">NSString</span> *title = item.title ?: <span class="built_in">NSLocalizedString</span>(<span class="string">@"[No Title]"</span>, <span class="literal">nil</span>);</div><div class="line">  [cell.titleLabel setText:title];</div><div class="line">&#125;</div><div class="line"> </div><div class="line">- (<span class="keyword">void</span>)setSubtitleForCell:(RWBasicCell *)cell item:(RSSItem *)item &#123;</div><div class="line">  <span class="built_in">NSString</span> *subtitle = item.mediaText ?: item.mediaDescription;</div><div class="line"> </div><div class="line">  <span class="comment">// Some subtitles can be really long, so only display the</span></div><div class="line">  <span class="comment">// first 200 characters</span></div><div class="line">  <span class="keyword">if</span> (subtitle.length &gt; <span class="number">200</span>) &#123;</div><div class="line">    subtitle = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@..."</span>, [subtitle substringToIndex:<span class="number">200</span>]];</div><div class="line">  &#125;</div><div class="line"> </div><div class="line">  [cell.subtitleLabel setText:subtitle];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <blockquote>
@@ -346,8 +347,7 @@
 <center><img src="http://cdn5.raywenderlich.com/wp-content/uploads/2014/05/Oh-Yeah.png"></center>
 
 
-<p>##说好的图片呢？</p>
-<p>一个好的APP，我们是不是应该加点图片进去呢？</p>
+<h2 id="说好的图片呢？"><a href="#说好的图片呢？" class="headerlink" title="说好的图片呢？"></a>说好的图片呢？</h2><p>一个好的APP，我们是不是应该加点图片进去呢？</p>
 <p>未完待续…</p>
 
   </section>
