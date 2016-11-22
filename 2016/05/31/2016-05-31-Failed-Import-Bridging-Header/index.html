@@ -193,9 +193,11 @@
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">platform <span class="symbol">:ios</span>, <span class="string">'8.0'</span></div><div class="line">use_frameworks!</div><div class="line"></div><div class="line">target <span class="string">'EShop'</span> <span class="keyword">do</span></div><div class="line">	pod <span class="string">'xxx'</span></div><div class="line"></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
 <p><code>use_frameworks</code>加不加看你自己需求，如果是版本都用到<code>8.0</code>了还不用动态库就是脑壳有屎，不知道动态库和静态库的自己查资料。或者说还有人在<code>8.0</code>下坚持写<code>Swift</code>的我也很是佩服。</p>
 <p><code>Bingo</code>，果不其然，这盘顺利<code>update</code>了之后<code>Build</code>新工程，得到如下的煞笔提示：</p>
-<p><img src="http://i2.buimg.com/b83551dacce124a6.png" alt=""></p>
+<p align="center"><br><img src="/images/2016-05-31-Failed-Import-Bridging-Header/1.png" alt=""><br></p>
+
 <p>踏马的提示<code>桥接文件</code>找不到，于是乎上<code>stackoverflow</code>各种找答案啊，最后得来的都是让确保如下配置是否正确：</p>
-<p><img src="http://i2.buimg.com/dc89116150dbfc84.png" alt=""></p>
+<p align="center"><br><img src="/images/2016-05-31-Failed-Import-Bridging-Header/2.png" alt=""><br></p>
+
 <p>我踏马升级之前都是好的，工程配置和文件肯定是好的啊，看到各种复制粘贴的答案那叫一个暴躁，作为程序狗这个时候必须点根烟冷静一盘，突然定睛一看其实不是找不到<code>桥接文件</code>，而是<code>failed to import bridging header</code>导入出错，仔细分析了一下踏马的原来是找不到头文件儿导致<code>桥接文件</code>导入出错。由于<code>Cocoapods</code>新版本的问题是根据<code>target</code>来<code>install</code>的，所以在头文件导入上较以前严谨太多了，所以上述的解决方案就是用<code>库的方式引入</code>，不要用<code>相对导入</code>，学过<code>C</code>的应该在第一课的时候就知道这个事情了，所以上述问题就这么改：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#<span class="keyword">import</span> "MJExtension.h"</div></pre></td></tr></table></figure>
 <p>改为</p>
