@@ -181,27 +181,27 @@
     <p>刷微博看到<a href="https://github.com/nixzhu" target="_blank" rel="external">nixzhu</a>的<a href="https://github.com/nixzhu/dev-blog/blob/master/autolayout-tips.md" target="_blank" rel="external">AutoLayout Tips</a>，<a href="https://github.com/nixzhu/dev-blog/blob/master/autolayout-tips.md#tip-1" target="_blank" rel="external"><code>Tip 1</code></a>是基于纯代码实现，由于本人比较懒，使用<code>AutoLayout</code>除非万不得已，否则是不会动代码，这里使用可视化的方式来演示，只是觉得可能更便于理解！</p>
 <hr>
 <p>那么开始，新建工程就不用多说了，或者懒癌患者下载原作者<a href="https://github.com/nixzhu/CenterTwoViewsUseAutoLayout" target="_blank" rel="external"><code>工程</code></a>（还是都下载吧，方便看效果）。</p>
-<p>打开工程跑一盘，看下效果：<br><img src="http://i13.tietuku.cn/df9a464dac98c4d6.png" alt=""></p>
+<p>打开工程跑一盘，看下效果：<br><img src="/images/2015-11-07-Two-Views-Center-Superview/1.png" alt=""></p>
 <a id="more"></a>
 <p>接下来我们开始纯可视化操作（PS：这里先不解释，直接跟着操作即可）：</p>
-<p>首先打开原作者<a href="https://github.com/nixzhu/CenterTwoViewsUseAutoLayout" target="_blank" rel="external"><code>工程</code></a>里的<code>Main.storyboard</code>，拖一个<code>UIView</code>到<code>ViewController</code>里，这里为了方便观察理解，我把图片背景色改了下。<br><img src="http://i13.tietuku.cn/515de9bed32b9af6.png" alt=""></p>
-<p>接着拖一个<code>UIImageView</code>和<code>UILabel</code>到<code>灰色的UIView</code>里。<br><img src="http://i13.tietuku.cn/4504a516406995f2.png" alt=""></p>
-<p>我们看到此时并无任何约束的警告，那好，现在开始添加约束。<br>这里先给<code>UIImageView</code>添加上下左右的约束，<code>constant</code>值随意。<br><img src="http://i13.tietuku.cn/b778315d18c60014.png" alt=""></p>
-<p>添加完成之后开始报警告，先忽略，继续拉约束。<br><img src="http://i13.tietuku.cn/8e92439c3617f836.png" alt=""></p>
-<p>因为已经给<code>UIImageView</code>和<code>UILabel</code>添加了间隙约束，所以只用继续给<code>UILabel</code>添加<code>上</code>，<code>右</code>，<code>左</code>的约束即可。<br><img src="http://i13.tietuku.cn/b55e9df398cf55ff.png" alt=""></p>
-<p>其实这里给<code>UILabel</code>添加约束还有一种做法就是添加<code>右</code>边约束和<code>Y</code>轴上的约束即可。<br><img src="http://i12.tietuku.cn/47216f96782ceb0b.png" alt=""><br><img src="http://i12.tietuku.cn/491fff5064f78cf9.png" alt=""></p>
-<p>这里我选择第二种，同样的效果，约束能少则少，或者按照实际需求来就好。<br>约束已经添加完整，<code>SDK</code>还是在报警告。<br><img src="http://i12.tietuku.cn/3bb4e629379c4251.png" alt=""></p>
-<p>这里<code>SDK</code>提示我们<code>view</code>上需要<code>X</code>和<code>Y</code>轴上需要约束来确定控件位置。这里也是<code>两个不等宽的 View，彼此相邻，并“共同”居中于 Superview</code>最后的步骤。我们把<code>view</code>居中，然后在给一个<code>X</code>轴上的约束即可，所以随便搞一下，添加一个<code>竖向居中（也就是Y轴居中）</code>即可。到此我们全部约束添加完毕。<br>PS:这里为了更好区分，我给容器视图整了个备注叫<code>Container View</code>。<br><img src="http://i13.tietuku.cn/d4d3ef1927ff9e74.png" alt=""></p>
-<p>即便是添加完了约束，<code>SDK</code>还是提示不能确认位置。<br><img src="http://i13.tietuku.cn/dc2b50dc6e54ad33.png" alt=""></p>
-<p>大家不要慌，这里其实<code>Container View</code>不能确定位置原因在于<code>UIImageView</code>大小没确定，我们只需要把<code>UIImageView</code>设置一个<code>占位</code>或者给个<code>图片</code>即可。<br><img src="http://i13.tietuku.cn/f58f3f124451f207.png" alt=""></p>
-<p>或者<br><img src="http://i13.tietuku.cn/18874397663c3779.png" alt=""></p>
-<p>这里以添加图片为准，就此所有约束错误都以解决，只剩下<code>frame</code>的<code>Waring</code>。自行修复一下即可（<code>All Views Update Frames</code>）。<br><img src="http://i12.tietuku.cn/ce894de3ac073c6c.png" alt=""><br><img src="http://i12.tietuku.cn/2f2667e692d5160c.png" alt=""></p>
-<p>最后我们来看看完成的效果。<br><img src="http://i12.tietuku.cn/9400451863b13a13.png" alt=""><br><img src="http://i12.tietuku.cn/22f1715fce8aa47f.png" alt=""></p>
+<p>首先打开原作者<a href="https://github.com/nixzhu/CenterTwoViewsUseAutoLayout" target="_blank" rel="external"><code>工程</code></a>里的<code>Main.storyboard</code>，拖一个<code>UIView</code>到<code>ViewController</code>里，这里为了方便观察理解，我把图片背景色改了下。<br><img src="/images/2015-11-07-Two-Views-Center-Superview/2.png" alt=""></p>
+<p>接着拖一个<code>UIImageView</code>和<code>UILabel</code>到<code>灰色的UIView</code>里。<br><img src="/images/2015-11-07-Two-Views-Center-Superview/3.png" alt=""></p>
+<p>我们看到此时并无任何约束的警告，那好，现在开始添加约束。<br>这里先给<code>UIImageView</code>添加上下左右的约束，<code>constant</code>值随意。<br><img src="/images/2015-11-07-Two-Views-Center-Superview/4.png" alt=""></p>
+<p>添加完成之后开始报警告，先忽略，继续拉约束。<br><img src="/images/2015-11-07-Two-Views-Center-Superview/5.png" alt=""></p>
+<p>因为已经给<code>UIImageView</code>和<code>UILabel</code>添加了间隙约束，所以只用继续给<code>UILabel</code>添加<code>上</code>，<code>右</code>，<code>左</code>的约束即可。<br><img src="/images/2015-11-07-Two-Views-Center-Superview/6.png" alt=""></p>
+<p>其实这里给<code>UILabel</code>添加约束还有一种做法就是添加<code>右</code>边约束和<code>Y</code>轴上的约束即可。<br><img src="/images/2015-11-07-Two-Views-Center-Superview/7.png" alt=""><br><img src="/images/2015-11-07-Two-Views-Center-Superview/8.png" alt=""></p>
+<p>这里我选择第二种，同样的效果，约束能少则少，或者按照实际需求来就好。<br>约束已经添加完整，<code>SDK</code>还是在报警告。<br><img src="/images/2015-11-07-Two-Views-Center-Superview/9.png" alt=""></p>
+<p>这里<code>SDK</code>提示我们<code>view</code>上需要<code>X</code>和<code>Y</code>轴上需要约束来确定控件位置。这里也是<code>两个不等宽的 View，彼此相邻，并“共同”居中于 Superview</code>最后的步骤。我们把<code>view</code>居中，然后在给一个<code>X</code>轴上的约束即可，所以随便搞一下，添加一个<code>竖向居中（也就是Y轴居中）</code>即可。到此我们全部约束添加完毕。<br>PS:这里为了更好区分，我给容器视图整了个备注叫<code>Container View</code>。<br><img src="/images/2015-11-07-Two-Views-Center-Superview/10.png" alt=""></p>
+<p>即便是添加完了约束，<code>SDK</code>还是提示不能确认位置。<br><img src="/images/2015-11-07-Two-Views-Center-Superview/11.png" alt=""></p>
+<p>大家不要慌，这里其实<code>Container View</code>不能确定位置原因在于<code>UIImageView</code>大小没确定，我们只需要把<code>UIImageView</code>设置一个<code>占位</code>或者给个<code>图片</code>即可。<br><img src="/images/2015-11-07-Two-Views-Center-Superview/12.png" alt=""></p>
+<p>或者<br><img src="/images/2015-11-07-Two-Views-Center-Superview/13.png" alt=""></p>
+<p>这里以添加图片为准，就此所有约束错误都以解决，只剩下<code>frame</code>的<code>Waring</code>。自行修复一下即可（<code>All Views Update Frames</code>）。<br><img src="/images/2015-11-07-Two-Views-Center-Superview/14.png" alt=""><br><img src="/images/2015-11-07-Two-Views-Center-Superview/15.png" alt=""></p>
+<p>最后我们来看看完成的效果。<br><img src="/images/2015-11-07-Two-Views-Center-Superview/16.png" alt=""><br><img src="/images/2015-11-07-Two-Views-Center-Superview/17.png" alt=""></p>
 <p>总体效果出来了，间距自行调整。手把手教程到此结束。</p>
 <hr>
 <p>好了，po了一堆图之后我们再来简单说说核心思想：其实就是利用Storyboard里控件的<code>Intrinsic Size</code>特性，利用其<code>手动占位</code>或者<code>系统自动</code>帮忙占位的原理就可确认其<code>width</code>和<code>height</code>，然后在让其四边顶住<code>Container View</code>四边，<code>Container View</code>的<code>width</code>和<code>height</code>也就确认了，剩下的就是确认<code>Container View</code>的<code>X</code>轴和<code>Y</code>轴上的位置，三个控件的约束确定完成，<code>Frame</code>也就确认好了，也就达到了<code>两个不等宽的 View，彼此相邻，并“共同”居中于 Superview</code>的目的。<br>以此类推，利用两个或者多个控件占位居中。</p>
 <p>其实<a href="https://github.com/nixzhu/dev-blog/blob/master/autolayout-tips.md#tip-2" target="_blank" rel="external"><code>Tip 2 - 让 AutoLayout 与 UIScrollView 合作无间</code></a>也是类似原理，确认好<code>UIScrollView</code>的<code>ContentSize</code>即可，其实还有更多的玩法，如需要手把手教程，留言呼唤。</p>
-<p>最后再给懒癌患者配张动态图：<br><img src="http://i5.tietuku.cn/5014329918a2498f.gif" alt=""></p>
+<p>最后再给懒癌患者配张动态图：<br><img src="/images/2015-11-07-Two-Views-Center-Superview/18.gif" alt=""></p>
 <p>我的界面开发原则，能不写代码就不写代码，让我们的<code>ViewController</code>更瘦，逻辑更清晰更简洁。</p>
 <p>欢迎吐槽和共同探讨无代码界面开发。</p>
 
