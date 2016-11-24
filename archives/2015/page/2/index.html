@@ -168,25 +168,66 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/06/30/2016-06-30-Running-Account-2014-Chuanzang01/" title="link to post.title">14年流水账 - 川藏线（一）</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2015/04/11/2015-04-11-Fix-Xcode6-Plug/" title="link to post.title">修复因更新Xcode7插件不能使用问题</a></h2>
       <p class="excerpt">
     
-      
-
-转眼到了2016，由于拖延症加上工作和各种糟心的鸟事，14年的出行流水账拖到现在才静下心来整理。希望两个半月路上的各种经历还能依稀记起来，完成第二篇记事流水账。给最后几十年活着留美（Zhuang）好（Bi）回忆。
-出发之前总喜欢找各种理由和借口来逼逼一下，才会有足够狠的心来再次背上包包。一言不合就要走走走。
-对于13年和好基友的318搭车之行来的激情和刺激，显然还有很多的遗憾，由于13年时间和
+      在终端里输入以下代码获取到UUID：1defaults read /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID
+得到UUID以后运行：1find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth 3 | xargs -I&amp;#123;&amp;#125; defaults write &amp;#123;&amp;#125; DVTPlugInCompatibilityUUIDs -array-add &amp;#123;UUID&amp;#125;
+懒癌患者可以在终端输入以下命令即可:
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2016-06-30T03:23:27.000Z" class="post-list__meta--date date">6月 30 2016</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/流水账/">流水账</a>
-</span><a class="btn-border-small" href="/2016/06/30/2016-06-30-Running-Account-2014-Chuanzang01/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2015-04-10T16:46:43.000Z" class="post-list__meta--date date">4月 11 2015</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Xcode/">Xcode</a>
+</span><a class="btn-border-small" href="/2015/04/11/2015-04-11-Fix-Xcode6-Plug/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2015/03/17/2015-03-17-AutoLayout-UITableViewCell-FooterView-Offset-Issue/" title="link to post.title">使用AutoLayout来动态计算UITableViewCell的高度，FooterView移位的问题</a></h2>
+      <p class="excerpt">
+    
+      使用AutoLayout来动态计算UITableViewCell的高度，如果为UITableView设置了FooterView，不能使用与计算方法：
+1- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+如果使用，会导致FooterView位置
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2015-03-17T08:40:23.000Z" class="post-list__meta--date date">3月 17 2015</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/AutoLayout/">AutoLayout</a>, <a class="tag-link" href="/tags/iOS7/">iOS7</a>, <a class="tag-link" href="/tags/iOS8/">iOS8</a>
+</span><a class="btn-border-small" href="/2015/03/17/2015-03-17-AutoLayout-UITableViewCell-FooterView-Offset-Issue/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2015/01/04/2015-01-4-Dynamic-TableViewCell-Height-By-Auto Layout/" title="link to post.title">使用AutoLayout来动态计算UITableViewCell的高度</a></h2>
+      <p class="excerpt">
+    
+      引文原版：http://www.raywenderlich.com/73602/dynamic-table-view-cell-height-auto-layout转载请注明出处：http://www.rockerhx.com/2015/01/04/2015-01-4-Dynamic-TableViewCell-Height-By-Auto%20Layout/
+11/23/2014: 已经更新兼容iOS7，iOS8和Xcode6.1
+
+如果你在过去想创建一个自定义的表视图来完成动态适配表视图单元格的高度，你必须写很多的计算代码。你必须计算每一个label，image view，text field，以及其他一切单元格内手动创建的控件高度。坦率地说，这是非常艰巨的，也是流水账，而且还容易出错。在这个表视图单元格动态高度教程中，您将学习如何创建自定义单元格，并动态调整它们的大小，以适应它们的内容。如果你之前已经做过自定义单元格的工作，你可能在想，“这将需要大量的适配计算代码。”但是，如果我们告诉你，你一点也不用写任何适配计算代码呢？你可能会说“谬论！”。但是，你的确可以做到！通过你在本教程结束的时候，你就会知道如何利用自动布局来搞定你的几百行代码。
+
+注：本教程适用于iOS7及以上。没有使用只有iOS8才支持的自动计算tableview cell的api。
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2015-01-04T12:42:30.000Z" class="post-list__meta--date date">1月 4 2015</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/AutoLayout/">AutoLayout</a>, <a class="tag-link" href="/tags/iOS7/">iOS7</a>, <a class="tag-link" href="/tags/iOS8/">iOS8</a>
+</span><a class="btn-border-small" href="/2015/01/04/2015-01-4-Dynamic-TableViewCell-Height-By-Auto Layout/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
     
   </ol>
 
+
+  <nav class="pagination" role="navigation">
+    
+      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/#blog">← 最近</a>
+    
+    <span class="pagination__page-number" > 2 / 2 </span>
+    
+  </nav>
 
 
 </div>
