@@ -202,10 +202,23 @@
 <p>假设你有个煞笔客户，要让你做一个艺术家作品展示的应用，那么进入应用的第一个主页面肯定是个艺术家信息列表，而且是动态列表。但是客户需要的是快速实现，他不想听你逼逼动态列表好不好做，也不想看你在那里煞笔的炫耀技术，你特么乖乖实现就行了。</p>
 </blockquote>
 <p>你可以自己从头搭建工程，当然考虑到看教程的大部分都是懒逼，这里给你们准备了一份初始<a href="/others/2016-12-12-Self-sizing-Table-View-Cells/Artistry-Starter.zip">工程</a>，如果你不想搞事，劝你还是老实点用我这份比较好，Understand。。。</p>
-<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/0.jpg" alt=""><br></p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/0.jpg" width="(height" *="" (700="" 657))="" height="300"><br></p>
 
 <p>接下来我们就可以开始涨姿势了，Let’s go…</p>
-<h2 id="姿势Two：编码"><a href="#姿势Two：编码" class="headerlink" title="姿势Two：编码"></a>姿势Two：编码</h2>
+<h2 id="姿势Two：编码"><a href="#姿势Two：编码" class="headerlink" title="姿势Two：编码"></a>姿势Two：编码</h2><p>打开<code>Artistry</code>工程，找到<code>Views</code>分组，点开<code>Main.storyboard</code>：</p>
+<p align="center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/03/rw-self-sizing-2-1.png" alt=""><br></p>
+
+<p>从左到右分别是：</p>
+<ul>
+<li>作为根控制器的导航控制器。</li>
+<li><code>ArtistListViewController</code>负责显示艺术家列表。</li>
+<li><code>ArtistDetailViewController</code>负责显示艺术家作品以及详情。</li>
+</ul>
+<p>让我们跑一盘，可以看到<code>ArtistListViewController</code>显示了一个艺术家的列表，我们选择第一个艺术家（Pablo Picasso），页面跳转到<code>ArtistDetailViewController</code>显示艺术家作品介绍：</p>
+<p align="center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/03/rw-self-sizing-2-2.png" alt=""><br></p>
+
+<p>作为一个艺术家，不应该单单只有文字的介绍，还需要图片，但是在这里我们并没看到图片信息，所以我们需要添加图片显示，那么由于图片的宽高大小并不统一，因此你不可能只用一个固定高度就能解决，而是需要基于Cell内包含内容才决定的动态高度。<br>那么我们接下来就在<code>ArtistListViewController</code>利用动态高度实现Cell的自适应。</p>
+
   </section>
 
 </article>
