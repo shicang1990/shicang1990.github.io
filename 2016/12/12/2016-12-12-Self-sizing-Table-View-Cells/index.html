@@ -205,7 +205,7 @@
 <p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/0.jpg" width="(height" *="" (700="" 657))="" height="300"><br></p>
 
 <p>接下来我们就可以开始涨姿势了，Let’s go…</p>
-<h2 id="姿势Two：编码"><a href="#姿势Two：编码" class="headerlink" title="姿势Two：编码"></a>姿势Two：编码</h2><p>打开<code>Artistry</code>工程，找到<code>Views</code>分组，点开<code>Main.storyboard</code>：</p>
+<h2 id="姿势Two：了解需求"><a href="#姿势Two：了解需求" class="headerlink" title="姿势Two：了解需求"></a>姿势Two：了解需求</h2><p>由于我已经帮你模拟并拆解了需求，了解并分析你就免了，跟着看就成。。。<br>打开<code>Artistry</code>工程，找到<code>Views</code>分组，点开<code>Main.storyboard</code>：</p>
 <p align="center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/03/rw-self-sizing-2-1.png" alt=""><br></p>
 
 <p>从左到右分别是：</p>
@@ -218,6 +218,50 @@
 <p align="center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/03/rw-self-sizing-2-2.png" alt=""><br></p>
 
 <p>作为一个艺术家，不应该单单只有文字的介绍，还需要图片，但是在这里我们并没看到图片信息，所以我们需要添加图片显示，那么由于图片的宽高大小并不统一，因此你不可能只用一个固定高度就能解决，而是需要基于Cell内包含内容才决定的动态高度。<br>那么我们接下来就在<code>ArtistListViewController</code>利用动态高度实现Cell的自适应。</p>
+<h2 id="姿势Three：Cell自适应"><a href="#姿势Three：Cell自适应" class="headerlink" title="姿势Three：Cell自适应"></a>姿势Three：Cell自适应</h2><p>想要获得Cell的正确高度，必须自定义一个Cell并且使用AutoLayout建立正确约束。<br>这里我们可以使用<code>Command + N</code>快捷键来创建文件，Cell是属于视图结构，因此最好是放到<code>Views</code>分组下，你要不喜欢可以随便放，做项目要保持烂习惯也是你自己遭殃。<br>OK，这里我们选择<code>Cocoa Touch Class</code>创建一个名为<code>ArtistTableViewCell</code>并且继承自<code>UITableViewCell</code>的源文件。语言项肯定是整<code>Swift</code>，也不需要创建<code>Xib</code>可是文件哈，你踏马要煞笔到怼Objc我也无话可说，那到这里我劝你赶紧Q掉。<br>打开我们刚才创建的<code>ArtistTableViewCell.swift</code>并删掉系统自动生成的方法，接着我们添加如下属性：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> bioLabel: <span class="type">UILabel</span>!</div></pre></td></tr></table></figure></p>
+<p>接着，点开<code>Main.storyboard</code>，在<code>ArtistListViewController</code>里选中<code>TableView</code>的<code>Cell</code>，在<code>Identity Inspector</code>就是识别检查器，<code>Command + Option + 3</code>也可以，都是一个屌意思，把<code>Class</code>栏修改为<code>ArtistTableViewCell</code>才能跟代码绑定。</p>
+<p align="center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/03/rw-self-sizing-2-3.png" alt=""><br></p>
+
+<p>拖一个<code>UILabel</code>到刚才的<code>Cell</code>里，并把内容改为<code>Bio</code>，然后在<code>Attributes Inspector</code>属性检查器里把<code>Lines</code>设置为0，Label要是现实多行文字这个是必须的前提，OK，搞定之后看起就想这样：</p>
+<p align="center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/03/Screen-Shot-2016-03-30-at-8.59.22-PM.png" alt=""><br></p>
+
+<p>刚才我们设置的那个<code>Lines</code>也就是Label对应的断行属性<code>numberOfLines</code>，这个我就奶妈当到底吧，这个属性是<code>Int</code>类型，设置几就是只显示几行，设置<code>0</code>就是完整显示，千万别忘了设置，不然你就是当不插电开机的煞笔好了。</p>
+<p>接下来在<code>Document Outline</code>找到刚才绑定的Cell上右键，在弹出的outlet弹出列表上把<code>ArtistTableViewCell</code>的属性<code>bioLabel</code>拖到刚才弄的内容为<code>Bio</code>的Label上链接起来，演示如下：</p>
+<p align="center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/03/rw-self-sizing-2-7.png" alt=""><br></p>
+
+<p>是不是憋的一逼，一开始到现在咋都不说这么做是为啥，现在就告诉你为什么，让<code>UITableViewCell</code>动态高度的秘诀是利用<code>AutoLayout</code>里有内建高度的控件比如<code>UILabel</code>这种来把Cell撑开，这种做法的前提就是必须把约束给设置完整，不然系统就没法自动计算高度。</p>
+<blockquote>
+<p>算了，要是不会AutoLayout，我还是给你一份快速上手教程，iOS7和iOS9两个版本，自行选择。<br>中文：<a href="http://www.tairan.com/archives/5365/" target="_blank" rel="external">iOS 7教程 - Storyboards Part1</a>，<a href="http://www.raywenderlich.com/50310/storyboards-tutorial-in-iOS-7-part-2" target="_blank" rel="external">iOS 7教程 - StoryBoards Part2</a><br>英文：<a href="https://www.raywenderlich.com/115440/auto-layout-tutorial-in-ios-9-part-1-getting-started-2" target="_blank" rel="external">Auto Layout Tutorial in iOS 9 Part 1: Getting Started</a></p>
+</blockquote>
+<p>刚才原理都明白了我们可以给Label拉约束了，在Storyboard可视化界面的直接快捷添加，只需要让<code>Label</code>的四边顶住Cell的四边即可，也就是给Label分别四个约束添加：</p>
+<ul>
+<li>leading</li>
+<li>top</li>
+<li>trailing</li>
+<li>bottom<p align="center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/04/Screen-Shot-2016-04-10-at-9.49.10-PM.png" alt=""><br></p>
+
+</li>
+</ul>
+<blockquote>
+<p>关于<code>Constraints to margins</code>这个选项这里还是说一下，这个选项是留边的做法，最开始是<code>Size Class</code>这个特性考虑不全，认为所有人都会为同一个应用在<code>Storyboard</code>里掺杂各种屏幕的页面设计，也就是<code>iWatch</code>的诞生才引入的<code>Size Class</code>特性。<br>但是大部分日常开发都是基于iPhone，然后才是iPad，iWatch，所以这个作为默认勾选在iPhone上是很多新手踩的大坑，如果没注意又不知道意思，勾选之后在不同屏幕上看到的边缘就会有留边或者被裁掉的问题。<br>所以在Xcode8.1之后如果是iPhone模板做页面设计，是已经取消默认勾选。</p>
+</blockquote>
+<p>所以根据你Xcode的版本，总之就是取消勾选个<code>Constraints to margins</code>，然后上下左右四个约束的约束值：</p>
+<ul>
+<li>上下约束值为0</li>
+<li>左右约束值为8</li>
+</ul>
+<blockquote>
+<p>那么我们来验证一下上面做的是否满足AutoLayout的标准：</p>
+<ul>
+<li>控件的起始点和宽高都能确定吗？有上下左右四边约束，这是绝逼能确定起始点和宽高的，通过。</li>
+<li>可变控件是否把Cell的内容视图<code>contentView</code>给顶住？Label上下两边的约束就足够顶住，通过。</li>
+</ul>
+<p>所以这个自动布局完全可以确定高度以便让Cell高度自适应。</p>
+</blockquote>
+<p>现在你的<code>ArtistTableViewCell</code>视图已经搞定，让我们跑一盘来看看：</p>
+<p align="center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/03/rw-self-sizing-39.png" alt=""><br></p>
+
+<p>不对啊，咋还是之前的屌样，What the fuck！？？？莫紧张，我们只是弄了可视化绑定部分，你以为还真的全程可视化啊，当然还是写点小代码，别太天真了骚年！！！</p>
 
   </section>
 
