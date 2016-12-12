@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Table View Cell 自适应速成大法 | Andy矢倉</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="曾梦想仗剑走天涯">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Table View Cell 自适应速成大法 | Andy矢倉">
+    <meta name="twitter:description" content="曾梦想仗剑走天涯">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Table View Cell 自适应速成大法 | Andy矢倉">
+    <meta property="og:description" content="曾梦想仗剑走天涯">
+
+    
+    <meta name="author" content="Andy矢倉">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/favicon.ico">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Andy矢倉" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://shicang1990.github.io/2016/12/12/2016-12-12-Self-sizing-Table-View-Cells/"/>
+
+    
+      
+</head>
+
+<body class="home-template no-js">
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Andy矢倉 的主页"><img src="/images/favicon.ico" width="80" alt="Andy矢倉 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Andy矢倉">Andy矢倉</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">老板 来杯董小姐 去冰 少糖 多放点小姐</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">曾梦想仗剑走天涯</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/">主页</a></li>
+            
+              <li class="navigation__item"><a href="/archives">所有文章</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/ganmaojijie" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/shicang1990" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  <li class="navigation__item">
+    <a href="https://www.facebook.com/wiwby" title="上Facebook找我" target="_blank">
+      <i class='social fa fa-facebook'></i>
+      <span class="label">Facebook</span>
+    </a>
+  </li>
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/Andy_shicang" title="上Twitter找我" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+  <li class="navigation__item">
+    <a href="mailto:shicang1990@gmail.com" title="邮件联系我" target="_blank">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-12-12T08:26:38.000Z" class="post-list__meta--date date">12月 12 2016</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Cell/">Cell</a>, <a class="tag-link" href="/tags/TableView/">TableView</a>, <a class="tag-link" href="/tags/iOS/">iOS</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">Table View Cell 自适应速成大法</h1>
+  </header>
+
+  <section class="post">
+    <p>最近滚回成都忙房子的事情，一直没时间更新，今天在群里开到好多人在聊很多培训机构都已经辞掉iOS培训老师，关闭iOS培训课程。这尼玛回想在乔帮主时代，开发iOS还是件可以装好几年逼，而如今，日落黄昏啊。<br>纵观近几年，有太多培训机构当搅屎棍进来瞎掺和贵国的全民创业，伪造简历不说，那帮菜鸟的技术真的是辣眼睛，卧槽，好像跑偏了，今天不是来申讨培训党的，我们是正经教程，还是回到主路继续开车~~~</p>
+<a id="more"></a>
+<blockquote>
+<p>此教程特地针对Xcode8，iOS10和Swift 3优化并完善，那么你需要使用Xode8或者更新的版本，并且需要你有AutoLayout，TableView以及Swift 3的相关知识。</p>
+</blockquote>
+<h2 id="I-have-a-Table-I-have-a-View-hing-TableView"><a href="#I-have-a-Table-I-have-a-View-hing-TableView" class="headerlink" title="I have a Table, I have a View, hing ~ , TableView"></a>I have a Table, I have a View, hing ~ , TableView</h2><p>不管是老司机还是新司机，日常开发中使用<code>UITableView</code>来搭建应用框架的肯定都遇到过这种尴尬：辣就是在刚入门iOS开发，相信绝大部分人针对接到产品狗要做动态列表或者有动态高度的列表需求时抽出过皮带，因为那会儿主要都是手动计算，这种需求不仅费时费力，最后bug还多的一逼。<br>其实这种需求涉及到的技术最主要的无非就是Cell的自适应，俗话说的好，只要你掌握了<code>TableView</code>，大部分应用你是手到擒来的，对于TableView的基础用法和复用早在12年就烂大街了，对于Cell自适应也都是老生常谈，之所以还搞这种教程，完全是看着群里一帮傻屌每天都在无下限的讨论一些恬不知耻的话题，Cell自适应就是重灾区。对于网上的教程也好，开源库也好，已经掌握的就赶紧滚犊子，不要浪费时间了。。。</p>
+<h2 id="开始吧"><a href="#开始吧" class="headerlink" title="开始吧"></a>开始吧</h2><p>在乔帮主时代，那是的确没办法，基本上都是通过手动计算<code>Label</code>和各种可变动控件的高度，而且要是考虑屏幕旋转，那就头大咯，还好那会儿屏幕没有太多尺寸。<br>步入库克时代，大概苹果的工程师也觉得手动计算麻烦的一逼，于是有了<code>AutoLayout</code>以及开放了新的Api。</p>
+<p>Objective-C:<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">CGSize</span>)systemLayoutSizeFittingSize:(<span class="built_in">CGSize</span>)targetSize;</div></pre></td></tr></table></figure></p>
+<p>Swift:<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">systemLayoutSizeFitting</span><span class="params">(<span class="number">_</span> targetSize: CGSize)</span></span> -&gt; <span class="type">CGSize</span></div></pre></td></tr></table></figure></p>
+<p>利用此Api，无论你是代码党还是煞笔党，配合<code>AutoLayout</code>就可以搞定Cell自适应的问题，可以说是载歌载舞啊。</p>
+<p>现在，得益于<code>iOS8</code>对<code>Interface Builder</code>改进和<code>AutoLayout</code>的优化，只要是你的应用适配到<code>iOS8</code>以上，解决Cell自适应的问题那就So Easy！！！</p>
+<blockquote>
+<p>那么接下来你需要搞定如下几个简单步骤：</p>
+<ul>
+<li>使用<code>AutoLayout</code>创建你的TableView。</li>
+<li>把<code>rowHeight</code>设置成<code>UITableViewAutomaticDimension</code>。</li>
+<li>利用<code>estimatedRowHeight</code>设置一个预估高度或者自行实现预估高度的代理方法。</li>
+</ul>
+</blockquote>
+<p>你先别逼逼问为什么要这么做，这是速成大法，先给你看效果才是最重要的，跟着做就行了，做完不懂再逼逼。。。</p>
+<h2 id="姿势One：接需求"><a href="#姿势One：接需求" class="headerlink" title="姿势One：接需求"></a>姿势One：接需求</h2><blockquote>
+<p>假设你有个煞笔客户，要让你做一个艺术家作品展示的应用，那么进入应用的第一个主页面肯定是个艺术家信息列表，而且是动态列表。但是客户需要的是快速实现，他不想听你逼逼动态列表好不好做，也不想看你在那里煞笔的炫耀技术，你特么乖乖实现就行了。</p>
+</blockquote>
+<p>你可以自己从头搭建工程，当然考虑到看教程的大部分都是懒逼，这里给你们准备了一份初始<a href="/others/2016-12-12-Self-sizing-Table-View-Cells/Artistry-Starter.zip">工程</a>，如果你不想搞事，劝你还是老实点用我这份比较好，Understand。。。</p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/0.jpg" alt=""><br></p>
+
+<p>接下来我们就可以开始涨姿势了，Let’s go…</p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/05/31/2016-05-31-Failed-Import-Bridging-Header/" title="Failed to import bridging header 的奇葩解决方案">Failed to import bridging header 的奇葩解决方案</a></h2>
+                <p class="excerpt">
+                
+                本人是个升级控，只要有需要升级的看看日志没啥问题就开整，等了大半年的Cocoapods的1.0.0终于出正式版本了，介于0.38.0到0.39.0的痛苦过程，心里有点小担心，不过那时还好是Objective-C，问题出在配置上都可以stackoverflow解决，这次要面对这次还要多面临Swift的挑战，废话太多了，直接开整。
+升级的过程还是老套路：
+1sudo gem install cocoapods
+老套路还是还是老问题/usr下路径权限不够，试着改变权限：
+1sudo chown $(whoami):admin /usr/local &amp;amp;&amp;amp; sudo chown -R $(whoami):admin /usr/local
+1sudo chown $(whoami):admin /usr/bin &amp;amp;&amp;amp; sudo chown -R $(whoami):admin /usr/bin
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-05-30T16:06:05.000Z" class="post-list__meta--date date">5月 31 2016</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Xcode/">Xcode</a>
+</span><a class="btn-border-small" href="/2016/05/31/2016-05-31-Failed-Import-Bridging-Header/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2016 - 本站由 <a href="/">@Monniya</a> 创建,
+        使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">hexo-theme-new-vno</a> 主题,
+        修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+</footer>
+        </div>
+    </div>
+
+    
+
+     
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?f1811f144f64379f918cf1ef7bf3f3cb";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    
+    </script>
+    
+</body>
+</html>
