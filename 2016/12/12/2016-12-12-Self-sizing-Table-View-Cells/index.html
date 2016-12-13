@@ -243,7 +243,7 @@
 </li>
 </ul>
 <blockquote>
-<p>关于<code>Constraints to margins</code>这个选项这里还是说一下，这个选项是留边的做法，最开始是<code>Size Class</code>这个特性考虑不全，认为所有人都会为同一个应用在<code>Storyboard</code>里掺杂各种屏幕的页面设计，也就是<code>iWatch</code>的诞生才引入的<code>Size Class</code>特性。<br>但是大部分日常开发都是基于iPhone，然后才是iPad，iWatch，所以这个作为默认勾选在iPhone上是很多新手踩的大坑，如果没注意又不知道意思，勾选之后在不同屏幕上看到的边缘就会有留边或者被裁掉的问题。<br>所以在Xcode8.1之后如果是iPhone模板做页面设计，是已经取消默认勾选。</p>
+<p>关于<code>Constraints to margins</code>这个选项这里还是说一下，这个选项是留边的做法，最开始是<code>Size Class</code>这个特性考虑不全，认为所有人都会为同一个应用在<code>Storyboard</code>里掺杂各种屏幕的页面设计，也就是<code>iWatch</code>的诞生才引入的<code>Size Class</code>特性。<br>但是大部分日常开发都是基于iPhone，然后才是iPad，iWatch，所以这个作为默认勾选在iPhone上是很多新手踩的大坑，如果没注意又不知道意思，勾选之后在不同屏幕上看到的边缘就会有留边或者被裁掉的问题。<br>这里只是演示教程，无所谓，实际开发的时候根据需求确定勾选与否即可。</p>
 </blockquote>
 <p>所以根据你Xcode的版本，总之就是取消勾选个<code>Constraints to margins</code>，然后上下左右四个约束的约束值：</p>
 <ul>
@@ -262,6 +262,24 @@
 <p align="center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/03/rw-self-sizing-39.png" alt=""><br></p>
 
 <p>不对啊，咋还是之前的屌样，What the fuck！？？？莫紧张，我们只是弄了可视化绑定部分，你以为还真的全程可视化啊，当然还是写点小代码，别太天真了骚年！！！</p>
+<h2 id="姿势Four：编码"><a href="#姿势Four：编码" class="headerlink" title="姿势Four：编码"></a>姿势Four：编码</h2><p>只有正确的配置好我们自定义的Cell才能准确计算高度。<br>so，打开<code>ArtistListViewController.swift</code>，替换掉方法<code>tableView(_:cellForRowAtIndexPath:)</code>，代码搞成如下所示：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</div><div class="line">    <span class="keyword">let</span> cell = tableView.dequeueReusableCell(withIdentifier: <span class="string">"Cell"</span>, <span class="keyword">for</span>: indexPath) <span class="keyword">as</span>! <span class="type">ArtistTableViewCell</span></div><div class="line">  </div><div class="line">    <span class="keyword">let</span> artist = artists[indexPath.row]</div><div class="line">    cell.bioLabel.text = artist.bio</div><div class="line">    cell.bioLabel.textColor = <span class="type">UIColor</span>(white: <span class="number">114</span>/<span class="number">255</span>, alpha: <span class="number">1</span>)</div><div class="line">    <span class="keyword">return</span> cell</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这代码段应该是相当简单吧，Cell复用，设置Label的内容，设置文字颜色，还有更多需要我解释的吗！？？？</p>
+<p>再次跑起来，除了文字颜色变了，其他还是一个屌样，想想，我们把<code>bioLabel</code>的行数限制设置为0，取消掉行数限制，约束也设置好了，但是目前TableView还没那么智能让你想啥来啥，我们还需要告诉它让AutoLayout来负责驱动Cell的高度。</p>
+<p>点开<code>ArtistListViewController.swift</code>，在<code>viewDidLoad()</code>后面加上这两句代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tableView.rowHeight = <span class="type">UITableViewAutomaticDimension</span></div><div class="line">tableView.estimatedRowHeight = <span class="number">140</span></div></pre></td></tr></table></figure></p>
+<p>当你把<code>rowHeight</code>这个属性设置为<code>UITableViewAutomaticDimension</code>，只要保持约束正确，AutoLayout就会自动确定Cell的高度。<br>同时还需处理的便是<code>estimatedRowHeight</code>这个属性，我们这里选择<code>140</code>这个值，只是在这个项目当中大概估算出来的，每个项目或者每个列表都需要自行处理这个值，按照语义，预估一个中间值，这样减少刷新的性能消耗。</p>
+<p>好，我们再来跑跑看，列表是不是看起来就完美了😉😉😉</p>
+<p align="center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/03/rw-self-sizing-2-40.png" alt=""><br></p>
+
+
+
+
+
+
+
+
+
+
+
 
   </section>
 
