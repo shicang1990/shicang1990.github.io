@@ -206,7 +206,7 @@
 
 <p>接下来我们就可以开始涨姿势了，Let’s go…</p>
 <h2 id="姿势Two：了解需求"><a href="#姿势Two：了解需求" class="headerlink" title="姿势Two：了解需求"></a>姿势Two：了解需求</h2><p>由于我已经帮你模拟并拆解了需求，了解并分析你就免了，跟着看就成。。。<br>打开<code>Artistry</code>工程，找到<code>Views</code>分组，点开<code>Main.storyboard</code>：</p>
-<p align="center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/03/rw-self-sizing-2-1.png" alt=""><br></p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/1.png" alt=""><br></p>
 
 <p>从左到右分别是：</p>
 <ul>
@@ -215,19 +215,19 @@
 <li><code>ArtistDetailViewController</code>负责显示艺术家作品以及详情。</li>
 </ul>
 <p>让我们跑一盘，可以看到<code>ArtistListViewController</code>显示了一个艺术家的列表，我们选择第一个艺术家（Pablo Picasso），页面跳转到<code>ArtistDetailViewController</code>显示艺术家作品介绍：</p>
-<p align="center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/03/rw-self-sizing-2-2.png" alt=""><br></p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/2.png" alt=""><br></p>
 
 <p>作为一个艺术家，不应该单单只有文字的介绍，还需要图片，但是在这里我们并没看到图片信息，所以我们需要添加图片显示，那么由于图片的宽高大小并不统一，因此你不可能只用一个固定高度就能解决，而是需要基于Cell内包含内容才决定的动态高度。<br>那么我们接下来就在<code>ArtistListViewController</code>利用动态高度实现Cell的自适应。</p>
 <h2 id="姿势Three：Cell自适应"><a href="#姿势Three：Cell自适应" class="headerlink" title="姿势Three：Cell自适应"></a>姿势Three：Cell自适应</h2><p>想要获得Cell的正确高度，必须自定义一个Cell并且使用AutoLayout建立正确约束。<br>这里我们可以使用<code>Command + N</code>快捷键来创建文件，Cell是属于视图结构，因此最好是放到<code>Views</code>分组下，你要不喜欢可以随便放，做项目要保持烂习惯也是你自己遭殃。<br>OK，这里我们选择<code>Cocoa Touch Class</code>创建一个名为<code>ArtistTableViewCell</code>并且继承自<code>UITableViewCell</code>的源文件。语言项肯定是整<code>Swift</code>，也不需要创建<code>Xib</code>可是文件哈，你踏马要煞笔到怼Objc我也无话可说，那到这里我劝你赶紧Q掉。<br>打开我们刚才创建的<code>ArtistTableViewCell.swift</code>并删掉系统自动生成的方法，接着我们添加如下属性：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> bioLabel: <span class="type">UILabel</span>!</div></pre></td></tr></table></figure></p>
 <p>接着，点开<code>Main.storyboard</code>，在<code>ArtistListViewController</code>里选中<code>TableView</code>的<code>Cell</code>，在<code>Identity Inspector</code>就是识别检查器，<code>Command + Option + 3</code>也可以，都是一个屌意思，把<code>Class</code>栏修改为<code>ArtistTableViewCell</code>才能跟代码绑定。</p>
-<p align="center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/03/rw-self-sizing-2-3.png" alt=""><br></p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/3.png" alt=""><br></p>
 
 <p>拖一个<code>UILabel</code>到刚才的<code>Cell</code>里，并把内容改为<code>Bio</code>，然后在<code>Attributes Inspector</code>属性检查器里把<code>Lines</code>设置为0，Label要是现实多行文字这个是必须的前提，OK，搞定之后看起就想这样：</p>
-<p align="center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/03/Screen-Shot-2016-03-30-at-8.59.22-PM.png" alt=""><br></p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/4.png" alt=""><br></p>
 
 <p>刚才我们设置的那个<code>Lines</code>也就是Label对应的断行属性<code>numberOfLines</code>，这个我就奶妈当到底吧，这个属性是<code>Int</code>类型，设置几就是只显示几行，设置<code>0</code>就是完整显示，千万别忘了设置，不然你就是当不插电开机的煞笔好了。</p>
 <p>接下来在<code>Document Outline</code>找到刚才绑定的Cell上右键，在弹出的outlet弹出列表上把<code>ArtistTableViewCell</code>的属性<code>bioLabel</code>拖到刚才弄的内容为<code>Bio</code>的Label上链接起来，演示如下：</p>
-<p align="center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/03/rw-self-sizing-2-7.png" alt=""><br></p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/5.png" alt=""><br></p>
 
 <p>是不是憋的一逼，一开始到现在咋都不说这么做是为啥，现在就告诉你为什么，让<code>UITableViewCell</code>动态高度的秘诀是利用<code>AutoLayout</code>里有内建高度的控件比如<code>UILabel</code>这种来把Cell撑开，这种做法的前提就是必须把约束给设置完整，不然系统就没法自动计算高度。</p>
 <blockquote>
@@ -238,7 +238,7 @@
 <li>leading</li>
 <li>top</li>
 <li>trailing</li>
-<li>bottom<p align="center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/04/Screen-Shot-2016-04-10-at-9.49.10-PM.png" alt=""><br></p>
+<li>bottom<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/6.png" alt=""><br></p>
 
 </li>
 </ul>
@@ -259,7 +259,7 @@
 <p>所以这个自动布局完全可以确定高度以便让Cell高度自适应。</p>
 </blockquote>
 <p>现在你的<code>ArtistTableViewCell</code>视图已经搞定，让我们跑一盘来看看：</p>
-<p align="center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/03/rw-self-sizing-39.png" alt=""><br></p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/7.png" alt=""><br></p>
 
 <p>不对啊，咋还是之前的屌样，What the fuck！？？？莫紧张，我们只是弄了可视化绑定部分，你以为还真的全程可视化啊，当然还是写点小代码，别太天真了骚年！！！</p>
 <h2 id="姿势Four：编码"><a href="#姿势Four：编码" class="headerlink" title="姿势Four：编码"></a>姿势Four：编码</h2><p>只有正确的配置好我们自定义的Cell才能准确计算高度。<br>so，打开<code>ArtistListViewController.swift</code>，替换掉方法<code>tableView(_:cellForRowAtIndexPath:)</code>，代码搞成如下所示：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</div><div class="line">    <span class="keyword">let</span> cell = tableView.dequeueReusableCell(withIdentifier: <span class="string">"Cell"</span>, <span class="keyword">for</span>: indexPath) <span class="keyword">as</span>! <span class="type">ArtistTableViewCell</span></div><div class="line">  </div><div class="line">    <span class="keyword">let</span> artist = artists[indexPath.row]</div><div class="line">    cell.bioLabel.text = artist.bio</div><div class="line">    cell.bioLabel.textColor = <span class="type">UIColor</span>(white: <span class="number">114</span>/<span class="number">255</span>, alpha: <span class="number">1</span>)</div><div class="line">    <span class="keyword">return</span> cell</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -268,18 +268,68 @@
 <p>点开<code>ArtistListViewController.swift</code>，在<code>viewDidLoad()</code>后面加上这两句代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tableView.rowHeight = <span class="type">UITableViewAutomaticDimension</span></div><div class="line">tableView.estimatedRowHeight = <span class="number">140</span></div></pre></td></tr></table></figure></p>
 <p>当你把<code>rowHeight</code>这个属性设置为<code>UITableViewAutomaticDimension</code>，只要保持约束正确，AutoLayout就会自动确定Cell的高度。<br>同时还需处理的便是<code>estimatedRowHeight</code>这个属性，我们这里选择<code>140</code>这个值，只是在这个项目当中大概估算出来的，每个项目或者每个列表都需要自行处理这个值，按照语义，预估一个中间值，这样减少刷新的性能消耗。</p>
 <p>好，我们再来跑跑看，列表是不是看起来就完美了😉😉😉</p>
-<p align="center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/03/rw-self-sizing-2-40.png" alt=""><br></p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/8.png" alt=""><br></p>
 
 
+<h2 id="姿势Five：添加图片"><a href="#姿势Five：添加图片" class="headerlink" title="姿势Five：添加图片"></a>姿势Five：添加图片</h2><p>虽然现在应该可以完整显示了，但是任然很挫，我们需要添加一些图片和艺术家大名来美化一下看起来才像样。<br>那么我们来给<code>ArtistTableViewCell</code>添加图片和艺术家名字，点开<code>ArtistTableViewCell.swift</code>添加如下代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> nameLabel: <span class="type">UILabel</span>!</div><div class="line"><span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> artistImageView: <span class="type">UIImageView</span>!</div></pre></td></tr></table></figure></p>
+<p>我们添加了一个名为<code>artistImageView</code>的图片属性，然后在可视化里面绑定图片控件即可。</p>
+<p>点开<code>Main.storyboard</code>，选到艺术家列表里的Cell，点到<code>Size Inspector</code>尺寸识别器里，把<code>Row Height</code>设置为140，这样方便给你更多控件来添加新的控件。</p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/9.png" alt=""><br></p>
 
+<p>接下来我们需要改变布局和约束，切换到<code>Document Outline</code>里点开<code>Content View</code>的<code>Constraints</code>，或者在<code>Size Inspector</code>尺寸识别器里也可以，反正就是要删掉<code>BioLabel</code>的<code>leading</code>约束。</p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/10.png" alt=""><br></p>
 
+<p>直接干掉Label左边的约束后会看到<code>Auto Layout</code>的警告，暂时忽略掉，我们最后会把约束给完善好。<br>现在拉住Label的左边缘，把Label左边距拖到Cell中间位置，我们需要把左半部分留出来显示图片和艺术家的名字：</p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/11.png" alt=""><br></p>
 
+<p>然后拖一个<code>UILabel</code>到Cell底部，位置大概到Cell左半部分的水平居中即可，内容改为<code>Name</code>：</p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/12.png" alt=""><br></p>
 
+<p>继续拖拽一个<code>UIImageView</code>控件到<code>NameLabel</code>上面：</p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/13.png" alt=""><br></p>
 
+<p>最后，我们把新加的Label和ImageView绑定到代码上：</p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/14.png" alt=""><br></p>
 
+<p>OK，接下来我们开始完善约束，这里我们只讲关键点，就不具体手把手教你该怎么拉约束了：</p>
+<ul>
+<li><code>NameLabel</code>到Cell的<code>ContentView</code>底部间距为<code>8</code>。</li>
+<li><code>NameLabel</code>到<code>ImageView</code>的间距为<code>8</code>。</li>
+<li><code>ImageView</code>到Cell的<code>ContentView</code>顶部间距为<code>8</code>。</li>
+<li><code>ImageView</code>左边间隙到Cell的<code>ContentView</code>左边间距为<code>8</code>。</li>
+<li><code>ImageView</code>右边间隙到<code>BioLabel</code>左边间距为<code>16</code>。</li>
+</ul>
+<p>由于BioLabel的内容为动态，所以即便是ImageView的上下左右四个约束都确定了也不能确定其frame。这里我们需要把ImageView控件的宽度大概控制到屏幕宽度的一半，做法有很多，这里只介绍一种。<br>选中Cell的<code>ContentView</code>和<code>ImageView</code>，使用约束快捷工具，给二者建立一个<code>Equal Widths</code>的约束即可：</p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/15.png" alt=""><br></p>
 
+<p>不是说好的一半么，那就在<code>Document Outline</code>里选到刚才添加的<code>Equal Widths</code>约束，在<code>Size Inspector</code>尺寸识别器里把<code>multiplier</code>设置为<code>0.5</code>。</p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/16.png" alt=""><br></p>
 
+<p>这样的话，ImageView的宽度就只有屏幕宽度的一半了。<br>我们接着把剩下的约束给怼完：</p>
+<ul>
+<li>选中<code>ImageView</code>和<code>NameLabel</code>使用<code>Equal Width</code>约束让二者宽度相等。</li>
+<li>选中<code>ImageView</code>和<code>NameLabel</code>使用<code>Horizontal Centers</code>约束让NameLabel居中与ImageView。</li>
+</ul>
+<p>那么现在我们已经把所有的约束都添加完毕，此时AutoLayout还是会报一些黄色警告。做开发以来，撸主最讨厌的就是警告，不管是编码还是可视化，必须全部消除。<br>在<code>Document Outline</code>选中<code>Content View</code>，然后使用<code>Resolve Auto Layout Issues</code>快捷工具，利用<code>All Views</code>分栏下的<code>Update Frames</code>功能即可让ContentView下的所有子视图的Frame都正确更新，消除警告。</p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/17.png" alt=""><br></p>
 
+<p>可视化部分已经完成了，那么我们开始进行编码工作。点开<code>ArtistListViewController.swift</code>，在<code>tableView(_:cellForRowAtIndexPath:)</code>方法体内的bioLabel字体颜色设置代码后面加上代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">cell.artistImageView.image = artist.image</div><div class="line">cell.nameLabel.text = artist.name</div><div class="line">cell.nameLabel.backgroundColor = <span class="type">UIColor</span>(red: <span class="number">1</span>, green: <span class="number">152</span> / <span class="number">255</span>, blue: <span class="number">0</span>, alpha: <span class="number">1</span>)</div><div class="line">cell.nameLabel.textColor = <span class="type">UIColor</span>.white</div><div class="line">cell.nameLabel.textAlignment = .center</div><div class="line">cell.selectionStyle = .<span class="keyword">none</span></div></pre></td></tr></table></figure></p>
+<p>再次运行，这下看起来是不是很好多了，等等先别慌，继续往下滚动，到<code>Georgia O’Keeffe</code>你在看看是不是感觉有些奇怪。</p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/18.png" alt=""><br></p>
+
+<p>大家看到NameLabel的纵向被拉伸了，不必精慌，我们继续完善。</p>
+<p>点开<code>Main.storyboard</code>，选到<code>NameLabel</code>并创建一个到Cell底边的间隙约束，约束值也是<code>8</code>。然后在<code>Document Outline</code>选中刚才创建的约束，这时候你会看到刚创建的约束和之前创建的底边约束一模一样，先别慌，随便选一个，跟着做，看完你就不逼逼了。<br>选中约束之后切换到<code>Size Inspector</code>尺寸识别器里，把<code>Relation</code>一栏改为<code>Greater Than or Equal</code>：</p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/19.png" alt=""><br></p>
+
+<p>然后我们把另外一条一样的约束选中，把<code>priority</code>这个优先级选项值改为<code>250</code>：</p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/20.png" alt=""><br></p>
+
+<p>好，这里我们来解释下刚才都干了什么，两条相同的约束：</p>
+<ul>
+<li>一条约束关系是<code>Greater Than or Equal</code>大于等于关系，优先级值为<code>1000</code>。</li>
+<li>一条约束关系是<code>Equal</code>等于关系，优先级值为<code>250</code>。</li>
+</ul>
+<p>熟悉<code>AutoLayout</code>的同学都知道，优先级为<code>1000</code>的是默认优先级，这个数值越大优先级就越高，那为什么要选<code>250</code>呢？因为苹果设计就是控件的<code>抗压缩</code>和<code>仿拉伸</code>属性默认优先级的值为<code>251</code>，所以避免和整个控件优先级冲突那就小一点。<br>这样来设置约束，就是当整个Cell高度过高，NameLabel和Cell的间隙过大是舍弃那条约束值为8的约束。<br>现在跑一盘，看看是不是没有拉伸了？</p>
 
   </section>
 
