@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Table View Cell 自适应速成大法 | Andy矢倉</title>
+    <title>TableViewCell - 自适应速成大法 | Andy矢倉</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="曾梦想仗剑走天涯">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Table View Cell 自适应速成大法 | Andy矢倉">
+    <meta name="twitter:title" content="TableViewCell - 自适应速成大法 | Andy矢倉">
     <meta name="twitter:description" content="曾梦想仗剑走天涯">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Table View Cell 自适应速成大法 | Andy矢倉">
+    <meta property="og:title" content="TableViewCell - 自适应速成大法 | Andy矢倉">
     <meta property="og:description" content="曾梦想仗剑走天涯">
 
     
@@ -174,7 +174,7 @@
       </span> 
    
     </div>
-    <h1 class="post-title">Table View Cell 自适应速成大法</h1>
+    <h1 class="post-title">TableViewCell - 自适应速成大法</h1>
   </header>
 
   <section class="post">
@@ -184,7 +184,7 @@
 <p>最近滚回成都忙房子的事情，一直没时间更新，今天在群里开到好多人在聊很多培训机构都已经辞掉iOS培训老师，关闭iOS培训课程。这尼玛回想在乔帮主时代，开发iOS还是件可以装好几年逼，而如今，日落黄昏啊。<br>纵观近几年，有太多培训机构当搅屎棍进来瞎掺和贵国的全民创业，伪造简历不说，那帮菜鸟的技术真的是辣眼睛，卧槽，好像跑偏了，今天不是来申讨培训党的，我们是正经教程，还是回到主路继续开车~~~</p>
 <a id="more"></a>
 <blockquote>
-<p>此教程特地针对Xcode8，iOS10和Swift 3优化并完善，那么你需要使用Xode8或者更新的版本，并且需要你有AutoLayout，TableView以及Swift 3的相关知识。</p>
+<p>此教程特地针对Xcode8，iOS10和Swift 3优化并完善，那么你需要使用Xode8或者更新的版本，并且需要你有AutoLayout，TableView以及Swift 3的相关知识，所以此教程是专门给IB党的，当然代码党也可以看看，思想都差不多，或者你也阔以转阵营。</p>
 </blockquote>
 <h2 id="I-have-a-Table-I-have-a-View-hing-TableView"><a href="#I-have-a-Table-I-have-a-View-hing-TableView" class="headerlink" title="I have a Table, I have a View, hing ~ , TableView"></a>I have a Table, I have a View, hing ~ , TableView</h2><p>不管是老司机还是新司机，日常开发中使用<code>UITableView</code>来搭建应用框架的肯定都遇到过这种尴尬：辣就是在刚入门iOS开发，相信绝大部分人针对接到产品狗要做动态列表或者有动态高度的列表需求时抽出过皮带，因为那会儿主要都是手动计算，这种需求不仅费时费力，最后bug还多的一逼。<br>其实这种需求涉及到的技术最主要的无非就是Cell的自适应，俗话说的好，只要你掌握了<code>TableView</code>，大部分应用你是手到擒来的，对于TableView的基础用法和复用早在12年就烂大街了，对于Cell自适应也都是老生常谈，之所以还搞这种教程，完全是看着群里一帮傻屌每天都在无下限的讨论一些恬不知耻的话题，Cell自适应就是重灾区。对于网上的教程也好，开源库也好，已经掌握的就赶紧滚犊子，不要浪费时间了。。。</p>
 <h2 id="开始吧"><a href="#开始吧" class="headerlink" title="开始吧"></a>开始吧</h2><p>在乔帮主时代，那是的确没办法，基本上都是通过手动计算<code>Label</code>和各种可变动控件的高度，而且要是考虑屏幕旋转，那就头大咯，还好那会儿屏幕没有太多尺寸。<br>步入库克时代，大概苹果的工程师也觉得手动计算麻烦的一逼，于是有了<code>AutoLayout</code>以及开放了新的Api。</p>
@@ -229,7 +229,7 @@
 <p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/4.png" alt=""><br></p>
 
 <p>刚才我们设置的那个<code>Lines</code>也就是Label对应的断行属性<code>numberOfLines</code>，这个我就奶妈当到底吧，这个属性是<code>Int</code>类型，设置几就是只显示几行，设置<code>0</code>就是完整显示，千万别忘了设置，不然你就是当不插电开机的煞笔好了。</p>
-<p>接下来在<code>Document Outline</code>找到刚才绑定的Cell上右键，在弹出的outlet弹出列表上把<code>ArtistTableViewCell</code>的属性<code>bioLabel</code>拖到刚才弄的内容为<code>Bio</code>的Label上链接起来，演示如下：</p>
+<p>接下来在<code>Document Outline</code>找到刚才绑定的Cell上右键，在弹出的outlet弹出列表上把<code>ArtistTableViewCell</code>的属性<code>bioLabel</code>拖到刚才弄的内容为<code>Bio</code>的Label上连接起来，演示如下：</p>
 <p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/5.png" alt=""><br></p>
 
 <p>是不是憋的一逼，一开始到现在咋都不说这么做是为啥，现在就告诉你为什么，让<code>UITableViewCell</code>动态高度的秘诀是利用<code>AutoLayout</code>里有内建高度的控件比如<code>UILabel</code>这种来把Cell撑开，这种做法的前提就是必须把约束给设置完整，不然系统就没法自动计算高度。</p>
@@ -265,7 +265,7 @@
 <p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/7.png" alt=""><br></p>
 
 <p>不对啊，咋还是之前的屌样，What the fuck！？？？莫紧张，我们只是弄了可视化绑定部分，你以为还真的全程可视化啊，当然还是写点小代码，别太天真了骚年！！！</p>
-<h2 id="姿势Four：倒挂金钩"><a href="#姿势Four：倒挂金钩" class="headerlink" title="姿势Four：倒挂金钩"></a>姿势Four：倒挂金钩</h2><p>只有正确的配置好我们自定义的Cell才能准确计算高度。<br>so，打开<code>ArtistListViewController.swift</code>，替换掉方法<code>tableView(_:cellForRowAtIndexPath:)</code>，代码搞成如下所示：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</div><div class="line">    <span class="keyword">let</span> cell = tableView.dequeueReusableCell(withIdentifier: <span class="string">"Cell"</span>, <span class="keyword">for</span>: indexPath) <span class="keyword">as</span>! <span class="type">ArtistTableViewCell</span></div><div class="line">  </div><div class="line">    <span class="keyword">let</span> artist = artists[indexPath.row]</div><div class="line">    cell.bioLabel.text = artist.bio</div><div class="line">    cell.bioLabel.textColor = <span class="type">UIColor</span>(white: <span class="number">114</span>/<span class="number">255</span>, alpha: <span class="number">1</span>)</div><div class="line">    <span class="keyword">return</span> cell</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="姿势Four：倒挂金钩"><a href="#姿势Four：倒挂金钩" class="headerlink" title="姿势Four：倒挂金钩"></a>姿势Four：倒挂金钩</h2><p>只有正确的配置好我们自定义的Cell才能准确计算高度。<br>so，打开<code>ArtistListViewController.swift</code>，替换掉方法<code>tableView(_:cellForRowAtIndexPath:)</code>，代码搞成如下所示：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</div><div class="line">	<span class="keyword">let</span> cell = tableView.dequeueReusableCell(withIdentifier: <span class="string">"Cell"</span>, <span class="keyword">for</span>: indexPath) <span class="keyword">as</span>! <span class="type">ArtistTableViewCell</span></div><div class="line"></div><div class="line">	<span class="keyword">let</span> artist = artists[indexPath.row]</div><div class="line">	cell.bioLabel.text = artist.bio</div><div class="line">	cell.bioLabel.textColor = <span class="type">UIColor</span>(white: <span class="number">114</span>/<span class="number">255</span>, alpha: <span class="number">1</span>)</div><div class="line">	<span class="keyword">return</span> cell</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>这代码段应该是相当简单吧，Cell复用，设置Label的内容，设置文字颜色，还有更多需要我解释的吗！？？？</p>
 <p>再次跑起来，除了文字颜色变了，其他还是一个屌样，想想，我们把<code>bioLabel</code>的行数限制设置为0，取消掉行数限制，约束也设置好了，但是目前TableView还没那么智能让你想啥来啥，我们还需要告诉它让AutoLayout来负责驱动Cell的高度。</p>
 <p>点开<code>ArtistListViewController.swift</code>，在<code>viewDidLoad()</code>后面加上这两句代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tableView.rowHeight = <span class="type">UITableViewAutomaticDimension</span></div><div class="line">tableView.estimatedRowHeight = <span class="number">140</span></div></pre></td></tr></table></figure></p>
@@ -333,7 +333,32 @@
 <li>一条约束关系是<code>Equal</code>等于关系，优先级值为<code>250</code>。</li>
 </ul>
 <p>熟悉<code>AutoLayout</code>的同学都知道，优先级为<code>1000</code>的是默认优先级，这个数值越大优先级就越高，那为什么要选<code>250</code>呢？因为苹果设计就是控件的<code>抗压缩</code>和<code>仿拉伸</code>属性默认优先级的值为<code>251</code>，所以避免和整个控件优先级冲突那就小一点。<br>这样来设置约束，就是当整个Cell高度过高，NameLabel和Cell的间隙过大是舍弃那条约束值为8的约束。<br>现在跑一盘，看看是不是没有拉伸了？</p>
-<h2 id="未完待续。。。"><a href="#未完待续。。。" class="headerlink" title="未完待续。。。"></a>未完待续。。。</h2>
+<h2 id="姿势Six：老汉推车"><a href="#姿势Six：老汉推车" class="headerlink" title="姿势Six：老汉推车"></a>姿势Six：老汉推车</h2><p>还记不记得一开始我们展示，从艺术家列表点击会进入到一个对应的作品详情界面。详情页面的内容包含文字和图片，当然内容肯定是动态高度，所以我们用Cell自适应大法来搞定佢。<br>跟之前的第一步一毛一样，我们先创建一个<code>UITableViewCell</code>的子类，并命名为<code>WorkTableViewCell</code>，接着点开<code>WorkTableViewCell.swift</code>，删除自动生成的方法，为其添加下面的属性：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> workImageView: <span class="type">UIImageView</span>!</div><div class="line"><span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> workTitleLabel: <span class="type">UILabel</span>!</div><div class="line"><span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> moreInfoTextView: <span class="type">UITextView</span>!</div></pre></td></tr></table></figure></p>
+<p>点开<code>Main.storyboard</code>，在<code>Artist Detail View Controller</code>控制器下选中<code>TableView</code>的Cell，在<code>Identity Inspector</code>就是识别检查器里把<code>Class</code>设置为<code>WorkTableViewCell</code>绑定。并把<code>row height</code>行高设置到<code>200</code>方便我们拖拽控件，这里行高随意你喜欢设置，你玩着方便就行。。。<br>再接着我们拖动<code>UIImageView</code>，<code>UILabel</code>，<code>UITextView</code>这三个控件如下图所示，<code>UIImageView</code>在上，<code>UILabel</code>在中，<code>UITextView</code>在下：</p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/21.png" alt=""><br></p>
+
+<p>然后把<code>TextView</code>的内容改为<code>Select For More Info &gt;</code>，<code>Label</code>的内容改为<code>Name</code>，<code>ImageView</code>的<code>Content Mode</code>改为<code>Aspect Fit</code>。选中<code>TextView</code>，在<code>Attribute Inspector</code>属性识别器里把alignment改为<code>Centered</code>，并把<code>Scrolling Enabled</code>关闭，让用户不能认为滚动。</p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/22.png" alt=""><br></p>
+
+<p>同样重要的必须记得把Label的行数限制取消，也是就<code>Lines</code>栏设置为<code>0</code>。因为TextView滚动被禁用，用户无法滚动控件，那么TextView就知道自动适应其内容。<br>随便禁用了用户滚动，我们还是应该考虑得更周全才行，连同<code>User Interaction Enabled</code>也给踏马一起关掉，这样TextView在接收到用户滚动事件的时候就不会响应，顺势就传到父视图Cell上。Cell自然而然就替你处理滚动的手势，完全不必操心。<br>然后我们把刚才添加的三个属性的对应连接到对应控件上，照着前面搞就阔以了，还要手把手只能告诉你还是不适合傻瓜式教程。<br>搞定之后那么我们就开始添加约束（切记关掉<code>Constraints to margins</code>）：</p>
+<ul>
+<li><code>TextView</code>底边到Cell的<code>ContentView</code>的底边距为<code>0</code>。</li>
+<li><code>TextView</code>左右两边距到Cell的<code>ContentView</code>的左右两边距为<code>8</code>。</li>
+<li><code>TextView</code>顶边到<code>Label</code>的底边距为<code>8</code>。</li>
+<li><code>Label</code>顶边到<code>ImageView</code>的底边距为<code>8</code>。</li>
+<li><code>Label</code>水平居中。</li>
+<li><code>Label</code>和<code>ImageView</code>保持相同宽度。</li>
+<li><code>ImageView</code>顶边到Cell的<code>ContentView</code>顶边距为<code>0</code>。</li>
+<li><code>ImageView</code>左右两边距到Cell的<code>ContentView</code>的左右两边距为<code>8</code>。</li>
+</ul>
+<p>记得更新Frames来消除恶心的警告。那么可视化部分又搞定了，下面继续同之前的步骤一样，添加处理动态高度的代码。<br>点开<code>ArtistDetailViewController.swift</code>，把<code>tableView(_:cellForRowAtIndexPath:)</code>方法体内的代码改造成如下代码即可：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</div><div class="line">	<span class="keyword">let</span> cell = tableView.dequeueReusableCell(withIdentifier: <span class="string">"Cell"</span>, <span class="keyword">for</span>: indexPath) <span class="keyword">as</span>! <span class="type">WorkTableViewCell</span></div><div class="line">	<span class="keyword">let</span> work = selectedArtist.works[indexPath.row]</div><div class="line">	cell.workTitleLabel.text = work.title</div><div class="line">	cell.workImageView.image = work.image</div><div class="line">	cell.workTitleLabel.backgroundColor = <span class="type">UIColor</span>(white: <span class="number">204</span>/<span class="number">255</span>, alpha: <span class="number">1</span>)</div><div class="line">	cell.workTitleLabel.textAlignment = .center</div><div class="line">	cell.moreInfoTextView.textColor = <span class="type">UIColor</span>(white: <span class="number">114</span> / <span class="number">255</span>, alpha: <span class="number">1</span>)</div><div class="line">	cell.selectionStyle = .<span class="keyword">none</span></div><div class="line">	<span class="keyword">return</span> cell</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>看起来是不是很熟悉，其实就是构建一个Cell的内容并返回，跟之前都大同小异。<br>那么最后我们把<code>viewDidLoad()</code>方法体内的代码添加一下就算是搞定了。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tableView.rowHeight = <span class="type">UITableViewAutomaticDimension</span></div><div class="line">tableView.estimatedRowHeight = <span class="number">300</span></div></pre></td></tr></table></figure></p>
+<p>其实就是跟之前代码类似，现在可以跑跑看，艺术家的作品详情应该是可以完美显示了吧！！！</p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/23.png" alt=""><br></p>
+
+<p>其实这样还不算完美，更完美的是可以动态延展的内容。下面我们就来见识见识吧！！！</p>
+<h2 id="姿势Seven：蜻蜓点水"><a href="#姿势Seven：蜻蜓点水" class="headerlink" title="姿势Seven：蜻蜓点水"></a>姿势Seven：蜻蜓点水</h2><h2 id="姿势Eight：双龙出海"><a href="#姿势Eight：双龙出海" class="headerlink" title="姿势Eight：双龙出海"></a>姿势Eight：双龙出海</h2><h2 id="打完收工"><a href="#打完收工" class="headerlink" title="打完收工"></a>打完收工</h2>
   </section>
 
 </article>
