@@ -358,7 +358,28 @@
 <p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/23.png" alt=""><br></p>
 
 <p>其实这样还不算完美，更完美的是可以动态延展的内容。下面我们就来见识见识吧！！！</p>
+<h2 id="姿势Seven：蜻蜓点水"><a href="#姿势Seven：蜻蜓点水" class="headerlink" title="姿势Seven：蜻蜓点水"></a>姿势Seven：蜻蜓点水</h2><p>前面我们已经都把布局和约束全部搞定好了，接下来扩展Cell简直就易如反掌，那么我们来做更有趣的事：点击Cell可以动态显示更多内容。<br>点开<code>ArtistDetailViewController.swift</code>，添加如下<code>extension</code>：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">ArtistDetailViewController</span>: <span class="title">UITableViewDelegate</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, didSelectRowAt indexPath: IndexPath)</span></span> &#123;</div><div class="line">		<span class="comment">// 1</span></div><div class="line">		<span class="keyword">guard</span> <span class="keyword">let</span> cell = tableView.cellForRow(at: indexPath) <span class="keyword">as</span>? <span class="type">WorkTableViewCell</span> <span class="keyword">else</span> &#123; <span class="keyword">return</span> &#125;</div><div class="line">		<span class="keyword">var</span> work = selectedArtist.works[indexPath.row]</div><div class="line">		<span class="comment">// 2</span></div><div class="line">		work.isExpanded = !work.isExpanded</div><div class="line">		selectedArtist.works[indexPath.row] = work</div><div class="line">		<span class="comment">// 3</span></div><div class="line">		cell.moreInfoTextView.text = work.isExpanded ? work.info : moreInfoText</div><div class="line">		cell.moreInfoTextView.textAlignment = work.isExpanded ? .<span class="keyword">left</span> : .center</div><div class="line">		<span class="comment">// 4</span></div><div class="line">		tableView.beginUpdates()</div><div class="line">		tableView.endUpdates()</div><div class="line">		<span class="comment">// 5</span></div><div class="line">		tableView.scrollToRow(at: indexPath, at: .top, animated: <span class="literal">true</span>)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们都干了什么呢？</p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/23.jpg" alt=""><br></p>
 
+<p>分五点，下面慢慢解释：</p>
+<ul>
+<li>1.通过TableView取到点击对应Cell的索引，并取出索引所对应的数据模型对象</li>
+<li>2.取反Cell是否被扩展的状态，并设置会原数组（必须这么做，因为我们建立数据结构是采用的传值而非引用，也就是这份拷贝被操作后必须重新覆盖才行）。</li>
+<li>3.这一步操作文本视图，视Cell是否被展开来改变文本内容和对齐方式。</li>
+<li>4.接着需要刷新TableView来显示新的内容。</li>
+<li>5.最后让TableView滚动到屏幕顶部位置以获得更好的用户体验。</li>
+</ul>
+<p>这里还需要处理一下<code>tableView(_:cellForRowAt:)</code>方法，加上这两行设置代码用于刷新显示：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cell.moreInfoTextView.text = work.isExpanded ? work.info : moreInfoText</div><div class="line">cell.moreInfoTextView.textAlignment = work.isExpanded ? .<span class="keyword">left</span> : .center</div></pre></td></tr></table></figure></p>
+<p>这样就方式Cell被重用的时候导致文本内容的展开状态显示错误的问题。<br>接下来我们跑以来看看，但是呢，图片的动画貌似有点点奇怪？？？</p>
+<p>无需惊慌，只需要简单修复依稀就可以了。点开<code>Main.storyboard</code>，选中<code>WorkTableViewCell</code>里的ImageView控件，切换到<code>Size Inspector</code>尺寸检查器，把<code>Content Hugging Priority</code>和<code>Content Compression Resistance Priority</code>这两个优先级的值改为如下图所示。</p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/24.png" alt=""><br></p>
+
+<p>设置<code>Vertical Content Hugging Priority</code>为252的目的是防止纵向被拉伸导致的图像动画是拉伸过度。<code>Vertical Compression Resistance Priority</code>为749是为了允许其他元素扩展时能够被压缩，使其过度动画更丝滑。这里不用担心图像会被压缩，因为整个Cell的高度计算没有问题，文本被扩展之后还是有足够的空间留给图片。<br>那么现在我们来运行看看，试试就完美很多了呢！</p>
+<p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/25.png" alt=""><br></p>
+
+
+<h2 id="姿势Eight：双龙出海"><a href="#姿势Eight：双龙出海" class="headerlink" title="姿势Eight：双龙出海"></a>姿势Eight：双龙出海</h2><h2 id="打完收工"><a href="#打完收工" class="headerlink" title="打完收工"></a>打完收工</h2>
   </section>
 
 </article>
