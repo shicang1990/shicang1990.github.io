@@ -265,7 +265,7 @@
 <p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/7.png" alt=""><br></p>
 
 <p>不对啊，咋还是之前的屌样，What the fuck！？？？莫紧张，我们只是弄了可视化绑定部分，你以为还真的全程可视化啊，当然还是写点小代码，别太天真了骚年！！！</p>
-<h2 id="姿势Four：倒挂金钩"><a href="#姿势Four：倒挂金钩" class="headerlink" title="姿势Four：倒挂金钩"></a>姿势Four：倒挂金钩</h2><p>只有正确的配置好我们自定义的Cell才能准确计算高度。<br>so，打开<code>ArtistListViewController.swift</code>，替换掉方法<code>tableView(_:cellForRowAtIndexPath:)</code>，代码搞成如下所示：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</div><div class="line">	<span class="keyword">let</span> cell = tableView.dequeueReusableCell(withIdentifier: <span class="string">"Cell"</span>, <span class="keyword">for</span>: indexPath) <span class="keyword">as</span>! <span class="type">ArtistTableViewCell</span></div><div class="line"></div><div class="line">	<span class="keyword">let</span> artist = artists[indexPath.row]</div><div class="line">	cell.bioLabel.text = artist.bio</div><div class="line">	cell.bioLabel.textColor = <span class="type">UIColor</span>(white: <span class="number">114</span>/<span class="number">255</span>, alpha: <span class="number">1</span>)</div><div class="line">	<span class="keyword">return</span> cell</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="姿势Four：倒挂金钩"><a href="#姿势Four：倒挂金钩" class="headerlink" title="姿势Four：倒挂金钩"></a>姿势Four：倒挂金钩</h2><p>只有正确的配置好我们自定义的Cell才能准确计算高度。<br>so，打开<code>ArtistListViewController.swift</code>，替换掉方法<code>tableView(_:cellForRowAtIndexPath:)</code>，代码搞成如下所示：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</div><div class="line">	<span class="keyword">let</span> cell = tableView.dequeueReusableCell(withIdentifier: <span class="string">"Cell"</span>, <span class="keyword">for</span>: indexPath) <span class="keyword">as</span>! <span class="type">ArtistTableViewCell</span></div><div class="line">	<span class="keyword">let</span> artist = artists[indexPath.row]</div><div class="line">	cell.bioLabel.text = artist.bio</div><div class="line">	cell.bioLabel.textColor = <span class="type">UIColor</span>(white: <span class="number">114</span>/<span class="number">255</span>, alpha: <span class="number">1</span>)</div><div class="line">	<span class="keyword">return</span> cell</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>这代码段应该是相当简单吧，Cell复用，设置Label的内容，设置文字颜色，还有更多需要我解释的吗！？？？</p>
 <p>再次跑起来，除了文字颜色变了，其他还是一个屌样，想想，我们把<code>bioLabel</code>的行数限制设置为0，取消掉行数限制，约束也设置好了，但是目前TableView还没那么智能让你想啥来啥，我们还需要告诉它让AutoLayout来负责驱动Cell的高度。</p>
 <p>点开<code>ArtistListViewController.swift</code>，在<code>viewDidLoad()</code>后面加上这两句代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tableView.rowHeight = <span class="type">UITableViewAutomaticDimension</span></div><div class="line">tableView.estimatedRowHeight = <span class="number">140</span></div></pre></td></tr></table></figure></p>
@@ -358,7 +358,7 @@
 <p align="center"><br><img src="/images/2016-12-12-Self-sizing-Table-View-Cells/23.png" alt=""><br></p>
 
 <p>其实这样还不算完美，更完美的是可以动态延展的内容。下面我们就来见识见识吧！！！</p>
-<h2 id="姿势Seven：蜻蜓点水"><a href="#姿势Seven：蜻蜓点水" class="headerlink" title="姿势Seven：蜻蜓点水"></a>姿势Seven：蜻蜓点水</h2><h2 id="姿势Eight：双龙出海"><a href="#姿势Eight：双龙出海" class="headerlink" title="姿势Eight：双龙出海"></a>姿势Eight：双龙出海</h2><h2 id="打完收工"><a href="#打完收工" class="headerlink" title="打完收工"></a>打完收工</h2>
+
   </section>
 
 </article>
@@ -394,6 +394,26 @@
 </section>
 
             
+<section class="post-comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="http://shicang1990.github.io/2016/12/12/2016-12-12-Self-sizing-Table-View-Cells/" data-title="TableViewCell - 自适应速成大法" data-url="http://shicang1990.github.io/2016/12/12/2016-12-12-Self-sizing-Table-View-Cells/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"rockerhx"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+
             <footer class="footer">
     <span class="footer__copyright">
         本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
